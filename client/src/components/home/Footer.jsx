@@ -100,8 +100,8 @@ export default function Footer() {
                 <div className="text-blue-400 shrink-0">
                   <FaPhoneAlt size={14} />
                 </div>
-                <a href="tel:+919243758191" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  +91 92437 58191
+                <a href="tel:+916268409259" className="text-slate-400 hover:text-blue-400 transition-colors">
+                  +91 62684 09259
                 </a>
               </li>
               <li className="flex items-center gap-3">

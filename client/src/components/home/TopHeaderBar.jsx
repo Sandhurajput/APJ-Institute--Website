@@ -10,14 +10,14 @@ const contactItems = [
   },
   {
     icon: PhoneCall,
-    label: '+91-9243758191',
-    href: 'tel:+919243758191',
+    label: '+91-6268409259',
+    href: 'tel:+916268409259',
     align: 'md:justify-self-center',
   },
   {
     icon: MessageCircle,
-    label: '+91-9243758191',
-    href: 'https://wa.me/919243758191',
+    label: '+91-6268409259',
+    href: 'https://wa.me/916268409259',
     align: 'md:justify-self-end',
     external: true,
   },

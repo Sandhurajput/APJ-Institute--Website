@@ -14,7 +14,7 @@ const faqs = [
   { q: "How can I apply for admission?", a: "You can apply online through our website or visit the campus directly. Fill the enquiry form above and our team will guide you through the complete admission process." },
   { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (2 Years), X-Ray / Radiography Technician (2 Years), OT Technician (2 Years), Pharmacy (2 Years), and Hospital Assistant Certification (6 Months)." },
   { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable separate hostel facilities for boys and girls with mess, Wi-Fi, and 24/7 security." },
-  { q: "How to contact the administration office?", a: "You can call us at 9243758191 / 9243758191, email info@apjinstitute.com, or visit us at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur." },
+  { q: "How to contact the administration office?", a: "You can call us at 6268409259 / 6268409259, email info@apjinstitute.com, or visit us at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur." },
   { q: "What is the fee structure?", a: "Fee varies by course. BMLT starts at ₹45,000/year. Contact our admission office for the complete fee breakdown and available scholarship options." },
 ];
 
@@ -156,12 +156,12 @@ export default function ContactPage() {
             className="flex flex-col sm:flex-row justify-center items-center gap-5"
           >
             <a 
-              href="tel:9243758191" 
+              href="tel:6268409259" 
               className="group px-8 py-4 rounded-full bg-[#1e3a5f] text-white font-bold text-lg shadow-[0_0_30px_rgba(30,58,95,0.5)] hover:shadow-[0_0_50px_rgba(30,58,95,0.8)] hover:-translate-y-1 hover:bg-[#152a45] transition-all duration-300 flex items-center gap-2"
             >
               <PhoneCall size={20} className="group-hover:scale-110 transition-transform duration-300" /> Call Now
             </a>
-            <a href="https://wa.me/919243758191" target="_blank" rel="noreferrer" className="group px-8 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl text-white font-bold text-lg hover:bg-white/15 hover:-translate-y-1 shadow-lg transition-all duration-300 flex items-center gap-2">
+            <a href="https://wa.me/916268409259" target="_blank" rel="noreferrer" className="group px-8 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl text-white font-bold text-lg hover:bg-white/15 hover:-translate-y-1 shadow-lg transition-all duration-300 flex items-center gap-2">
               Contact Advisor <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform duration-300" />
             </a>
           </motion.div>
@@ -181,7 +181,7 @@ export default function ContactPage() {
         >
           {[
             { icon: <MapPin size={28} />, label: 'Our Address', value: 'Jawahar ward, Raipur', color: 'text-blue-600', bg: 'bg-blue-50' },
-            { icon: <Phone size={28} />, label: 'Phone Number', value: '92437 58191', color: 'text-[#1e3a5f]', bg: 'bg-[#1e3a5f]/5' },
+            { icon: <Phone size={28} />, label: 'Phone Number', value: '62684 09259', color: 'text-[#1e3a5f]', bg: 'bg-[#1e3a5f]/5' },
             { icon: <Mail size={28} />, label: 'Email Address', value: 'info@apjinstitute.com', color: 'text-indigo-600', bg: 'bg-indigo-50' },
             { icon: <Clock size={28} />, label: 'Working Hours', value: 'Mon – Sat: 9 AM – 5 PM', color: 'text-purple-600', bg: 'bg-purple-50' },
           ].map((card, i) => (
@@ -356,7 +356,7 @@ export default function ContactPage() {
             </div>
             
             <div className="flex flex-col gap-4 min-w-[200px]">
-              <a href="tel:9243758191"
+              <a href="tel:6268409259"
                 className="px-8 py-5 rounded-2xl bg-[#1e3a5f] text-white font-bold text-base shadow-[0_10px_20px_rgba(30,58,95,0.2)] hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(30,58,95,0.3)] hover:bg-[#152a45] transition-all duration-300 flex items-center justify-center gap-3 group/btn">
                 <PhoneCall size={20} className="group-hover/btn:scale-110 transition-transform" /> Call Now
               </a>

@@ -124,7 +124,7 @@ export const liveTickerNotices = [
   { id: 'ticker-1', label: 'ADMISSION OPEN 2026-27 — Apply Now', category: 'Admission', emphasis: 'Open' },
   { id: 'ticker-2', label: 'BMLT (3Y), DMLT (2Y), X-RAY (2Y)', category: 'Courses', emphasis: 'Info' },
   { id: 'ticker-3', label: 'Eligibility: 12th Pass (Biology)', category: 'Eligibility', emphasis: 'Info' },
-  { id: 'ticker-4', label: 'Limited Seats — Contact: 9243758191', category: 'Admission', emphasis: 'Alert' },
+  { id: 'ticker-4', label: 'Limited Seats — Contact: 6268409259', category: 'Admission', emphasis: 'Alert' },
   { id: 'ticker-5', label: 'Download Admission Form / Apply via WhatsApp', category: 'Applications', emphasis: 'Action' },
 ];
 
@@ -149,8 +149,8 @@ export const liveNotificationCards = [
     ],
     eligibility: '12th Pass (Biology)',
     contact: {
-      whatsapp: ['9243758191', '9243758191'],
-      phone: ['9243758191', '9243758191'],
+      whatsapp: ['6268409259', '6268409259'],
+      phone: ['6268409259', '6268409259'],
       address: 'Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur',
     },
   },
