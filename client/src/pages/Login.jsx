@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import { studentAuthApi } from '../utils/apiClient';
-import { storeAuthSession } from '../utils/authStorage';
+import axios from "axios";
 import '../styles/Auth.css';
 
 export default function Login() {
@@ -51,31 +49,70 @@ export default function Login() {
 
     setLoading(true);
 
-    try {
-      const response = await studentAuthApi.login({
-        email: formData.email,
-        password: formData.password,
-      });
+  //   setTimeout(() => {
+  //     localStorage.setItem('token', 'mock-user-token-12345');
+  //     localStorage.setItem('role', 'user');
+  //     localStorage.setItem('email', formData.email);
+  //     localStorage.setItem('user', JSON.stringify({
+  //       fullName: formData.email.split('@')[0],
+  //       email: formData.email,
+  //       phone: '9876543210',
+  //       role: 'user'
+  //     }));
+  //     alert('✅ Welcome User! Login successful.');
+  //     navigate('/user-dashboard');
+  //     setLoading(false);
+  //   }, 500);
+  // };
 
-      storeAuthSession({
-        token: response.data.token,
-        user: { ...response.data.user, role: 'student' },
-        role: 'student',
-        email: response.data.user.email,
-      });
+  try {
 
-      toast.success(response.data.message || 'Login successful');
-      navigate('/user-dashboard');
-    } catch (error) {
-      const message = error.response?.data?.message || 'Login Failed';
-      setErrors({ server: message });
-      toast.error(message);
-    } finally {
-      setLoading(false);
+  const response = await axios.post(
+    "http://localhost:5000/api/auth/login",
+    {
+      email: formData.email,
+      password: formData.password,
     }
+  );
+
+  const authData = response.data?.data;
+
+  localStorage.setItem(
+    "token",
+    authData?.token || ""
+  );
+
+  localStorage.setItem("role", "user");
+  localStorage.setItem("email", authData?.admin?.email || formData.email);
+  localStorage.setItem(
+    "user",
+    JSON.stringify({
+      fullName: authData?.admin?.name || formData.email.split("@")[0],
+      email: authData?.admin?.email || formData.email,
+      role: "user",
+    })
+  );
+
+  alert("Login Successful");
+
+  navigate("/");
+
+} catch (error) {
+
+  console.log(error.response?.data);
+
+  alert(
+    error.response?.data?.message ||
+    "Login Failed"
+  );
+
+} finally {
+
+  setLoading(false);
+
+}
 
  };
-
 
 
 

@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import {
   MapPin, Phone, Mail, Clock, Send, ArrowRight,
   ChevronDown, GraduationCap, HelpCircle, PhoneCall
 } from 'lucide-react';
-import { inquiryApi } from '../utils/apiClient';
 
 
 /* ─── FAQ Data ─── */
@@ -66,32 +64,14 @@ export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-
-    try {
-      const response = await inquiryApi.submit(formData);
-      
-      setSubmitted(true);
-      toast.success(response.data.message || 'Thank you for your inquiry!');
-      
-      // Reset form after 2 seconds
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      }, 2000);
-    } catch (error) {
-      const message = error.response?.data?.message || 'Failed to submit inquiry. Please try again.';
-      toast.error(message);
-      console.error('Inquiry submission error:', error);
-    } finally {
-      setLoading(false);
-    }
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 4000);
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
   };
 
   const containerVariants = {

@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import toast from 'react-hot-toast';
+import axios from 'axios';
 import signUpImage from '../1.webp';
-import { studentAuthApi } from '../utils/apiClient';
-import { storeAuthSession } from '../utils/authStorage';
 import '../styles/AuthSplitScreen.css';
 
 export default function UserSignUp() {
@@ -45,34 +43,40 @@ export default function UserSignUp() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSignUpSubmit = async (e) => {
+  const handleSignUpSubmit = (e) => {
     e.preventDefault();
     if (!validateSignUp()) return;
 
     setLoading(true);
-    try {
-      const response = await studentAuthApi.signup({
-        name: `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
-        email: signUpForm.email,
-        password: signUpForm.password,
-      });
 
-      storeAuthSession({
-        token: response.data.token,
-        user: { ...response.data.user, role: 'student' },
-        role: 'student',
-        email: response.data.user.email,
-      });
+    axios.post('http://localhost:5000/api/auth/signup', {
+      name: `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
+      email: signUpForm.email,
+      password: signUpForm.password,
+    })
+      .then((response) => {
+        const authData = response.data?.data;
 
-      toast.success(response.data.message || 'Account created');
-      navigate('/user-login');
-    } catch (error) {
-      const message = error.response?.data?.message || 'Student signup failed';
-      setErrors({ server: message });
-      toast.error(message);
-    } finally {
-      setLoading(false);
-    }
+        localStorage.setItem('token', authData?.token || '');
+        localStorage.setItem('role', 'user');
+        localStorage.setItem('email', authData?.admin?.email || signUpForm.email);
+        localStorage.setItem('user', JSON.stringify({
+          fullName: authData?.admin?.name || `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
+          email: authData?.admin?.email || signUpForm.email,
+          role: 'user',
+        }));
+
+        alert('✅ Account created! Redirecting to login...');
+        navigate('/user-login');
+      })
+      .catch((error) => {
+        setErrors({
+          server: error.response?.data?.message || 'Signup Failed',
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
