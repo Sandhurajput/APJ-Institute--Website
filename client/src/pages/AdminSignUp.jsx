@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import axios from 'axios';
+import toast from 'react-hot-toast';
 import signUpImage from '../1.webp';
+import { adminAuthApi } from '../utils/apiClient';
+import { storeAuthSession } from '../utils/authStorage';
 import '../styles/AdminAuthSplitScreen.css';
 
 export default function AdminSignUp() {
@@ -49,40 +51,34 @@ export default function AdminSignUp() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSignUpSubmit = (e) => {
+  const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     if (!validateSignUp()) return;
 
     setLoading(true);
-
-    axios.post('http://localhost:5000/api/auth/signup', {
-      name: signUpForm.fullName,
-      email: signUpForm.email,
-      password: signUpForm.password,
-    })
-      .then((response) => {
-        const authData = response.data?.data;
-
-        localStorage.setItem('token', authData?.token || '');
-        localStorage.setItem('role', 'admin');
-        localStorage.setItem('email', authData?.admin?.email || signUpForm.email);
-        localStorage.setItem('user', JSON.stringify({
-          fullName: authData?.admin?.name || signUpForm.fullName,
-          email: authData?.admin?.email || signUpForm.email,
-          role: 'admin',
-        }));
-
-        alert('✅ Admin account created! Redirecting to login...');
-        navigate('/admin-login');
-      })
-      .catch((error) => {
-        setErrors({
-          server: error.response?.data?.message || 'Admin signup failed. Please try again.',
-        });
-      })
-      .finally(() => {
-        setLoading(false);
+    try {
+      const response = await adminAuthApi.signup({
+        name: signUpForm.fullName,
+        email: signUpForm.email,
+        password: signUpForm.password,
       });
+
+      storeAuthSession({
+        token: response.data.token,
+        user: { ...response.data.user, role: 'admin' },
+        role: 'admin',
+        email: response.data.user.email,
+      });
+
+      toast.success(response.data.message || 'Admin account created');
+      navigate('/admin-login');
+    } catch (error) {
+      const message = error.response?.data?.message || 'Admin signup failed';
+      setErrors({ server: message });
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -218,7 +214,7 @@ export default function AdminSignUp() {
                 </Link>
               </p>
               <p>
-                <Link to="/signup">
+                <Link to="/user-signup">
                   Sign up as User instead?
                 </Link>
               </p>

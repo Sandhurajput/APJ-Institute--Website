@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import axios from 'axios';
+import toast from 'react-hot-toast';
 import loginImage from '../2.webp';
+import { studentAuthApi } from '../utils/apiClient';
+import { storeAuthSession } from '../utils/authStorage';
 import '../styles/AuthSplitScreen.css';
 
 export default function UserLogin() {
@@ -37,39 +39,33 @@ export default function UserLogin() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     if (!validateLogin()) return;
 
     setLoading(true);
-
-    axios.post('http://localhost:5000/api/auth/login', {
-      email: loginForm.email,
-      password: loginForm.password,
-    })
-      .then((response) => {
-        const authData = response.data?.data;
-
-        localStorage.setItem('token', authData?.token || '');
-        localStorage.setItem('role', 'user');
-        localStorage.setItem('email', authData?.admin?.email || loginForm.email);
-        localStorage.setItem('user', JSON.stringify({
-          fullName: authData?.admin?.name || loginForm.email.split('@')[0],
-          email: authData?.admin?.email || loginForm.email,
-          role: 'user',
-        }));
-
-        alert('✅ Welcome User!');
-        navigate('/user-dashboard');
-      })
-      .catch((error) => {
-        setErrors({
-          server: error.response?.data?.message || 'Login Failed',
-        });
-      })
-      .finally(() => {
-        setLoading(false);
+    try {
+      const response = await studentAuthApi.login({
+        email: loginForm.email,
+        password: loginForm.password,
       });
+
+      storeAuthSession({
+        token: response.data.token,
+        user: { ...response.data.user, role: 'student' },
+        role: 'student',
+        email: response.data.user.email,
+      });
+
+      toast.success(response.data.message || 'Welcome User!');
+      navigate('/user-dashboard');
+    } catch (error) {
+      const message = error.response?.data?.message || 'Student login failed';
+      setErrors({ server: message });
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

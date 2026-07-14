@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import axios from 'axios';
+import toast from 'react-hot-toast';
 import loginImage from '../2.webp';
+import { adminAuthApi } from '../utils/apiClient';
+import { storeAuthSession } from '../utils/authStorage';
 import '../styles/AdminAuthSplitScreen.css';
 
 export default function AdminLogin() {
@@ -45,39 +47,33 @@ export default function AdminLogin() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     if (!validateLogin()) return;
 
     setLoading(true);
-
-    axios.post('http://localhost:5000/api/auth/login', {
-      email: loginForm.email,
-      password: loginForm.password,
-    })
-      .then((response) => {
-        const authData = response.data?.data;
-
-        localStorage.setItem('token', authData?.token || '');
-        localStorage.setItem('role', 'admin');
-        localStorage.setItem('email', authData?.admin?.email || loginForm.email);
-        localStorage.setItem('user', JSON.stringify({
-          fullName: authData?.admin?.name || 'APJ Admin',
-          email: authData?.admin?.email || loginForm.email,
-          role: 'admin',
-        }));
-
-        alert('✅ Welcome Admin!');
-        navigate('/admin-dashboard');
-      })
-      .catch((error) => {
-        setErrors({
-          server: error.response?.data?.message || 'Admin login failed. Please try again.',
-        });
-      })
-      .finally(() => {
-        setLoading(false);
+    try {
+      const response = await adminAuthApi.login({
+        email: loginForm.email,
+        password: loginForm.password,
       });
+
+      storeAuthSession({
+        token: response.data.token,
+        user: { ...response.data.user, role: 'admin' },
+        role: 'admin',
+        email: response.data.user.email,
+      });
+
+      toast.success(response.data.message || 'Welcome Admin!');
+      navigate('/admin-dashboard');
+    } catch (error) {
+      const message = error.response?.data?.message || 'Admin login failed';
+      setErrors({ server: message });
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -199,7 +195,7 @@ export default function AdminLogin() {
                 </Link>
               </p>
               <p>
-                <Link to="/auth" onClick={(e) => { e.preventDefault(); alert('User Login link clicked'); }}>
+                <Link to="/user-login">
                   Login as User
                 </Link>
               </p>

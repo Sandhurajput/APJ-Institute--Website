@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiX, FiEye, FiEyeOff } from 'react-icons/fi';
-import axios from "axios";
+import toast from 'react-hot-toast';
+import { studentAuthApi } from '../utils/apiClient';
+import { storeAuthSession } from '../utils/authStorage';
 
 import '../styles/Auth.css';
 
@@ -36,46 +38,26 @@ export default function SignUp() {
    e.preventDefault();
 
    try {
+      const response = await studentAuthApi.signup({
+         name: `${formData.firstName} ${formData.lastName}`.trim(),
+         email: formData.email,
+         password: formData.password,
+      });
 
-      const response = await axios.post(
-         "http://localhost:5000/api/auth/signup",
-         {
-            name: `${formData.firstName} ${formData.lastName}`,
-            email: formData.email,
-            password: formData.password,
-         }
-      );
+      storeAuthSession({
+         token: response.data.token,
+         user: { ...response.data.user, role: 'student' },
+         role: 'student',
+         email: response.data.user.email,
+      });
 
-      const authData = response.data?.data;
-
-      alert("Signup Successful");
-
-      localStorage.setItem(
-         "token",
-        authData?.token || ""
-      );
-
-      localStorage.setItem("role", "user");
-      localStorage.setItem("email", authData?.admin?.email || formData.email);
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          fullName: authData?.admin?.name || `${formData.firstName} ${formData.lastName}`.trim(),
-          email: authData?.admin?.email || formData.email,
-          role: "user",
-        })
-      );
-
+      toast.success(response.data.message || 'Signup successful');
       navigate("/login");
 
    } catch (error) {
-
-      console.log(error.response?.data);
-
-      alert(
-         error.response?.data?.message ||
-         "Signup Failed"
-      );
+      const message = error.response?.data?.message || 'Signup Failed';
+      setErrors({ server: message });
+      toast.error(message);
    }
 };
 
@@ -151,45 +133,27 @@ const handleSubmit = async (e) => {
 
       setLoading(true);
 
-      const response = await axios.post(
-         "http://localhost:5000/api/auth/signup",
-         {
-            name: `${formData.firstName} ${formData.lastName}`,
-            email: formData.email,
-            password: formData.password,
-         }
-      );
+      const response = await studentAuthApi.signup({
+         name: `${formData.firstName} ${formData.lastName}`.trim(),
+         email: formData.email,
+         password: formData.password,
+      });
 
-      const authData = response.data?.data;
+      storeAuthSession({
+         token: response.data.token,
+         user: { ...response.data.user, role: 'student' },
+         role: 'student',
+         email: response.data.user.email,
+      });
 
-      localStorage.setItem(
-         "token",
-        authData?.token || ""
-      );
-
-      localStorage.setItem("role", "user");
-      localStorage.setItem("email", authData?.admin?.email || formData.email);
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          fullName: authData?.admin?.name || `${formData.firstName} ${formData.lastName}`.trim(),
-          email: authData?.admin?.email || formData.email,
-          role: "user",
-        })
-      );
-
-      alert("Signup Successful");
-
+      toast.success(response.data.message || 'Signup successful');
       navigate("/login");
 
    } catch (error) {
 
-      console.log(error.response?.data);
-
-      alert(
-         error.response?.data?.message ||
-         "Signup Failed"
-      );
+      const message = error.response?.data?.message || 'Signup Failed';
+      setErrors({ server: message });
+      toast.error(message);
 
    } finally {
 

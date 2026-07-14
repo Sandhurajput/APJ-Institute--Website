@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { inquiryApi } from '../utils/apiClient';
 import { 
   LayoutDashboard, 
   UserPlus, 
@@ -29,6 +30,7 @@ import {
 
 export default function AdminDashboard() {
   const [user, setUser] = useState(null);
+  const [pendingInquiryCount, setPendingInquiryCount] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
@@ -56,6 +58,19 @@ export default function AdminDashboard() {
     }
   }, [navigate]);
 
+  useEffect(() => {
+    const loadPendingInquiryCount = async () => {
+      try {
+        const response = await inquiryApi.getAll({ status: 'pending', page: 1, limit: 1 });
+        setPendingInquiryCount(response.data.pagination?.total || 0);
+      } catch (error) {
+        setPendingInquiryCount(0);
+      }
+    };
+
+    loadPendingInquiryCount();
+  }, []);
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -81,7 +96,7 @@ export default function AdminDashboard() {
     { name: 'Courses', icon: BookOpen, active: false, path: '/admin/courses' },
     { name: 'Fees & Finance', icon: DollarSign, active: false, path: '/admin/finance' },
     { name: 'Announcements', icon: Megaphone, active: false, path: '/admin/announcements' },
-    { name: 'Student Queries', icon: MessageSquare, active: false, path: '/admin/queries' },
+    { name: 'Student Queries', icon: MessageSquare, active: false, path: '/admin/queries', badge: pendingInquiryCount },
     { name: 'Settings', icon: Settings, active: false, path: '/admin/settings' },
     { name: 'Help & FAQ', icon: HelpCircle, active: false, path: '/admin/help' },
   ];
@@ -151,7 +166,12 @@ export default function AdminDashboard() {
                 }`}
               >
                 <item.icon className={`w-5 h-5 ${item.active ? 'text-brand-600' : 'text-slate-400'}`} />
-                {item.name}
+                <span className="flex-1 text-left">{item.name}</span>
+                {item.badge > 0 && (
+                  <span className="min-w-6 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-700">
+                    {item.badge}
+                  </span>
+                )}
               </button>
             ))}
           </nav>
@@ -227,7 +247,12 @@ export default function AdminDashboard() {
                     }`}
                   >
                     <item.icon className="w-5 h-5" />
-                    {item.name}
+                      <span className="flex-1 text-left">{item.name}</span>
+                      {item.badge > 0 && (
+                        <span className="min-w-6 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-700">
+                          {item.badge}
+                        </span>
+                      )}
                   </button>
                 ))}
               </nav>
