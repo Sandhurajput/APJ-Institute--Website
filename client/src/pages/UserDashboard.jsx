@@ -77,19 +77,24 @@ export default function UserDashboard() {
       return;
     }
     
-    let parsedUser = { fullName: 'APJ User', email: 'user@apjinstitute.com' };
+    let parsedUser = { fullName: 'APJ User', email: 'user@apjinstitute.com', role: 'user' };
     if (userDataStr) {
-      parsedUser = JSON.parse(userDataStr);
-      // Ensure we don't accidentally display admin credentials for user view mockup
+      const storedUser = JSON.parse(userDataStr);
+      parsedUser = {
+        fullName: storedUser.fullName || storedUser.name || 'APJ User',
+        email: storedUser.email || 'user@apjinstitute.com',
+        phone: storedUser.phone || '+91 98765 43210',
+        avatar: storedUser.avatar || '',
+        role: storedUser.role || 'user',
+      };
+
       if (parsedUser.fullName === 'APJ Admin' || parsedUser.fullName === 'Admin User') {
         parsedUser.fullName = 'APJ User';
       }
-      setUser(parsedUser);
-      setProfileData({ ...profileData, ...parsedUser });
-    } else {
-      setUser(parsedUser);
-      setProfileData({ ...profileData, ...parsedUser });
     }
+
+    setUser(parsedUser);
+    setProfileData(parsedUser);
 
     setCourses(getCourses());
     setAnnouncements(getAnnouncements());

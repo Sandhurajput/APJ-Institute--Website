@@ -14,11 +14,20 @@ const prisma = getPrismaClient();
  */
 export const signup = async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, fullName, email, password } = req.body;
+    const adminName = (name || fullName || "").trim();
+    const adminEmail = (email || "").trim().toLowerCase();
+
+    if (!adminName || !adminEmail || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Name, email, and password are required",
+      });
+    }
 
     // Check if admin already exists
     const existingAdmin = await prisma.admin.findUnique({
-      where: { email },
+      where: { email: adminEmail },
     });
 
     if (existingAdmin) {
@@ -34,11 +43,11 @@ export const signup = async (req, res, next) => {
     // Create new admin
     const admin = await prisma.admin.create({
       data: {
-        name,
-        email,
+        name: adminName,
+        email: adminEmail,
         password: hashedPassword,
-        role: "ADMIN",
-        isActive: true,
+        // role: "ADMIN",
+        //  isActive: true,
       },
     });
 
@@ -69,10 +78,11 @@ export const signup = async (req, res, next) => {
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
+    const adminEmail = (email || "").trim().toLowerCase();
 
     // Find admin by email
     const admin = await prisma.admin.findUnique({
-      where: { email },
+      where: { email: adminEmail },
     });
 
     if (!admin) {
@@ -82,8 +92,8 @@ export const login = async (req, res, next) => {
       });
     }
 
-    // Check if admin is active
-    if (!admin.isActive) {
+    // Check if admin is active only when the schema actually defines it
+    if (typeof admin.isActive === "boolean" && !admin.isActive) {
       return res.status(403).json({
         success: false,
         message: "Admin account is inactive",
