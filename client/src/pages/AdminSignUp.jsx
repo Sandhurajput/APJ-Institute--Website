@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import toast from 'react-hot-toast';
 import signUpImage from '../1.webp';
+import { adminAuthApi } from '../utils/apiClient';
+import { storeAuthSession } from '../utils/authStorage';
 import '../styles/AdminAuthSplitScreen.css';
 
 export default function AdminSignUp() {
@@ -48,18 +51,34 @@ export default function AdminSignUp() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSignUpSubmit = (e) => {
+  const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     if (!validateSignUp()) return;
 
     setLoading(true);
-    setTimeout(() => {
-      localStorage.setItem('role', 'admin');
-      localStorage.setItem('email', signUpForm.email);
-      alert('✅ Admin account created! Redirecting to login...');
+    try {
+      const response = await adminAuthApi.signup({
+        name: signUpForm.fullName,
+        email: signUpForm.email,
+        password: signUpForm.password,
+      });
+
+      storeAuthSession({
+        token: response.data.token,
+        user: { ...response.data.user, role: 'admin' },
+        role: 'admin',
+        email: response.data.user.email,
+      });
+
+      toast.success(response.data.message || 'Admin account created');
       navigate('/admin-login');
+    } catch (error) {
+      const message = error.response?.data?.message || 'Admin signup failed';
+      setErrors({ server: message });
+      toast.error(message);
+    } finally {
       setLoading(false);
-    }, 500);
+    }
   };
 
   return (
@@ -195,7 +214,7 @@ export default function AdminSignUp() {
                 </Link>
               </p>
               <p>
-                <Link to="/signup">
+                <Link to="/user-signup">
                   Sign up as User instead?
                 </Link>
               </p>

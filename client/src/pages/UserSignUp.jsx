@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import toast from 'react-hot-toast';
 import signUpImage from '../1.webp';
+import { studentAuthApi } from '../utils/apiClient';
+import { storeAuthSession } from '../utils/authStorage';
 import '../styles/AuthSplitScreen.css';
 
 export default function UserSignUp() {
@@ -42,18 +45,34 @@ export default function UserSignUp() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSignUpSubmit = (e) => {
+  const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     if (!validateSignUp()) return;
 
     setLoading(true);
-    setTimeout(() => {
-      localStorage.setItem('role', 'user');
-      localStorage.setItem('email', signUpForm.email);
-      alert('✅ Account created! Redirecting to login...');
+    try {
+      const response = await studentAuthApi.signup({
+        name: `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
+        email: signUpForm.email,
+        password: signUpForm.password,
+      });
+
+      storeAuthSession({
+        token: response.data.token,
+        user: { ...response.data.user, role: 'student' },
+        role: 'student',
+        email: response.data.user.email,
+      });
+
+      toast.success(response.data.message || 'Account created');
       navigate('/user-login');
+    } catch (error) {
+      const message = error.response?.data?.message || 'Student signup failed';
+      setErrors({ server: message });
+      toast.error(message);
+    } finally {
       setLoading(false);
-    }, 500);
+    }
   };
 
   return (

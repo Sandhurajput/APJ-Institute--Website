@@ -1,35 +1,34 @@
 export default {
   darkMode: 'class',
   content: [
-    "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
+    './index.html',
+    './src/**/*.{js,jsx,ts,tsx}',
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         brand: {
-          50: '#f4f7fa',
-          100: '#e4ecf3',
-          200: '#c8d9e7',
-          300: '#9dbcd5',
-          400: '#6c9cbf',
-          500: '#4680a9',
-          600: '#356796',
-          700: '#2b5279',
-          800: '#244565',
-          900: '#1f3a53',
-          950: '#132537',
-        }
+          50: '#f8f8f8',
+          100: '#f0f0f0',
+          200: '#e4e4e4',
+          300: '#d0d0d0',
+          400: '#a8a8a8',
+          500: '#777777',
+          600: '#4d4d4d',
+          700: '#333333',
+          800: '#222222',
+          900: '#111111',
+          950: '#0a0a0a',
+        },
       },
       fontFamily: {
         sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 18px 45px -20px rgba(15, 23, 42, 0.35)',
+        soft: '0 10px 30px -18px rgba(17, 17, 17, 0.22)',
       },
       backgroundImage: {
-        'medical-grid': 'linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)), radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.09) 1px, transparent 0)',
+        'medical-grid': 'linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.96)), radial-gradient(circle at 1px 1px, rgba(17,17,17,0.06) 1px, transparent 0)',
       },
     },
   },

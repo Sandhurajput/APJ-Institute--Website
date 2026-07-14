@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import toast from 'react-hot-toast';
 import loginImage from '../2.webp';
+import { studentAuthApi } from '../utils/apiClient';
+import { storeAuthSession } from '../utils/authStorage';
 import '../styles/AuthSplitScreen.css';
 
 export default function UserLogin() {
@@ -36,25 +39,33 @@ export default function UserLogin() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     if (!validateLogin()) return;
 
     setLoading(true);
-    setTimeout(() => {
-      localStorage.setItem('token', 'mock-user-token-12345');
-      localStorage.setItem('role', 'user');
-      localStorage.setItem('email', loginForm.email);
-      localStorage.setItem('user', JSON.stringify({
-        fullName: loginForm.email.split('@')[0],
+    try {
+      const response = await studentAuthApi.login({
         email: loginForm.email,
-        phone: '9876543210',
-        role: 'user'
-      }));
-      alert('✅ Welcome User!');
+        password: loginForm.password,
+      });
+
+      storeAuthSession({
+        token: response.data.token,
+        user: { ...response.data.user, role: 'student' },
+        role: 'student',
+        email: response.data.user.email,
+      });
+
+      toast.success(response.data.message || 'Welcome User!');
       navigate('/user-dashboard');
+    } catch (error) {
+      const message = error.response?.data?.message || 'Student login failed';
+      setErrors({ server: message });
+      toast.error(message);
+    } finally {
       setLoading(false);
-    }, 500);
+    }
   };
 
   return (
