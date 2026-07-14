@@ -1,41 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   MapPin, Phone, Mail, Clock, Send, ArrowRight,
-  ChevronDown, GraduationCap, HelpCircle, PhoneCall,
-  Star, Map, CalendarCheck, Users, Briefcase, Award, ChevronLeft, ChevronRight
+  ChevronDown, GraduationCap, HelpCircle, PhoneCall
 } from 'lucide-react';
-import CountUp from 'react-countup';
-import { Typewriter } from 'react-simple-typewriter';
+import TopHeaderBar from '../components/home/TopHeaderBar';
+import Navbar from '../components/home/Navbar';
+import Footer from '../components/home/Footer';
 
 /* ─── FAQ Data ─── */
 const faqs = [
   { q: "How can I apply for admission?", a: "You can apply online through our website or visit the campus directly. Fill the enquiry form above and our team will guide you through the complete admission process." },
-  { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (2 Years), X-Ray / Radiography Technician (2 Years), OT Technician (2 Years), B.Sc. Nursing (4 Years), and Hospital Assistant Certification (6 Months)." },
+  { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (2 Years), X-Ray / Radiography Technician (2 Years), OT Technician (2 Years), Pharmacy (2 Years), and Hospital Assistant Certification (6 Months)." },
   { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable separate hostel facilities for boys and girls with mess, Wi-Fi, and 24/7 security." },
-  { q: "How to contact the administration office?", a: "You can call us at 9243758191 / 9307616474, email info@apjinstitutedantewada.com, or visit us at Sanjay Nagar, near BSNL Exchange Office, Dantewada (C.G.)." },
+  { q: "How to contact the administration office?", a: "You can call us at 9243758191 / 9243758191, email info@apjinstitute.com, or visit us at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur." },
   { q: "What is the fee structure?", a: "Fee varies by course. BMLT starts at ₹45,000/year. Contact our admission office for the complete fee breakdown and available scholarship options." },
-];
-
-/* ─── Testimonials Data ─── */
-const testimonials = [
-  { name: "Rahul Verma", role: "BMLT Student", text: "The practical labs and expert faculty at APJ Institute helped me gain real-world clinical experience. The campus environment is outstanding.", rating: 5 },
-  { name: "Sneha Patel", role: "Nursing Graduate", text: "APJ Institute provided me with the perfect foundation for my nursing career. The placement support is incredible, and I got hired immediately.", rating: 5 },
-  { name: "Amit Sharma", role: "X-Ray Technician", text: "State-of-the-art equipment and hands-on training. The teachers are very supportive and focus deeply on our skill development.", rating: 4 },
 ];
 
 /* ─── Accordion Item ─── */
 function FaqItem({ faq, isOpen, onToggle }) {
   return (
-    <div className={`border rounded-2xl overflow-hidden transition-all duration-500 ${isOpen ? 'border-[#1e3a5f] bg-white shadow-[0_0_30px_rgba(30,58,95,0.2)] scale-[1.02] z-10 relative' : 'border-slate-200 bg-white hover:border-[#1e3a5f]/20 shadow-sm hover:shadow-md'}`}>
+    <div className={`border rounded-2xl overflow-hidden transition-all duration-500 ${isOpen ? 'border-[#1e3a5f] bg-white shadow-[0_0_20px_rgba(30,58,95,0.15)] scale-[1.01]' : 'border-slate-200 bg-white hover:border-[#1e3a5f]/40 shadow-sm hover:shadow-md'}`}>
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between p-5 sm:p-6 text-left group"
       >
         <span className={`text-base font-bold pr-4 transition-colors duration-300 ${isOpen ? 'text-[#1e3a5f]' : 'text-slate-800 group-hover:text-[#1e3a5f]'}`}>{faq.q}</span>
-        <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-[#1e3a5f]/10' : 'bg-slate-100 group-hover:bg-[#1e3a5f]/5'}`}>
-          <ChevronDown size={20} className={`shrink-0 transition-transform duration-500 ${isOpen ? 'rotate-180 text-[#1e3a5f]' : 'text-slate-400 group-hover:text-[#1e3a5f]'}`} />
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-[#1e3a5f]/10' : 'bg-slate-100 group-hover:bg-[#1e3a5f]/5'}`}>
+          <ChevronDown size={18} className={`shrink-0 transition-transform duration-500 ${isOpen ? 'rotate-180 text-[#1e3a5f]' : 'text-slate-400 group-hover:text-[#1e3a5f]'}`} />
         </div>
       </button>
       <AnimatePresence initial={false}>
@@ -73,24 +66,6 @@ export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [direction, setDirection] = useState(1);
-
-  const handleNext = () => {
-    setDirection(1);
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const handlePrev = () => {
-    setDirection(-1);
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const handleDotClick = (idx) => {
-    if (idx === currentTestimonial) return;
-    setDirection(idx > currentTestimonial ? 1 : -1);
-    setCurrentTestimonial(idx);
-  };
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -101,15 +76,6 @@ export default function ContactPage() {
     setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
   };
 
-  // Auto-slide testimonials
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDirection(1);
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -118,392 +84,320 @@ export default function ContactPage() {
     }
   };
 
-  const cardItemVariants = {
-    hidden: { opacity: 0, x: -200 },
-    show: { opacity: 1, x: 0, transition: { type: "spring", bounce: 0.4, duration: 0.8 } }
-  };
-
-  const fadeUpVariant = {
-    hidden: { opacity: 0, y: 50 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
   };
 
   return (
-    <div className="bg-[#f8fafc] min-h-screen text-slate-800 overflow-x-hidden selection:bg-[#1e3a5f]/30">
+    <div className="bg-slate-100 min-h-screen text-slate-800 overflow-x-hidden selection:bg-[#1e3a5f]/30">
+      <TopHeaderBar />
+      <Navbar />
 
       {/* ════════════════════════════════════════════
-          1. HERO SECTION (ULTRA MODERN)
+          1. HERO SECTION
       ════════════════════════════════════════════ */}
-      <section className="relative min-h-[75vh] flex flex-col justify-center items-center py-32 overflow-hidden bg-slate-950">
-        {/* Animated Background Gradients & Particles */}
+      <section className="relative min-h-[65vh] flex flex-col justify-center items-center py-32 overflow-hidden bg-slate-900 border-b border-slate-800">
+        {/* Background Effects with Zoom */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div 
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center bg-fixed opacity-40 mix-blend-overlay"
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center bg-fixed opacity-50 mix-blend-luminosity"
           ></motion.div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0f1f3a]/90 via-slate-900/80 to-slate-950"></div>
-          
-          {/* Particles */}
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{
-                y: [0, -100, 0],
-                x: [0, Math.random() * 50 - 25, 0],
-                opacity: [0, 0.5, 0],
-                scale: [0, Math.random() * 1.5 + 0.5, 0]
-              }}
-              transition={{
-                duration: Math.random() * 5 + 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: Math.random() * 5
-              }}
-              className="absolute w-2 h-2 rounded-full bg-[#1e3a5f] blur-[1px]"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`
-              }}
-            />
-          ))}
-
-          {/* Glowing Orbs */}
-          <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#1e3a5f]/30 rounded-full blur-[150px]"></motion.div>
-          <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-[#1e3a5f]/20 rounded-full blur-[150px]"></motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#071028]/80 via-[#071028]/60 to-[#071028]/95"></div>
+          {/* Animated Glows */}
+          <motion.div 
+            animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }} 
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px]"
+          ></motion.div>
+          <motion.div 
+            animate={{ scale: [1, 1.25, 1], opacity: [0.2, 0.4, 0.2] }} 
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-cyan-600/20 rounded-full blur-[150px]"
+          ></motion.div>
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center mt-16">
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, type: "spring" }}
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#1e3a5f]/50 bg-[#1e3a5f]/10 backdrop-blur-md mb-8 shadow-[0_0_30px_rgba(30,58,95,0.3)]">
-            <SparklesIcon className="text-[#5984b8] w-5 h-5" />
-            <span className="text-xs font-bold uppercase tracking-widest text-blue-100">Connect With Us</span>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#1e3a5f]/50 bg-[#1e3a5f]/30 backdrop-blur-md mb-8 shadow-[0_0_15px_rgba(30,58,95,0.3)]"
+          >
+            <SparklesIcon className="text-white w-4 h-4" />
+            <span className="text-xs font-bold uppercase tracking-widest text-white">We're Here to Help</span>
           </motion.div>
 
-          <motion.h1 initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-6xl md:text-8xl font-black tracking-tight text-white mb-6 leading-tight">
-            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5984b8] to-[#1e3a5f] filter drop-shadow-[0_0_20px_rgba(30,58,95,0.4)]">APJ Institute</span>
+          <motion.h1 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl"
+          >
+            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-[#1e3a5f] filter drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]">APJ Institute</span>
           </motion.h1>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.4 }}
-            className="h-16 flex items-center justify-center">
-            <p className="mx-auto max-w-2xl text-xl md:text-2xl text-blue-100 mb-10 font-medium">
-              <Typewriter
-                words={['Your healthcare career begins here.', 'Reach out for admissions guidance.', 'Schedule a personalized campus tour.']}
-                loop={true}
-                cursor
-                cursorStyle='|'
-                typeSpeed={50}
-                deleteSpeed={30}
-                delaySpeed={2000}
-              />
-            </p>
+          <motion.p 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="mx-auto max-w-2xl text-lg md:text-xl text-blue-50/90 mb-10 leading-relaxed font-light"
+          >
+            Reach out for admissions, career guidance, or campus visits. Start your journey toward a secure future in healthcare today.
+          </motion.p>
+
+          <motion.div
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row justify-center items-center gap-5"
+          >
+            <a 
+              href="tel:9243758191" 
+              className="group px-8 py-4 rounded-full bg-[#1e3a5f] text-white font-bold text-lg shadow-[0_0_30px_rgba(30,58,95,0.5)] hover:shadow-[0_0_50px_rgba(30,58,95,0.8)] hover:-translate-y-1 hover:bg-[#152a45] transition-all duration-300 flex items-center gap-2"
+            >
+              <PhoneCall size={20} className="group-hover:scale-110 transition-transform duration-300" /> Call Now
+            </a>
+            <a href="https://wa.me/919243758191" target="_blank" rel="noreferrer" className="group px-8 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl text-white font-bold text-lg hover:bg-white/15 hover:-translate-y-1 shadow-lg transition-all duration-300 flex items-center gap-2">
+              Contact Advisor <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform duration-300" />
+            </a>
           </motion.div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════
-          2. ANIMATED STATISTICS SECTION
+          2. CONTACT INFO CARDS (STATS STYLE)
       ════════════════════════════════════════════ */}
-      <section className="relative z-20 -mt-20 mx-auto max-w-6xl px-4 mb-24">
+      <section className="relative z-20 -mt-16 mx-auto max-w-6xl px-4">
         <motion.div 
-          variants={containerVariants} initial="hidden" whileInView="show" viewport={{ once: false, margin: "-50px" }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-white/70 backdrop-blur-2xl rounded-[2.5rem] border border-white/50 shadow-[0_30px_60px_rgba(30,58,95,0.1)]"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-white/80 backdrop-blur-xl rounded-3xl border border-white shadow-[0_20px_50px_rgba(30,58,95,0.08)]"
         >
           {[
-            { icon: <Users />, count: 5000, suffix: '+', label: 'Enrolled Students', color: 'text-[#1e3a5f]' },
-            { icon: <Briefcase />, count: 95, suffix: '%', label: 'Placement Rate', color: 'text-[#1e3a5f]' },
-            { icon: <Award />, count: 20, suffix: '+', label: 'Advanced Labs', color: 'text-indigo-500' },
-            { icon: <GraduationCap />, count: 15, suffix: '+', label: 'Expert Faculty', color: 'text-purple-500' },
-          ].map((stat, i) => (
-            <motion.div key={i} variants={cardItemVariants}
-              className="flex flex-col items-center justify-center p-8 text-center group bg-white/80 rounded-3xl shadow-sm hover:shadow-[0_10px_40px_rgba(30,58,95,0.2)] transition-all duration-500 border border-transparent hover:border-[#1e3a5f]/20"
-            >
-              <div className={`w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 ${stat.color}`}>
-                {stat.icon}
-              </div>
-              <h3 className="text-4xl font-black text-slate-900 mb-2">
-                <CountUp end={stat.count} duration={3} enableScrollSpy scrollSpyOnce={false} />{stat.suffix}
-              </h3>
-              <p className="text-sm font-bold text-slate-400 uppercase tracking-wider">{stat.label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          3. CONTACT INFO CARDS (Slide Animation)
-      ════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-6xl px-4 mb-32">
-        <motion.div variants={containerVariants} initial="hidden" whileInView="show" viewport={{ once: false, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
-        >
-          {[
-            { icon: <MapPin size={28} />, label: 'Our Address', value: 'Sanjay Nagar, Dantewada', color: 'text-[#1e3a5f]', bg: 'bg-blue-50' },
+            { icon: <MapPin size={28} />, label: 'Our Address', value: 'Jawahar ward, Raipur', color: 'text-blue-600', bg: 'bg-blue-50' },
             { icon: <Phone size={28} />, label: 'Phone Number', value: '92437 58191', color: 'text-[#1e3a5f]', bg: 'bg-[#1e3a5f]/5' },
             { icon: <Mail size={28} />, label: 'Email Address', value: 'info@apjinstitute.com', color: 'text-indigo-600', bg: 'bg-indigo-50' },
             { icon: <Clock size={28} />, label: 'Working Hours', value: 'Mon – Sat: 9 AM – 5 PM', color: 'text-purple-600', bg: 'bg-purple-50' },
           ].map((card, i) => (
-            <motion.div key={i} variants={cardItemVariants}
-              className="flex flex-col items-center justify-center p-8 text-center group bg-white rounded-3xl shadow-sm hover:shadow-[0_20px_50px_rgba(30,58,95,0.08)] transition-all duration-500 border border-slate-100 hover:border-blue-200 hover:-translate-y-2 relative overflow-hidden"
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              className="flex flex-col items-center justify-center p-6 text-center group bg-white rounded-2xl hover:bg-slate-50 shadow-sm hover:shadow-[0_10px_30px_rgba(30,58,95,0.08)] transition-all duration-500 border border-transparent hover:border-slate-200 hover:-translate-y-2 relative overflow-hidden"
             >
+              {/* Subtle hover gradient background */}
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className={`w-20 h-20 rounded-full ${card.bg} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 ease-out shadow-inner`}>
+              
+              <div className={`w-16 h-16 rounded-2xl ${card.bg} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 ease-out`}>
                 <div className={`${card.color}`}>{card.icon}</div>
               </div>
-              <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest my-2">{card.label}</h3>
-              <p className="text-lg font-extrabold text-slate-800 leading-relaxed whitespace-pre-line">{card.value}</p>
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest my-1 relative z-10">{card.label}</h3>
+              <p className="text-base font-extrabold text-slate-800 leading-relaxed whitespace-pre-line relative z-10">{card.value}</p>
             </motion.div>
           ))}
         </motion.div>
       </section>
 
       {/* ════════════════════════════════════════════
-          4. INTERACTIVE MAP & ENHANCED FORM
+          3. CONTACT FORM + MAP
       ════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-7xl px-4 lg:px-8 pb-32 relative">
-        <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#1e3a5f]/20/40 rounded-full blur-[120px] pointer-events-none -z-10"></div>
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-blue-300/20 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+      <section className="mx-auto max-w-7xl px-4 lg:px-8 py-24 relative">
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-200/40 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#1e3a5f]/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
-          
-          {/* Enhanced Form */}
-          <motion.div variants={fadeUpVariant} initial="hidden" whileInView="show" viewport={{ once: true }}>
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12">
+          {/* Form */}
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }}>
             <div className="mb-10">
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">Send Us a <span className="text-transparent bg-clip-text bg-[#1e3a5f]">Message</span></h2>
-              <p className="text-slate-500 text-lg font-medium">Fill out the form below and our admissions team will contact you within 24 hours.</p>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Send Us a <span className="text-[#1e3a5f]">Message</span></h2>
+              <p className="text-slate-600 text-lg font-medium">Fill the form and our admissions team will respond within 24 hours.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="bg-white border border-slate-100 rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(30,58,95,0.05)] relative overflow-hidden group/form">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#1e3a5f]/5 rounded-full blur-3xl -z-10 transition-opacity duration-700 opacity-0 group-focus-within/form:opacity-100"></div>
+            <form onSubmit={handleSubmit} className="bg-white/80 backdrop-blur-xl border border-white rounded-[2rem] p-8 sm:p-10 shadow-[0_20px_50px_rgba(30,58,95,0.06)] space-y-6 relative overflow-hidden group/form">
+              {/* Form subtle background gradient */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50/50 rounded-full blur-3xl -z-10 transition-opacity duration-700 opacity-50 group-focus-within/form:opacity-100"></div>
 
-              <div className="space-y-6 relative z-10">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="relative group/input">
-                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder=" "
-                      className="peer w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 pt-8 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all" />
-                    <label htmlFor="name" className="absolute left-6 top-5 text-sm font-bold text-slate-400 transition-all duration-300 peer-focus:-translate-y-2 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500 peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest cursor-text">
-                      Full Name
-                    </label>
-                  </div>
-                  <div className="relative group/input">
-                    <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required placeholder=" "
-                      className="peer w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 pt-8 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all" />
-                    <label htmlFor="phone" className="absolute left-6 top-5 text-sm font-bold text-slate-400 transition-all duration-300 peer-focus:-translate-y-2 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500 peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest cursor-text">
-                      Phone Number
-                    </label>
-                  </div>
-                </div>
-                
+              <div className="grid sm:grid-cols-2 gap-6">
                 <div className="relative">
-                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required placeholder=" "
-                    className="peer w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 pt-8 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all" />
-                  <label htmlFor="email" className="absolute left-6 top-5 text-sm font-bold text-slate-400 transition-all duration-300 peer-focus:-translate-y-2 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500 peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest cursor-text">
-                    Email Address
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder=" "
+                    className="peer w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 pt-7 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all shadow-sm" />
+                  <label htmlFor="name" className="absolute left-5 top-5 text-sm font-bold text-slate-400 transition-all duration-300 peer-focus:-translate-y-2 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500 peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest cursor-text">
+                    Full Name
                   </label>
                 </div>
-                
                 <div className="relative">
-                  <select id="subject" name="subject" value={formData.subject} onChange={handleChange} required
-                    className="peer w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 pt-8 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all appearance-none cursor-pointer">
-                    <option value="" disabled hidden></option>
-                    <option value="admission">Admission Enquiry</option>
-                    <option value="course">Course Information</option>
-                    <option value="placement">Placement Support</option>
-                    <option value="hostel">Hostel Facility</option>
-                    <option value="other">Other</option>
-                  </select>
-                  <label htmlFor="subject" className={`absolute left-6 transition-all duration-300 font-bold uppercase tracking-widest cursor-pointer ${formData.subject ? 'top-3 text-[10px] text-slate-500' : 'top-5 text-sm text-slate-400 normal-case tracking-normal peer-focus:top-3 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest'}`}>
-                    Subject
-                  </label>
-                  <ChevronDown className="absolute right-6 top-6 text-slate-400 pointer-events-none" size={20} />
-                </div>
-                
-                <div className="relative">
-                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder=" "
-                    className="peer w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 pt-8 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all resize-none" />
-                  <label htmlFor="message" className="absolute left-6 top-5 text-sm font-bold text-slate-400 transition-all duration-300 peer-focus:-translate-y-2 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500 peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest cursor-text">
-                    Your Message
+                  <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required placeholder=" "
+                    className="peer w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 pt-7 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all shadow-sm" />
+                  <label htmlFor="phone" className="absolute left-5 top-5 text-sm font-bold text-slate-400 transition-all duration-300 peer-focus:-translate-y-2 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500 peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest cursor-text">
+                    Phone Number
                   </label>
                 </div>
-
-                <AnimatePresence mode="wait">
-                  {submitted ? (
-                    <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
-                      className="flex items-center gap-4 p-5 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-700 font-bold text-sm">
-                      <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center shrink-0 shadow-sm text-lg">✅</div>
-                      Message sent successfully! We'll get back to you shortly.
-                    </motion.div>
-                  ) : (
-                    <motion.button key="btn" type="submit" 
-                      whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                      className="w-full px-10 py-5 rounded-2xl bg-[#1e3a5f] text-white font-black text-sm uppercase tracking-widest shadow-[0_15px_30px_rgba(30,58,95,0.3)] hover:shadow-[0_20px_40px_rgba(30,58,95,0.5)] transition-all duration-300 flex items-center justify-center gap-3 group"
-                    >
-                      Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </motion.button>
-                  )}
-                </AnimatePresence>
               </div>
+              
+              <div className="relative">
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required placeholder=" "
+                  className="peer w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 pt-7 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all shadow-sm" />
+                <label htmlFor="email" className="absolute left-5 top-5 text-sm font-bold text-slate-400 transition-all duration-300 peer-focus:-translate-y-2 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500 peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest cursor-text">
+                  Email Address
+                </label>
+              </div>
+              
+              <div className="relative">
+                <select id="subject" name="subject" value={formData.subject} onChange={handleChange} required
+                  className="peer w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 pt-7 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all appearance-none shadow-sm cursor-pointer">
+                  <option value="" disabled hidden></option>
+                  <option value="admission">Admission Enquiry</option>
+                  <option value="course">Course Information</option>
+                  <option value="placement">Placement Support</option>
+                  <option value="hostel">Hostel Facility</option>
+                  <option value="other">Other</option>
+                </select>
+                <label htmlFor="subject" className={`absolute left-5 transition-all duration-300 font-bold uppercase tracking-widest cursor-pointer ${formData.subject ? 'top-3 text-[10px] text-slate-500' : 'top-5 text-sm text-slate-400 normal-case tracking-normal peer-focus:top-3 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest'}`}>
+                  Subject
+                </label>
+                <ChevronDown className="absolute right-5 top-6 text-slate-400 pointer-events-none" size={18} />
+              </div>
+              
+              <div className="relative">
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder=" "
+                  className="peer w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 pt-7 pb-3 text-sm text-slate-900 focus:bg-white focus:border-[#1e3a5f] focus:ring-4 focus:ring-[#1e3a5f]/10 focus:outline-none transition-all resize-none shadow-sm" />
+                <label htmlFor="message" className="absolute left-5 top-5 text-sm font-bold text-slate-400 transition-all duration-300 peer-focus:-translate-y-2 peer-focus:text-[10px] peer-focus:text-[#1e3a5f] peer-focus:uppercase peer-focus:tracking-widest peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500 peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-widest cursor-text">
+                  Write your message here...
+                </label>
+              </div>
+
+              <AnimatePresence mode="wait">
+                {submitted ? (
+                  <motion.div key="success" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+                    className="flex items-center gap-3 p-5 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-700 font-bold text-sm shadow-sm">
+                    <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">✅</div>
+                    Message sent successfully! We'll contact you soon.
+                  </motion.div>
+                ) : (
+                  <motion.button key="btn" type="submit" 
+                    whileHover={{ scale: 1.02 }} 
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-[#1e3a5f] to-[#2a4d75] text-white font-bold text-sm shadow-[0_10px_20px_rgba(30,58,95,0.2)] hover:shadow-[0_15px_30px_rgba(30,58,95,0.3)] transition-all duration-300 flex items-center justify-center gap-2 group"
+                  >
+                    Send Message <Send size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  </motion.button>
+                )}
+              </AnimatePresence>
             </form>
           </motion.div>
 
-          {/* Interactive Map */}
-          <motion.div variants={fadeUpVariant} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex flex-col gap-6 h-full">
+          {/* Map */}
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="flex flex-col gap-6">
             <div className="mb-4">
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">Visit Our <span className="text-transparent bg-clip-text bg-[#1e3a5f]">Campus</span></h2>
-              <p className="text-slate-500 text-lg font-medium">Experience our world-class facilities and labs in person.</p>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Find Us on <span className="text-[#1e3a5f]">Map</span></h2>
+              <p className="text-slate-600 text-lg font-medium">Visit our campus in Raipur for a personal tour and guidance session.</p>
             </div>
 
-            <div className="relative flex-1 min-h-[500px] rounded-[2.5rem] overflow-hidden border-2 border-white shadow-[0_30px_60px_rgba(30,58,95,0.1)] bg-white group">
-              <iframe
-                title="APJ Institute Dantewada Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.0!2d81.35!3d18.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sDantewada%2C+Chhattisgarh!5e0!3m2!1sen!2sin!4v1"
-                className="absolute inset-0 w-full h-full grayscale-[80%] hover:grayscale-0 transition-all duration-1000 object-cover"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-              <div className="absolute inset-0 bg-blue-900/10 pointer-events-none transition-opacity duration-700 group-hover:opacity-0"></div>
-              
-              {/* Floating Glassmorphism Location Card */}
-              <motion.div 
-                initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.5, duration: 0.6 }}
-                className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-xl border border-white rounded-[2rem] p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-[1.02] transition-transform duration-500"
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-[#1e3a5f]/5 rounded-2xl flex items-center justify-center shrink-0 border border-blue-200/50 shadow-inner relative">
-                  <MapPin size={32} className="text-[#1e3a5f] relative z-10" />
-                  <div className="absolute inset-0 bg-[#2a4d75] rounded-2xl animate-ping opacity-20"></div>
-                </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-slate-900 font-black text-lg">APJ Institute Main Campus</p>
-                  <p className="text-slate-500 text-sm font-medium mt-1 leading-relaxed">Sanjay Nagar, Near BSNL Exchange, Dantewada, Chhattisgarh</p>
-                  <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 mt-3 text-[#1e3a5f] font-bold text-sm hover:text-[#152842]">
-                    Get Directions <ArrowRight size={16} />
-                  </a>
-                </div>
-              </motion.div>
+            <div className="relative flex-1 min-h-[450px] rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_rgba(30,58,95,0.08)] bg-white group p-2">
+              <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
+                <iframe
+                  title="APJ Institute Raipur Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.0!2d81.35!3d18.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRaipur%2C+Chhattisgarh!5e0!3m2!1sen!2sin!4v1"
+                  className="absolute inset-0 w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <div className="absolute inset-0 bg-[#1e3a5f]/5 pointer-events-none transition-opacity duration-700 group-hover:opacity-0"></div>
+                
+                {/* Glass overlay label */}
+                <motion.div 
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-xl border border-white rounded-2xl p-5 flex items-center gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-transform duration-300"
+                >
+                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center shrink-0 border border-blue-100/50">
+                    <MapPin size={28} className="text-[#1e3a5f]" />
+                  </div>
+                  <div>
+                    <p className="text-slate-900 font-extrabold text-base">APJ Institute Campus</p>
+                    <p className="text-slate-500 text-sm font-medium mt-0.5">Sector 9, Raghuraj Tower, Kamal Vihar, Raipur</p>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════
-          5. TESTIMONIALS SLIDER
+          4. STUDENT HELP / ADMISSION CTA
       ════════════════════════════════════════════ */}
-      <section className="bg-slate-950 py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-900/20 rounded-full blur-[150px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#0f1c2e]/20 rounded-full blur-[120px] pointer-events-none"></div>
+      <section className="mx-auto max-w-7xl px-4 lg:px-8 pb-20">
+        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-[3rem] bg-white border border-white shadow-[0_20px_60px_rgba(30,58,95,0.08)] group hover:shadow-[0_30px_70px_rgba(30,58,95,0.12)] transition-shadow duration-500">
+          
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/80 rounded-full blur-[100px] pointer-events-none group-hover:bg-blue-100/80 transition-colors duration-700"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-50/50 rounded-full blur-[80px] pointer-events-none"></div>
 
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Student <span className="text-[#1e3a5f]">Success Stories</span></h2>
-          <p className="text-slate-400 text-lg mb-16 max-w-2xl mx-auto">Hear what our graduates have to say about their journey and career growth at APJ Institute.</p>
-
-          <div className="relative max-w-5xl mx-auto min-h-[300px] flex items-center justify-center px-12 md:px-20">
-            {/* Left Navigation Arrow */}
-            <button 
-              onClick={handlePrev}
-              className="absolute left-0 md:left-4 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#1e3a5f]/80 text-white backdrop-blur-md transition-all duration-300 hover:scale-110 shadow-[0_0_15px_rgba(30,58,95,0.2)] hover:shadow-[0_0_25px_rgba(30,58,95,0.6)]"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft size={24} className="mr-1" />
-            </button>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentTestimonial}
-                initial={{ opacity: 0, x: direction * 50, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: direction * -50, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[3rem] p-10 md:p-16 w-full max-w-4xl shadow-2xl"
+          <div className="relative z-10 grid md:grid-cols-[1fr_auto] gap-10 items-center p-12 md:p-16 lg:p-20">
+            <div>
+              <motion.div 
+                whileHover={{ rotate: 10, scale: 1.1 }}
+                className="w-20 h-20 bg-blue-50 rounded-[1.5rem] flex items-center justify-center mb-8 border border-blue-100 shadow-sm"
               >
-                <div className="flex justify-center gap-1 mb-8">
-                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="text-yellow-400 fill-yellow-400 w-6 h-6" />
-                  ))}
-                </div>
-                <p className="text-2xl md:text-3xl text-blue-50 font-medium leading-relaxed mb-10 italic">
-                  "{testimonials[currentTestimonial].text}"
-                </p>
-                <div>
-                  <h4 className="text-xl font-bold text-white">{testimonials[currentTestimonial].name}</h4>
-                  <p className="text-[#1e3a5f] font-semibold mt-1 uppercase tracking-widest text-xs">{testimonials[currentTestimonial].role}</p>
-                </div>
+                <GraduationCap size={40} className="text-[#1e3a5f]" />
               </motion.div>
-            </AnimatePresence>
-
-            {/* Right Navigation Arrow */}
-            <button 
-              onClick={handleNext}
-              className="absolute right-0 md:right-4 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#1e3a5f]/80 text-white backdrop-blur-md transition-all duration-300 hover:scale-110 shadow-[0_0_15px_rgba(30,58,95,0.2)] hover:shadow-[0_0_25px_rgba(30,58,95,0.6)]"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight size={24} className="ml-1" />
-            </button>
-
-            <div className="absolute -bottom-12 left-0 right-0 flex justify-center gap-3">
-              {testimonials.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleDotClick(idx)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${currentTestimonial === idx ? 'bg-[#1e3a5f] w-10' : 'bg-white/20 hover:bg-white/50'}`}
-                />
-              ))}
+              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">Need Admission<br />Guidance?</h2>
+              <p className="text-slate-600 text-lg font-medium leading-relaxed max-w-lg">
+                Our support team helps students choose the right healthcare and paramedical career path. Get personalized counseling and complete admission support.
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          6. BOOK CAMPUS VISIT CTA
-      ════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-6xl px-4 py-32">
-        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-          className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-[#1e3a5f] via-[#152842] to-[#1e3a5f] shadow-[0_30px_60px_rgba(30,58,95,0.3)]">
-          
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[80px] pointer-events-none"></div>
-          
-          <div className="relative z-10 p-12 md:p-20 text-center flex flex-col items-center">
-            <div className="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center mb-8 border border-white/30">
-              <CalendarCheck size={36} className="text-white" />
-            </div>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">Ready to Take the Next Step?</h2>
-            <p className="text-blue-100 text-xl font-medium max-w-2xl mb-12 leading-relaxed">
-              Book a personalized campus tour. Meet our faculty, explore the advanced labs, and experience student life.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-5">
-              <a href="tel:9243758191" className="px-10 py-5 rounded-full bg-white text-[#152842] font-black text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all flex items-center gap-3">
-                <PhoneCall size={20} /> Schedule Visit
+            
+            <div className="flex flex-col gap-4 min-w-[200px]">
+              <a href="tel:9243758191"
+                className="px-8 py-5 rounded-2xl bg-[#1e3a5f] text-white font-bold text-base shadow-[0_10px_20px_rgba(30,58,95,0.2)] hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(30,58,95,0.3)] hover:bg-[#152a45] transition-all duration-300 flex items-center justify-center gap-3 group/btn">
+                <PhoneCall size={20} className="group-hover/btn:scale-110 transition-transform" /> Call Now
               </a>
+              <Link to="/admission"
+                className="px-8 py-5 rounded-2xl bg-white border border-slate-200 text-slate-800 font-bold text-base hover:bg-slate-50 hover:border-slate-300 hover:text-[#1e3a5f] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group/link">
+                Apply Online <ArrowRight size={20} className="group-hover/link:translate-x-1.5 transition-transform" />
+              </Link>
             </div>
           </div>
         </motion.div>
       </section>
 
       {/* ════════════════════════════════════════════
-          7. FAQ SECTION
+          5. FAQ SECTION
       ════════════════════════════════════════════ */}
       <section className="mx-auto max-w-4xl px-4 lg:px-8 pb-32">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#1e3a5f]/20 bg-[#1e3a5f]/5 shadow-sm mb-6">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200 bg-white shadow-sm mb-6">
             <HelpCircle size={18} className="text-[#1e3a5f]" />
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0f1c2e]">Have Questions?</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-700">Have Questions?</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-5 tracking-tight">Frequently Asked <span className="text-transparent bg-clip-text bg-[#1e3a5f]">Questions</span></h2>
-          <p className="text-slate-500 text-lg font-medium max-w-2xl mx-auto">Find quick answers to common queries about admissions, courses, and campus life.</p>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-5 tracking-tight">Frequently Asked <span className="text-[#1e3a5f]">Questions</span></h2>
+          <p className="text-slate-600 text-lg font-medium max-w-2xl mx-auto">Find quick answers to common queries about admissions, courses, and campus life.</p>
         </motion.div>
 
-        <motion.div variants={containerVariants} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} className="space-y-4">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="space-y-4"
+        >
           {faqs.map((faq, i) => (
-            <motion.div key={i} variants={cardItemVariants}>
+            <motion.div key={i} variants={itemVariants}>
               <FaqItem faq={faq} isOpen={openFaq === i} onToggle={() => setOpenFaq(openFaq === i ? null : i)} />
             </motion.div>
           ))}
         </motion.div>
       </section>
 
+      <Footer />
     </div>
   );
 }

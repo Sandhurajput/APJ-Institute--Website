@@ -54,7 +54,7 @@ export default function NewsSection() {
               </div>
               <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">Stay Updated With Institute News</h2>
               <p className="mt-4 text-slate-600">
-                Get the latest announcements, admission updates, and important notifications from APJ Institute Dantewada.
+                Get the latest announcements, admission updates, and important notifications from APJ Institute Raipur.
               </p>
             </div>
 

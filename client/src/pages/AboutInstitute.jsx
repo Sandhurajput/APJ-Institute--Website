@@ -4,9 +4,9 @@ export default function AboutInstitute() {
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 md:px-6">
       <section className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-100">
-        <h1 className="text-3xl font-bold text-slate-900">About APJ Institute Dantewada</h1>
+        <h1 className="text-3xl font-bold text-slate-900">About APJ Institute Raipur</h1>
         <p className="mt-4 text-slate-600">
-          APJ Institute Dantewada is dedicated to preparing healthcare professionals through practical,
+          APJ Institute Raipur is dedicated to preparing healthcare professionals through practical,
           patient-focused, and technology-enabled education.
         </p>
 

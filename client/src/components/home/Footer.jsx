@@ -1,124 +1,148 @@
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaChevronRight, FaPaperPlane } from 'react-icons/fa';
-import { courseNames, quickLinks } from '../../data/homepageData';
+import { FaInstagram, FaLinkedinIn, FaChevronRight, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { courseNames, quickLinks } from '../../data/homepageData';
 
 export default function Footer() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-  };
-
   return (
-    <footer className="relative border-t border-white/10 bg-gradient-to-b from-slate-900 to-black text-white overflow-hidden">
-      {/* Background glow effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <footer className="relative bg-[#0b1120] text-slate-300 overflow-hidden border-t border-slate-800">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-900/20 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-[120px]"></div>
+      </div>
 
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        className="relative z-10 mx-auto max-w-7xl px-4 py-10 lg:px-8"
-      >
-        {/* Newsletter Section */}
-        <motion.div variants={itemVariants} className="mb-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl p-6 md:p-10 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">Stay Updated</h3>
-            <p className="mt-2 text-blue-100/70">Subscribe to our newsletter for the latest campus news and admission updates.</p>
-          </div>
-          <form className="w-full lg:w-auto flex flex-col sm:flex-row gap-3">
-            <input 
-              type="email" 
-              placeholder="Enter your email address" 
-              required
-              className="w-full sm:w-80 bg-black/40 border border-white/10 rounded-full px-6 py-4 text-sm text-white focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all placeholder:text-slate-500"
-            />
-            <button 
-              type="submit"
-              className="bg-[#1e3a5f] hover:bg-[#152842] text-white rounded-full px-8 py-4 text-sm font-bold shadow-[0_0_20px_rgba(30,58,95,0.5)] hover:shadow-[0_0_30px_rgba(30,58,95,0.8)] transition-all flex items-center justify-center gap-2 group"
-            >
-              Subscribe <FaPaperPlane className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </button>
-          </form>
-        </motion.div>
-
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-          <motion.div variants={itemVariants}>
-            <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">APJ Institute Dantewada</h3>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-slate-400">
-              A premium medical and paramedical institute focused on academic discipline, hands-on training, and career success.
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+          
+          {/* Column 1: About */}
+          <div className="flex flex-col">
+            <h3 className="text-xl font-black text-white flex items-center gap-2">
+              <span className="text-blue-500">APJ</span> Institute
+            </h3>
+            <p className="mt-4 text-xs leading-relaxed text-slate-400 text-justify">
+              AP Education Institute (also known as AP Paramedical Institute) is a career-oriented training center located at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur. They offer vocational and diploma programs in allied healthcare, including BMLT, DMLT, OT Technician, X-Ray Technician, D. Pharmacy, and B. Pharmacy.
             </p>
 
-            <div className="mt-8 flex gap-4">
+            <div className="mt-6 flex gap-3">
               {[
-                { icon: FaFacebookF, url: "https://facebook.com", color: "hover:text-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]" },
-                { icon: FaInstagram, url: "https://instagram.com", color: "hover:text-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]" },
-                { icon: FaLinkedinIn, url: "https://linkedin.com", color: "hover:text-sky-500 hover:shadow-[0_0_15px_rgba(14,165,233,0.5)]" },
-                { icon: FaYoutube, url: "https://youtube.com", color: "hover:text-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]" }
-              ].map(({ icon: Icon, url, color }, index) => (
-                <a key={index} href={url} target="_blank" rel="noopener noreferrer" className={`flex h-12 w-12 items-center justify-center rounded-full bg-white/5 border border-white/10 text-slate-300 transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${color}`}>
-                  <Icon size={18} />
+                { icon: FaInstagram, href: 'https://www.instagram.com/apjinstitutekanker?igsh=NngwZmxzYmNnZ3Fp' },
+                { icon: FaLinkedinIn, href: '#' }
+              ].map((social, index) => (
+                <a key={index} href={social.href} className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 transition-all duration-300 hover:bg-blue-600 hover:text-white hover:border-blue-500 hover:-translate-y-1 shadow-lg">
+                  <social.icon size={14} />
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants}>
-            <h4 className="text-lg font-bold text-white mb-6">Quick Links</h4>
-            <ul className="space-y-4 text-sm text-slate-400">
+          {/* Column 2: Quick Links */}
+          <div>
+            <h4 className="text-lg font-bold text-white mb-5 relative inline-block">
+              Quick Links
+              <span className="absolute -bottom-1.5 left-0 w-1/2 h-0.5 bg-blue-500 rounded-full"></span>
+            </h4>
+            <ul className="space-y-2.5 text-sm">
               {quickLinks.map((item) => (
                 <li key={item}>
-                  <Link to={`/${item.toLowerCase()}`} className="inline-flex items-center gap-2 transition-all duration-300 hover:text-blue-400 hover:translate-x-2">
-                    <FaChevronRight className="text-[10px] text-blue-500" />
+                  <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} className="group flex items-center gap-2 text-slate-400 transition-colors hover:text-blue-400">
+                    <FaChevronRight className="text-[10px] text-slate-600 group-hover:text-blue-400 transition-colors" />
                     {item}
                   </Link>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants}>
-            <h4 className="text-lg font-bold text-white mb-6">Courses</h4>
-            <ul className="space-y-4 text-sm text-slate-400">
-              {courseNames.map((course) => (
-                <li key={course}>
-                  <Link to={`/courses/${course.toLowerCase().replace(/ /g, '-')}`} className="inline-flex items-center gap-2 transition-all duration-300 hover:text-blue-400 hover:translate-x-2">
-                    <FaChevronRight className="text-[10px] text-blue-500" />
-                    {course}
-                  </Link>
-                </li>
-              ))}
+          {/* Column 3: Courses */}
+          <div>
+            <h4 className="text-lg font-bold text-white mb-5 relative inline-block">
+              Courses
+              <span className="absolute -bottom-1.5 left-0 w-1/2 h-0.5 bg-blue-500 rounded-full"></span>
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {courseNames.map((course) => {
+                const courseRoutes = {
+                  'BMLT': '/courses/bmlt',
+                  'DMLT': '/courses/dmlt',
+                  'Pharmacy': '/courses/pharmacy',
+                  'Ophthalmic Assistant': '/courses/ophthalmic-assistant',
+                  'Medical Lab Technician': '/courses/medical-lab-technician',
+                };
+                return (
+                  <li key={course}>
+                    <Link to={courseRoutes[course] || '/courses'} className="group flex items-start gap-2 text-slate-400 transition-colors hover:text-blue-400">
+                      <FaChevronRight className="text-[10px] text-slate-600 mt-1 group-hover:text-blue-400 transition-colors shrink-0" />
+                      <span className="leading-snug">{course}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants}>
-            <h4 className="text-lg font-bold text-white mb-6">Contact</h4>
-            <div className="space-y-4 text-sm text-slate-400">
-              <p className="leading-relaxed hover:text-white transition-colors">APJ Institute Dantewada, Near Medical Campus, Dantewada, Chhattisgarh</p>
-              <p className="hover:text-blue-400 transition-colors cursor-pointer">Phone: +91 92437 58191</p>
-              <p className="hover:text-blue-400 transition-colors cursor-pointer">Email: info@apjinstitutedantewada.com</p>
-            </div>
-          </motion.div>
+          {/* Column 4: Contact */}
+          <div>
+            <h4 className="text-lg font-bold text-white mb-5 relative inline-block">
+              Contact Us
+              <span className="absolute -bottom-1.5 left-0 w-1/2 h-0.5 bg-blue-500 rounded-full"></span>
+            </h4>
+            
+            <ul className="space-y-3.5 text-sm">
+              <li className="flex items-start gap-3">
+                <div className="mt-0.5 text-blue-400 shrink-0">
+                  <FaMapMarkerAlt size={14} />
+                </div>
+                <a href="https://maps.google.com/?q=Sector+9,+Raghuraj+Tower+(Opposite+MMR+Hospital),+Kamal+Vihar,+Raipur" target="_blank" rel="noopener noreferrer" className="text-slate-400 leading-relaxed hover:text-blue-400 transition-colors">
+                  Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="text-blue-400 shrink-0">
+                  <FaPhoneAlt size={14} />
+                </div>
+                <a href="tel:+919243758191" className="text-slate-400 hover:text-blue-400 transition-colors">
+                  +91 92437 58191
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="text-blue-400 shrink-0">
+                  <FaEnvelope size={14} />
+                </div>
+                <a href="mailto:info@apjinstitute.com" className="text-slate-400 truncate hover:text-blue-400 transition-colors">
+                  info@apjinstitute.com
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 5: Map */}
+          <div className="h-48 md:h-full min-h-[180px] w-full rounded-xl overflow-hidden border border-slate-700/50 shadow-lg group relative">
+            <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none z-10"></div>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.966023330107!2d81.3533!3d18.8953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a303dd5d5ec335d%3A0xb36ed862cbfd9061!2sRaipur%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              className="grayscale-[30%] opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 absolute inset-0"
+            ></iframe>
+          </div>
+          
         </div>
 
-        <motion.div variants={itemVariants} className="mt-10 border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} APJ Institute Dantewada. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+        {/* Footer Bottom */}
+        <div className="mt-12 pt-6 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-slate-500">
+            © {new Date().getFullYear()} APJ Institute Raipur. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-sm text-slate-500">
+            <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-blue-400 transition-colors">Terms</Link>
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </footer>
   );
 }

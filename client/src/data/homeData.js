@@ -256,7 +256,7 @@ export const homeData = {
   ],
 
   contact: {
-    address: 'Dantewada, Chhattisgarh, India',
+    address: 'Raipur, Chhattisgarh, India',
     phone: '+91-XXXXXXXXXX',
     email: 'info@apjinstitute.com',
     hours: 'Monday - Friday: 10:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed',

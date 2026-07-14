@@ -69,20 +69,7 @@ export const courses = [
     careers: ['Pharmacy Assistant', 'Dispensing Assistant', 'Retail Pharmacy Staff', 'Hospital Pharmacy Support'],
     training: 'Practical support in medicine organization, dispensing procedures, and pharmacy record keeping.',
   },
-  {
-    id: 'nursing',
-    name: 'Nursing',
-    fullName: 'Nursing Assistant Program',
-    duration: '3 Years',
-    eligibility: '10+2 (Science)',
-    description: 'Clinical care training focused on patient assistance, ward support, and nursing fundamentals.',
-    overview:
-      'The nursing pathway prepares students for professional bedside assistance, patient care routines, and foundational hospital nursing work with a human-centered approach.',
-    highlights: ['Patient care', 'Ward support', 'Clinical discipline', 'Hospital work exposure'],
-    subjects: ['Fundamentals of Nursing', 'Patient Care', 'Medical-Surgical Basics', 'Community Health', 'Nutrition & Hygiene'],
-    careers: ['Nursing Assistant', 'Ward Assistant', 'Clinical Support Staff', 'Healthcare Caregiver'],
-    training: 'Hands-on clinical observation, patient assistance, and daily ward care procedures.',
-  },
+
   {
     id: 'ophthalmic-assistant',
     name: 'Ophthalmic Assistant',

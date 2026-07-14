@@ -31,7 +31,7 @@ const fallbackEvents = [
     title: 'Campus Orientation Program',
     description: 'A welcome session for new students with campus tour, department introductions, and academic guidance.',
     date: new Date().toISOString(),
-    location: 'APJ Institute Dantewada',
+    location: 'APJ Institute Raipur',
   },
   {
     id: 'event-fallback-2',

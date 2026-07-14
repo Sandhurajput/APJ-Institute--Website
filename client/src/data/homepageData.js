@@ -21,7 +21,7 @@ export const heroSlides = [
     eyebrow: 'Admissions Open 2026',
     title: 'Advance Your Career in Medical and Paramedical Sciences',
     description:
-      'APJ Institute Dantewada offers practical training, experienced faculty, and career-focused programs for the next generation of healthcare professionals.',
+      'APJ Institute Raipur offers practical training, experienced faculty, and career-focused programs for the next generation of healthcare professionals.',
     image: classroomStudents1,
     cta: 'Apply for Admission',
   },
@@ -98,7 +98,6 @@ export const courses = [
   { title: 'BMLT', slug: 'bmlt', duration: '2 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: buildingImage },
   { title: 'DMLT', slug: 'dmlt', duration: '2 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: labCollageImage },
   { title: 'Pharmacy', slug: 'pharmacy', duration: '2 Years', description: 'Practical pharmaceutical training with patient care focus.', image: classroomImage },
-  { title: 'Nursing', slug: 'nursing', duration: '3 Years', description: 'Nursing education built for clinical compassion and competence.', image: instituteBuildingImage },
   { title: 'Ophthalmic Assistant', slug: 'ophthalmic-assistant', duration: '2 Years', description: 'Focused learning for eye care support and clinical assistance.', image: classroomImage },
   { title: 'Medical Lab Technician', slug: 'medical-lab-technician', duration: '2 Years', description: 'Job-ready diagnostics training with robust lab exposure.', image: labCollageImage },
 ];
@@ -111,17 +110,16 @@ export const galleryImages = [
   instituteBuildingImage,
 ];
 
-// Export posterBanner so components can detect and replace it with a digital poster
 export { posterBanner };
 
 export const testimonials = [
   { name: 'Aditi Sahu', role: 'BMLT Student', quote: 'The labs, faculty support, and disciplined environment helped me gain practical confidence for my career.', image: classroomStudents1 },
   { name: 'Rohit Kumar', role: 'DMLT Student', quote: 'The teaching approach is structured and professional. Every class feels focused on real medical practice.', image: classroomStudents2 },
-  { name: 'Pooja Verma', role: 'Nursing Student', quote: 'APJ Institute gives a genuine institute atmosphere with strong guidance and meaningful exposure.', image: classroomStudents3 },
+  { name: 'Pooja Verma', role: 'Pharmacy Student', quote: 'APJ Institute gives a genuine institute atmosphere with strong guidance and meaningful exposure.', image: classroomStudents3 },
 ];
 
 export const quickLinks = ['About', 'Courses', 'Admission', 'Gallery', 'Contact'];
-export const courseNames = ['BMLT', 'DMLT', 'Pharmacy', 'Nursing', 'Ophthalmic Assistant'];
+export const courseNames = ['BMLT', 'DMLT', 'Pharmacy', 'Ophthalmic Assistant', 'Medical Lab Technician'];
 export const liveTickerNotices = [
   { id: 'ticker-1', label: 'ADMISSION OPEN 2026-27 — Apply Now', category: 'Admission', emphasis: 'Open' },
   { id: 'ticker-2', label: 'BMLT (3Y), DMLT (2Y), X-RAY (2Y)', category: 'Courses', emphasis: 'Info' },
@@ -151,9 +149,9 @@ export const liveNotificationCards = [
     ],
     eligibility: '12th Pass (Biology)',
     contact: {
-      whatsapp: ['9243758191', '9340761647'],
-      phone: ['9243758191', '9340761647'],
-      address: 'Shankar Nagar near BSNL Exchange Office, Shanti Mandir Road, Dantewada (C.G.)',
+      whatsapp: ['9243758191', '9243758191'],
+      phone: ['9243758191', '9243758191'],
+      address: 'Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur',
     },
   },
   {
@@ -240,8 +238,8 @@ export const liveUpdateCounters = [
 ];
 
 export const admissionVideo = {
-  title: 'APJ Institute Dantewada — Virtual Tour',
-  description: 'Take a virtual tour of our campus, labs, classrooms, and facilities to get a real feel of APJ Institute Dantewada.',
+  title: 'APJ Institute Raipur — Virtual Tour',
+  description: 'Take a virtual tour of our campus, labs, classrooms, and facilities to get a real feel of APJ Institute Raipur.',
   // Replace VIDEO_ID with actual YouTube id or use a hosted mp4 URL
   src: 'https://www.youtube.com/embed/VIDEO_ID',
   poster: buildingImage,

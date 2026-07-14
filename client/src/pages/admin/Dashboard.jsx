@@ -95,7 +95,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     loadDashboard();
-    // If navigation provided a tab in state, ensure it's applied
     if (location?.state?.tab) {
       setActiveTab(location.state.tab);
     }
@@ -133,7 +132,7 @@ export default function Dashboard() {
         socket.off('new_inquiry', handleNewInquiry);
         socket.off('new_notification', handleNewNotification);
         socket.off('new_event', handleNewEvent);
-      } catch (e) {}
+      } catch (e) { }
     };
   }, []);
 
@@ -577,11 +576,10 @@ export default function Dashboard() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
-                    activeTab === tab.id
+                  className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${activeTab === tab.id
                       ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20'
                       : 'bg-white/5 text-slate-200 hover:bg-white/10'
-                  }`}
+                    }`}
                 >
                   <span>{tab.label}</span>
                   <span className="text-xs opacity-70">{activeTab === tab.id ? 'Active' : ''}</span>
@@ -1079,7 +1077,7 @@ function renderTestimonials(testimonials, form, editingId, saving, updateForm, s
             </div>
             <div>
               <Label>Course</Label>
-              <Input value={form.course} onChange={(e) => updateForm('testimonial', 'course', e.target.value)} placeholder="BMLT / DMLT / Nursing" />
+              <Input value={form.course} onChange={(e) => updateForm('testimonial', 'course', e.target.value)} placeholder="BMLT / DMLT / Pharmacy" />
             </div>
             <div>
               <Label>Message</Label>

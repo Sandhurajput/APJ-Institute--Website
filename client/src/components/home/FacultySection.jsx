@@ -30,7 +30,7 @@ const fallbackFaculty = [
     id: 'faculty-fallback-3',
     name: 'Ms. Neha Patle',
     role: 'Clinical Instructor',
-    department: 'Nursing & Care Skills',
+    department: 'Patient Care Skills',
     bio: 'Supports classroom learning with patient-care focused demonstrations and mentorship.',
   },
 ];

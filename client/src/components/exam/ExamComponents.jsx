@@ -66,7 +66,7 @@ export function ExamNavbar() {
             <Logo size="sm" />
           </div>
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-sky-300">APJ Institute Dantewada</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-sky-300">APJ Institute Raipur</p>
             <h1 className="text-base font-bold text-white sm:text-lg">Examination Department</h1>
           </div>
         </Link>
@@ -222,7 +222,7 @@ export function ExamFooter() {
     <footer className="border-t border-white/10 bg-slate-950/95 text-slate-300">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 lg:grid-cols-[1.15fr_0.85fr_0.8fr] lg:px-6">
         <div>
-          <h3 className="text-xl font-bold text-white">APJ Institute Dantewada</h3>
+          <h3 className="text-xl font-bold text-white">APJ Institute Raipur</h3>
           <p className="mt-3 max-w-xl text-sm leading-6 text-slate-400">
             Modern examination dashboard for results, notices, forms, and student services. Designed for a professional university-style experience.
           </p>
@@ -258,7 +258,7 @@ export function ExamFooter() {
               </a>
             ))}
           </div>
-          <p className="mt-4 text-sm text-slate-400">Examination department, APJ Institute Dantewada.</p>
+          <p className="mt-4 text-sm text-slate-400">Examination department, APJ Institute Raipur.</p>
         </div>
       </div>
     </footer>

@@ -1,26 +1,24 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes } from 'react-icons/fa';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { FaTimes, FaFlask, FaEye, FaMicroscope, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
+import Logo from './Logo';
 
 export default function PopupAnnouncement() {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
-    // Show popup 500ms after page loads (hard refresh or initial visit)
+    // Show popup 500ms after page loads
     const timer = setTimeout(() => {
       setIsOpen(true);
     }, 500);
 
+    // Auto-close after 14s
+    const closeTimer = setTimeout(() => {
+      setIsOpen(false);
+    }, 14000);
+
     return () => clearTimeout(timer);
   }, []);
-
-  const handleApply = () => {
-    setIsOpen(false);
-    navigate('/contact');
-  };
 
   return (
     <AnimatePresence>
@@ -30,42 +28,205 @@ export default function PopupAnnouncement() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-black/80 backdrop-blur-md p-4"
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/60 p-2 backdrop-blur-sm sm:items-center sm:p-4"
           onClick={() => setIsOpen(false)}
         >
           <motion.div
             initial={{ scale: 0.85, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.85, opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, type: 'spring', stiffness: 300, damping: 25 }}
-            className="relative flex flex-col items-center justify-center max-h-[98vh] max-w-[95vw] md:max-w-[900px] rounded-3xl bg-[#020617] shadow-[0_0_120px_rgba(37,99,235,0.7)] border border-blue-500/30"
+            transition={{ duration: 0.4, type: 'spring', stiffness: 300, damping: 30 }}
+            className="relative flex max-h-[calc(100svh-1rem)] w-full max-w-[46rem] flex-col overflow-hidden rounded-2xl bg-white/95 ring-1 ring-white/5 shadow-2xl sm:max-h-[90vh] sm:rounded-3xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute -top-4 -right-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-xl hover:bg-blue-700 hover:scale-110 transition-all border-2 border-white"
+              className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-md transition-colors hover:bg-white sm:right-4 sm:top-4 sm:h-10 sm:w-10"
               aria-label="Close popup"
             >
-              <FaTimes className="text-xl" />
+              <FaTimes className="text-lg" />
             </button>
 
-            {/* Template Image */}
-            <div 
-              className="relative w-full cursor-pointer group rounded-3xl overflow-hidden"
-              onClick={handleApply}
-            >
-              <img 
-                src="/admission-promo.png" 
-                alt="Admission Promo" 
-                className="w-full h-auto max-h-[95vh] object-contain transition-all duration-500 hover:scale-[1.02] hover:brightness-110" 
-              />
+            {/* Digital Poster Section */}
+              <div className="relative overflow-hidden bg-gradient-to-b from-blue-700 via-blue-600 to-blue-800 p-6 sm:p-8 max-h-[70vh] overflow-y-auto">
+              {/* Animated background elements */}
+              <div className="absolute top-0 right-0 -mr-32 -mt-32 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 -ml-24 -mb-24 w-48 h-48 bg-white/5 rounded-full blur-3xl" />
               
-              {/* Overlay hint */}
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 via-transparent to-transparent flex items-end justify-center pb-8 pointer-events-none">
-                <span className="text-white font-bold text-lg bg-black/60 px-6 py-2 rounded-full backdrop-blur-md shadow-lg animate-bounce border border-white/20">
-                  Tap to Apply
-                </span>
+              {/* Content */}
+              <div className="relative z-10 space-y-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="h-10 w-10 rounded-full bg-white/10 p-1 flex items-center justify-center">
+                    <Logo size="sm" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-white">APJ Institute</p>
+                    <p className="text-[11px] text-blue-100">Raipur</p>
+                  </div>
+                </div>
+                {/* Header Badge */}
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.05, duration: 0.3 }}
+                  className="flex flex-col gap-2"
+                >
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full font-bold text-sm w-fit">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                    </span>
+                    LIMITED SEATS AVAILABLE
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-black text-white">ADMISSION OPEN 2026-27</h2>
+                  <p className="text-yellow-200 text-sm font-semibold">पैरामेडिकल कोर्स से तिजोरी अपने सपनों को नई उड़ान दो</p>
+                </motion.div>
+
+                {/* Courses Section */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.3 }}
+                  className="mt-4"
+                >
+                  <h3 className="text-xs font-bold text-blue-100 uppercase tracking-widest mb-3">🎓 COURSES AVAILABLE</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { icon: FaFlask, label: 'BMLT', duration: '3 Years', desc: 'Bachelor of Medical Lab' },
+                      { icon: FaFlask, label: 'DMLT', duration: '2 Years', desc: 'Diploma in Medical Lab' },
+                      { icon: FaEye, label: 'X-RAY', duration: '2 Years', desc: 'Diploma in X-ray' },
+                      { icon: FaMicroscope, label: 'LAB TECH', duration: 'Certificate', desc: 'In Medical Lab Tech' },
+                    ].map((course, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.12 + idx * 0.05, duration: 0.3 }}
+                        className="bg-white/10 backdrop-blur-md border border-white/25 rounded-lg p-2.5 text-center hover:bg-white/15 transition-all group"
+                      >
+                        <course.icon className="text-yellow-300 text-lg mx-auto mb-1 group-hover:scale-110 transition" />
+                        <p className="text-xs font-bold text-white">{course.label}</p>
+                        <p className="text-[9px] text-blue-100">{course.duration}</p>
+                        <p className="text-[8px] text-blue-200 mt-0.5">{course.desc}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Mid Highlight */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15, duration: 0.3 }}
+                >
+                  <h3 className="text-xs font-bold text-blue-100 uppercase tracking-widest mb-3">⭐ MID HIGHLIGHT</h3>
+                  <div className="grid grid-cols-4 gap-2">
+                    {[
+                      { icon: '100%', label: 'Practical Training' },
+                      { icon: '👨‍🏫', label: 'Experienced Faculty' },
+                      { icon: '🔬', label: 'Modern Lab' },
+                      { icon: '🎯', label: 'Career Guidance' },
+                    ].map((item, idx) => (
+                      <div
+                        key={idx}
+                        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-2 text-center hover:bg-white/15 transition"
+                      >
+                        <p className="text-lg mb-0.5">{item.icon}</p>
+                        <p className="text-[9px] font-bold text-white leading-tight">{item.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Eligibility */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.18, duration: 0.3 }}
+                  className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg p-3"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">✅</span>
+                    <div>
+                      <p className="text-xs font-bold text-green-100">ELIGIBILITY</p>
+                      <p className="text-sm font-black text-white">12th Pass (Biology)</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Why Join Us */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.3 }}
+                >
+                  <h3 className="text-xs font-bold text-blue-100 uppercase tracking-widest mb-2">💡 WHY JOIN US</h3>
+                  <div className="space-y-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-3">
+                    {[
+                      '✓ 100% Practical Training',
+                      '✓ Experienced Faculty',
+                      '✓ Modern Lab Facility',
+                      '✓ Paramedical Facility',
+                      '✓ Career Guidance',
+                      '✓ Industry Ready Training',
+                    ].map((benefit, idx) => (
+                      <p key={idx} className="text-xs text-blue-100 font-semibold">
+                        {benefit}
+                      </p>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Contact Info */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.23, duration: 0.3 }}
+                  className="bg-gradient-to-r from-red-500 to-pink-600 rounded-lg p-3 space-y-2"
+                >
+                  <p className="text-xs font-bold text-red-100 uppercase">START YOUR MEDICAL CAREER TODAY</p>
+                  <div className="flex flex-col gap-1 text-white">
+                    <div className="flex items-center gap-2 text-sm font-bold">
+                      <FaWhatsapp className="text-lg" />
+                      <span>9243758191, 9243758191</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs">
+                      <FaMapMarkerAlt />
+                      <span className="leading-tight">Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="bg-gradient-to-r from-slate-50 to-blue-50 p-4 sm:p-6 flex flex-col justify-between gap-4">
+              <div>
+                <h3 className="mb-2 text-lg font-black text-slate-900">
+                  🚀 Limited Seats - Apply Today!
+                </h3>
+                <p className="text-sm leading-6 text-slate-700">
+                  Join APJ Institute and build your career in Medical & Paramedical Sciences with expert faculty, modern labs, and guaranteed career guidance.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
+                <a
+                  href="https://wa.me/919243758191?text=Hi, I'm interested in admission for paramedical courses at APJ Institute Raipur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-green-600 to-emerald-500 px-4 py-3 text-sm font-bold text-white shadow-lg transition hover:shadow-xl hover:scale-105"
+                >
+                  <FaWhatsapp className="text-lg" />
+                  WhatsApp Now
+                </a>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex flex-1 items-center justify-center rounded-xl border-2 border-blue-300 px-4 py-3 text-sm font-bold text-blue-700 transition hover:bg-blue-50"
+                >
+                  Close
+                </button>
               </div>
             </div>
           </motion.div>

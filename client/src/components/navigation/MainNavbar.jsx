@@ -22,7 +22,7 @@ export default function MainNavbar() {
             APJ
           </div>
           <div>
-            <p className="text-sm font-semibold tracking-wide text-blue-700">APJ Institute Dantewada</p>
+            <p className="text-sm font-semibold tracking-wide text-blue-700">APJ Institute Raipur</p>
             <p className="text-xs text-slate-500">Medical & Allied Health Programs</p>
           </div>
         </Link>

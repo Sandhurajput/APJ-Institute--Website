@@ -7,7 +7,7 @@ export default function ContactSection() {
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-blue-600">Contact</p>
-          <h2 className="mt-4 text-3xl font-black text-slate-900 sm:text-4xl">Get in touch with APJ Institute Dantewada</h2>
+          <h2 className="mt-4 text-3xl font-black text-slate-900 sm:text-4xl">Get in touch with APJ Institute Raipur</h2>
         </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
@@ -21,7 +21,7 @@ export default function ContactSection() {
                 <option>BMLT</option>
                 <option>DMLT</option>
                 <option>Pharmacy</option>
-                <option>Nursing</option>
+                <option>Ophthalmic Assistant</option>
               </select>
               <textarea rows="5" className="rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-blue-400 md:col-span-2" placeholder="Write your message here" />
             </div>
@@ -37,24 +37,24 @@ export default function ContactSection() {
                 <div className="flex items-start gap-4">
                   <span className="mt-1 text-blue-700"><FaMapMarkerAlt /></span>
                   <p>
-                    APJ Institute Dantewada,
+                    APJ Institute Raipur,
                     <br />
-                    Near Medical Campus, Dantewada, Chhattisgarh
+                    Near Medical Campus, Raipur, Chhattisgarh
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-blue-700"><FaPhoneAlt /></span>
-                  <a href="tel:+916268409259" className="hover:text-blue-700">+91 62684 09259</a>
+                  <a href="tel:+919243758191" className="hover:text-blue-700">+91 92437 58191</a>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-blue-700"><FaEnvelope /></span>
-                  <a href="mailto:info@apjinstitutedantewada.com" className="hover:text-blue-700">info@apjinstitutedantewada.com</a>
+                  <a href="mailto:info@apjinstitute.com" className="hover:text-blue-700">info@apjinstitute.com</a>
                 </div>
               </div>
             </div>
 
             <div className="overflow-hidden rounded-[1.8rem] border border-blue-100 bg-white shadow-soft">
-              <iframe title="APJ Institute Dantewada location" src="https://www.google.com/maps?q=Dantewada%20Chhattisgarh&output=embed" className="h-[320px] w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+              <iframe title="APJ Institute Raipur location" src="https://www.google.com/maps?q=Raipur%20Chhattisgarh&output=embed" className="h-[320px] w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             </div>
           </motion.div>
         </div>

@@ -33,7 +33,7 @@ export default function ExamDashboard() {
   }
 
   function handleDownload(item) {
-    const content = `APJ Institute Dantewada\n\nForm: ${item.name}\nType: ${item.type}\nDescription: ${item.description}\n\nPlease replace this demo file with the official PDF in the admin panel.`;
+    const content = `APJ Institute Raipur\n\nForm: ${item.name}\nType: ${item.type}\nDescription: ${item.description}\n\nPlease replace this demo file with the official PDF in the admin panel.`;
     const blob = new Blob([content], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement('a');
@@ -62,7 +62,7 @@ export default function ExamDashboard() {
               <Sparkles size={14} /> University Examination Portal
             </div>
             <h2 className="mt-4 max-w-3xl text-4xl font-black leading-tight text-white sm:text-5xl">
-              APJ Institute Dantewada Examination Dashboard
+              APJ Institute Raipur Examination Dashboard
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
               A modern, responsive examination portal with login cards, notices, forms, results, and admin-ready management sections built for a polished university experience.

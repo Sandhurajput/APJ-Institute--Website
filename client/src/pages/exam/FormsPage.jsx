@@ -8,7 +8,7 @@ export default function FormsPage() {
   const { notify } = useExamPortal();
 
   function downloadForm(item) {
-    const content = `APJ Institute Dantewada\n\n${item.name}\n${item.description}\n\nThis is a demo downloadable form template.`;
+    const content = `APJ Institute Raipur\n\n${item.name}\n${item.description}\n\nThis is a demo downloadable form template.`;
     const blob = new Blob([content], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement('a');

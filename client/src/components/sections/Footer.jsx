@@ -95,7 +95,7 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-gray-400">
               <p>
                 <strong>Address:</strong><br />
-                Dantewada, Chhattisgarh
+                Raipur, Chhattisgarh
               </p>
               <p>
                 <strong>Phone:</strong><br />
@@ -121,7 +121,7 @@ export default function Footer() {
           transition={{ delay: 0.3 }}
         >
           <p>
-            © {currentYear} APJ Institute Dantewada. All rights reserved.
+            © {currentYear} APJ Institute Raipur. All rights reserved.
           </p>
           <motion.div className="flex gap-6 mt-4 md:mt-0">
             <motion.a href="#" whileHover={{ textDecoration: 'underline' }}>

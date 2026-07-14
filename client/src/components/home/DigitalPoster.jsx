@@ -145,7 +145,7 @@ export default function DigitalPoster({ notification }) {
         >
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">APJ Institute</p>
-            <p className="text-sm font-semibold text-slate-800">Dantewada</p>
+            <p className="text-sm font-semibold text-slate-800">Raipur</p>
           </div>
           <div className="text-right">
             <p className="text-xs text-slate-500">Official Announcement</p>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Navbar from '../components/home/Navbar';
 import HeroSlider from '../components/home/HeroSlider';
 import HighlightCards from '../components/home/HighlightCards';
 import UpdatesSection from '../components/home/UpdatesSection';
@@ -8,12 +9,13 @@ import FacultySection from '../components/home/FacultySection';
 import EventsSection from '../components/home/EventsSection';
 import CoursesSection from '../components/home/CoursesSection';
 import GallerySection from '../components/home/GallerySection';
-import TestimonialsSection from '../components/home/TestimonialsSection';
+
 import ContactSection from '../components/home/ContactSection';
 
 export default function Home() {
   return (
     <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
+      <Navbar />
       <HeroSlider />
       <HighlightCards />
       <UpdatesSection />
@@ -23,7 +25,7 @@ export default function Home() {
       <EventsSection />
       <CoursesSection />
       <GallerySection />
-      <TestimonialsSection />
+
       <ContactSection />
     </motion.main>
   );

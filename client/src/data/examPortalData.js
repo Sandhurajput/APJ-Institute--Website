@@ -44,14 +44,14 @@ export const importantDates = [
 export const resultsData = [
   { id: 1, roll: 'APJ-2026-101', name: 'Aditi Sahu', course: 'BMLT', status: 'Passed', marks: '82%', semester: 'Sem 4' },
   { id: 2, roll: 'APJ-2026-108', name: 'Rohit Kumar', course: 'DMLT', status: 'Passed', marks: '76%', semester: 'Sem 2' },
-  { id: 3, roll: 'APJ-2026-115', name: 'Pooja Verma', course: 'Nursing', status: 'Passed', marks: '88%', semester: 'Sem 6' },
+  { id: 3, roll: 'APJ-2026-115', name: 'Pooja Verma', course: 'Pharmacy', status: 'Passed', marks: '88%', semester: 'Sem 6' },
   { id: 4, roll: 'APJ-2026-129', name: 'Anil Das', course: 'X-Ray Technician', status: 'Withheld', marks: '—', semester: 'Sem 1' },
 ];
 
 export const contactCards = [
   { title: 'Examination Cell', value: '+91 78945 11223', note: 'Mon-Sat, 10:00 AM - 4:00 PM' },
   { title: 'Email', value: 'exam@apjinstitute.edu', note: 'Response within 24 hours' },
-  { title: 'Campus Address', value: 'APJ Institute Dantewada', note: 'Main campus, Dantewada, Chhattisgarh' },
+  { title: 'Campus Address', value: 'APJ Institute Raipur', note: 'Main campus, Raipur, Chhattisgarh' },
 ];
 
 export const footerLinks = [

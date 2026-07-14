@@ -4,20 +4,20 @@ import { Mail, PhoneCall, MessageCircle } from 'lucide-react';
 const contactItems = [
   {
     icon: Mail,
-    label: 'info@apjinstitutedantewada.com',
-    href: 'mailto:info@apjinstitutedantewada.com',
+    label: 'info@apjinstitute.com',
+    href: 'mailto:info@apjinstitute.com',
     align: 'md:justify-self-start',
   },
   {
     icon: PhoneCall,
-    label: '+91-6268409259',
-    href: 'tel:+916268409259',
+    label: '+91-9243758191',
+    href: 'tel:+919243758191',
     align: 'md:justify-self-center',
   },
   {
     icon: MessageCircle,
-    label: '+91-6268409259',
-    href: 'https://wa.me/916268409259',
+    label: '+91-9243758191',
+    href: 'https://wa.me/919243758191',
     align: 'md:justify-self-end',
     external: true,
   },
@@ -25,7 +25,7 @@ const contactItems = [
 
 export default function TopHeaderBar() {
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60]">
+    <div className="sticky top-0 z-50">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}

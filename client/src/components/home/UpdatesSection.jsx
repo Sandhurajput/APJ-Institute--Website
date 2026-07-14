@@ -22,7 +22,7 @@ function mapNotificationToNotice(item, index = 0) {
   return {
     id: item.id ? String(item.id) : `notice-${index}`,
     title: item.title,
-    description: item.message || item.content || 'Official notice published by APJ Institute Dantewada.',
+    description: item.message || item.content || 'Official notice published by APJ Institute Raipur.',
     category: item.type === 'warning' ? 'Admission Notice' : item.type === 'error' ? 'Exam Notice' : 'Application Update',
     date: formatNoticeDate(item.createdAt),
     isNew: index < 2,

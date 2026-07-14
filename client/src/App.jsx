@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
 import Home from './pages/Home';
 import CoursesPage from './pages/CoursesPage';
 import CourseDetails from './pages/CourseDetails';
@@ -9,7 +8,6 @@ import About from './pages/About';
 import FacilitiesPage from './pages/FacilitiesPage';
 import MainContactPage from './pages/ContactPage';
 import AdmissionPage from './pages/AdmissionPage';
-import AuthSplitScreen from './pages/AuthSplitScreen';
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 import StudentLogin from './pages/student/StudentLogin';
@@ -34,19 +32,14 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* Public Routes with Layout (Header, Footer, Popup) */}
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/courses" element={<CoursesPage />} />
-            <Route path="/courses/:courseId" element={<CourseDetails />} />
-            <Route path="/facilities" element={<FacilitiesPage />} />
-            <Route path="/contact" element={<MainContactPage />} />
-            <Route path="/admission" element={<AdmissionPage />} />
-            <Route path="/academics/faculty" element={<Faculty />} />
-          </Route>
-          
-          <Route path="/auth" element={<AuthSplitScreen />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/courses" element={<CoursesPage />} />
+          <Route path="/courses/:courseId" element={<CourseDetails />} />
+          <Route path="/facilities" element={<FacilitiesPage />} />
+          <Route path="/contact" element={<MainContactPage />} />
+          <Route path="/admission" element={<AdmissionPage />} />
+          <Route path="/academics/faculty" element={<Faculty />} />
 
           {/* Admin routes */}
           <Route path="/admin/login" element={<Login />} />
