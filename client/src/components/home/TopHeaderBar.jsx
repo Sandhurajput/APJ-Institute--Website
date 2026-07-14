@@ -16,7 +16,7 @@ const contactItems = [
   },
   {
     icon: MessageCircle,
-    label: '+91-9243758191',
+    label: 'WhatsApp Us',
     href: 'https://wa.me/919243758191',
     align: 'md:justify-self-end',
     external: true,
