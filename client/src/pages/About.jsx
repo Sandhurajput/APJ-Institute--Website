@@ -1,22 +1,50 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { buildingImage } from '../data/homepageData';
-// Import classroom images directly
-import classroomStudents1 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.09 PM.jpeg';
-import classroomStudents2 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.12 PM.jpeg';
-import classroomStudents3 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.14 PM.jpeg';
-import posterBanner from '../../WhatsApp Image 2026-05-17 at 9.40.59 PM.jpeg';
-import labCollageImage from '../../WhatsApp Image 2026-05-17 at 9.41.19 PM.jpeg';
-import sec1Image from '../sec1.jpg';
-import sec2Image from '../sec2.jpg';
+// Import new real campus images
+import new1 from '../new1.jpeg';
+import new2 from '../new2.jpeg';
+import new3 from '../new3.jpeg';
+import new4 from '../new4.png';
+import new5 from '../new5.jpeg';
+import new6 from '../new6.jpeg';
+import new7 from '../new7.jpeg';
+import new8 from '../new8.jpeg';
+import new9 from '../new9.jpeg';
+import new10 from '../new10.jpeg';
+import new11 from '../new11.jpeg';
+import new12 from '../new12.jpeg';
+import new13 from '../new13.jpeg';
+import new14 from '../new14.jpeg';
+import new15 from '../new15.jpeg';
+import new16 from '../new16.jpeg';
+import new16_png from '../new16.png';
+import new17 from '../new17.jpeg';
+import new18 from '../new18.jpeg';
+import new19 from '../new19.jpeg';
+import new20 from '../new20.jpeg';
+import new21 from '../new21.jpeg';
+import new22 from '../new22.png';
+import new24 from '../new24.jpeg';
+import new25 from '../new25.jpeg';
+
 import mainVideo from '../mainvd.mp4';
-import firstsc1 from '../fistsc1.jpg';
-import firstsc2 from '../firstsc2.jpg';
-import sectionImage from '../section .jpg';
-import lastsc1 from '../lastsc1.jpg';
-import lastsc2 from '../lastsc2.jpg';
-import lastsc3 from '../lastsc3.jpg';
-import lastsc4 from '../lastsc4.jpg';
+
+// Map variables to new images
+const firstsc1 = new1;
+const firstsc2 = new2;
+const sec1Image = new3;
+const sec2Image = new4;
+const classroomStudents1 = new5;
+const classroomStudents2 = new6;
+const classroomStudents3 = new7;
+const posterBanner = new8;
+const labCollageImage = new9;
+const lastsc1 = new10;
+const lastsc2 = new11;
+const lastsc3 = new12;
+const lastsc4 = new13;
+const sectionImage = new14;
 
 export default function About() {
   const navigate = useNavigate();
@@ -427,7 +455,7 @@ export default function About() {
                   "A truly transformative learning experience. The curriculum is well-designed with practical exposure combined with theoretical knowledge. The campus environment is inclusive and supportive. I have gained confidence and practical skills that will help me excel in my healthcare career. Highly recommended!"
                 </p>
                 <div className="flex items-center gap-3">
-                  <img src={classroomStudents1} alt="Priya Sharma" className="w-12 h-12 rounded-full object-cover" />
+                  <img src={new15} alt="Priya Sharma" className="w-12 h-12 rounded-full object-cover" />
                   <div>
                     <p className="font-bold text-sm">Priya Sharma</p>
                     <p className="text-xs text-blue-50">Medical Student</p>
@@ -447,7 +475,7 @@ export default function About() {
                   "Education that builds confidence. The faculty here understand student needs and provide personalized guidance with compassion and professionalism. Every class is engaging and the practical labs are outstanding."
                 </p>
                 <div className="flex items-center gap-3">
-                  <img src={classroomStudents2} alt="Rahul Kumar" className="w-12 h-12 rounded-full object-cover" />
+                  <img src={new16} alt="Rahul Kumar" className="w-12 h-12 rounded-full object-cover" />
                   <div>
                     <p className="font-bold text-sm">Rahul Kumar</p>
                     <p className="text-xs text-slate-600">Paramedical Grad</p>
@@ -459,10 +487,10 @@ export default function About() {
             {/* Bottom Row - 4 Regular Cards in One Row */}
             <div className="grid grid-cols-4 gap-4">
               {[
-                { img: classroomStudents3, name: 'Sarah Ahmed', role: 'Nursing Student', quote: 'A unique place where dreams come true with dedication and hard work. Best institution!' },
-                { img: classroomStudents1, name: 'Arjun Patel', role: 'Lab Technician', quote: 'Exceptional training and guidance from experienced faculty. Career-focused approach throughout.' },
-                { img: classroomStudents2, name: 'Neha Singh', role: 'Medical Student', quote: 'Best faculty for quality learning and mentorship. Infrastructure and support are excellent.' },
-                { img: classroomStudents3, name: 'Rajesh Gautam', role: 'Paramedical Student', quote: 'Career-focused education at its best with practical emphasis and real-world exposure.' },
+                { img: new16_png, name: 'Sarah Ahmed', role: 'Nursing Student', quote: 'A unique place where dreams come true with dedication and hard work. Best institution!' },
+                { img: new17, name: 'Arjun Patel', role: 'Lab Technician', quote: 'Exceptional training and guidance from experienced faculty. Career-focused approach throughout.' },
+                { img: new18, name: 'Neha Singh', role: 'Medical Student', quote: 'Best faculty for quality learning and mentorship. Infrastructure and support are excellent.' },
+                { img: new19, name: 'Rajesh Gautam', role: 'Paramedical Student', quote: 'Career-focused education at its best with practical emphasis and real-world exposure.' },
               ].map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -690,8 +718,6 @@ export default function About() {
           </motion.div>
         </motion.div>
       </div>
-
-
     </motion.div>
   );
 }

@@ -16,13 +16,35 @@ import admissionSupportImage from '../components/home/WhatsApp Image 2026-05-17 
 import admissionCampusImage from '../../WhatsApp Image 2026-05-17 at 9.41.22 PM.jpeg';
 import newsImage from '../../WhatsApp Image 2026-05-17 at 9.40.59 PM.jpeg';
 
+// Import new real images
+import new1 from '../new1.jpeg';
+import new2 from '../new2.jpeg';
+import new3 from '../new3.jpeg';
+import new4 from '../new4.png';
+import new5 from '../new5.jpeg';
+import new6 from '../new6.jpeg';
+import new7 from '../new7.jpeg';
+import new8 from '../new8.jpeg';
+import new9 from '../new9.jpeg';
+import new10 from '../new10.jpeg';
+import new11 from '../new11.jpeg';
+import new12 from '../new12.jpeg';
+import new13 from '../new13.jpeg';
+import new14 from '../new14.jpeg';
+import new15 from '../new15.jpeg';
+import new16 from '../new16.jpeg';
+import new16_png from '../new16.png';
+import new17 from '../new17.jpeg';
+import new18 from '../new18.jpeg';
+import new19 from '../new19.jpeg';
+
 export const heroSlides = [
   {
     eyebrow: 'Admissions Open 2026',
     title: 'Advance Your Career in Medical and Paramedical Sciences',
     description:
       'APJ Institute Dantewada offers practical training, experienced faculty, and career-focused programs for the next generation of healthcare professionals.',
-    image: classroomStudents1,
+    image: new1,
     cta: 'Apply for Admission',
   },
   {
@@ -30,7 +52,7 @@ export const heroSlides = [
     title: 'Hands-on Learning in Realistic Medical Laboratory Environments',
     description:
       'Learn with modern equipment, guided lab sessions, and structured academic support across all key paramedical streams.',
-    image: classroomStudents2,
+    image: new2,
     cta: 'Explore Courses',
   },
   {
@@ -38,7 +60,7 @@ export const heroSlides = [
     title: 'Professional Guidance for Strong Placement and Career Growth',
     description:
       'Build confidence through expert mentorship, practical exposure, and a curriculum aligned with real healthcare requirements.',
-    image: classroomStudents3,
+    image: new3,
     cta: 'View Facilities',
   },
 ];
@@ -55,67 +77,67 @@ export const admissionSteps = [
   {
     title: 'Inquiry & Counseling',
     description: 'Connect with the admissions team for guidance and program selection.',
-    image: inquiryCounselingImage,
+    image: new4,
   },
   {
     title: 'Eligibility Check',
     description: 'Verify academic requirements and course eligibility details.',
-    image: eligibilityCheckImage,
+    image: new5,
   },
   {
     title: 'Application Form',
     description: 'Submit the application form through a simple admission process.',
-    image: applicationFormImage,
+    image: new6,
   },
   {
     title: 'Document Submission',
     description: 'Provide required certificates and supporting documents.',
-    image: documentSubmissionImage,
+    image: new7,
   },
   {
     title: 'Fee Payment',
     description: 'Pay admission and tuition fees to proceed with enrollment.',
-    image: feePaymentImage,
+    image: new8,
   },
   {
     title: 'Confirmation',
     description: 'Receive your admission confirmation and student ID.',
-    image: confirmationImage,
+    image: new9,
   },
   {
     title: 'Admission Support',
     description: 'Get onboarding support and complete your joining guidance.',
-    image: admissionSupportImage,
+    image: new10,
   },
   {
     title: 'Campus Orientation',
     description: 'Visit the campus and complete your final orientation process.',
-    image: admissionCampusImage,
+    image: new11,
   },
 ];
 
 export const courses = [
-  { title: 'BMLT', duration: '2 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: buildingImage },
-  { title: 'DMLT', duration: '2 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: labCollageImage },
-  { title: 'Pharmacy', duration: '2 Years', description: 'Practical pharmaceutical training with patient care focus.', image: classroomImage },
-  { title: 'Nursing', duration: '3 Years', description: 'Nursing education built for clinical compassion and competence.', image: instituteBuildingImage },
-  { title: 'Ophthalmic Assistant', duration: '2 Years', description: 'Focused learning for eye care support and clinical assistance.', image: classroomImage },
-  { title: 'Medical Lab Technician', duration: '2 Years', description: 'Job-ready diagnostics training with robust lab exposure.', image: labCollageImage },
+  { title: 'BMLT', duration: '2 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: new12 },
+  { title: 'DMLT', duration: '2 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: new13 },
+  { title: 'Pharmacy', duration: '2 Years', description: 'Practical pharmaceutical training with patient care focus.', image: new14 },
+  { title: 'Nursing', duration: '3 Years', description: 'Nursing education built for clinical compassion and competence.', image: new15 },
+  { title: 'Ophthalmic Assistant', duration: '2 Years', description: 'Focused learning for eye care support and clinical assistance.', image: new16 },
+  { title: 'Medical Lab Technician', duration: '2 Years', description: 'Job-ready diagnostics training with robust lab exposure.', image: new16_png },
 ];
 
 export const galleryImages = [
-  buildingImage,
-  posterBanner,
-  instituteBuildingImage,
-  labCollageImage,
-  classroomImage,
-  instituteBuildingImage,
+  new12,
+  new1,
+  new2,
+  new3,
+  new4,
+  new5,
 ];
 
 export const testimonials = [
-  { name: 'Aditi Sahu', role: 'BMLT Student', quote: 'The labs, faculty support, and disciplined environment helped me gain practical confidence for my career.', image: classroomStudents1 },
-  { name: 'Rohit Kumar', role: 'DMLT Student', quote: 'The teaching approach is structured and professional. Every class feels focused on real medical practice.', image: classroomStudents2 },
-  { name: 'Pooja Verma', role: 'Nursing Student', quote: 'APJ Institute gives a genuine institute atmosphere with strong guidance and meaningful exposure.', image: classroomStudents3 },
+  { name: 'Aditi Sahu', role: 'BMLT Student', quote: 'The labs, faculty support, and disciplined environment helped me gain practical confidence for my career.', image: new17 },
+  { name: 'Rohit Kumar', role: 'DMLT Student', quote: 'The teaching approach is structured and professional. Every class feels focused on real medical practice.', image: new18 },
+  { name: 'Pooja Verma', role: 'Nursing Student', quote: 'APJ Institute gives a genuine institute atmosphere with strong guidance and meaningful exposure.', image: new19 },
 ];
 
 export const quickLinks = ['About', 'Courses', 'Admission', 'Gallery', 'Contact'];
