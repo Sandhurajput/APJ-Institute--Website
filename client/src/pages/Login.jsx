@@ -75,11 +75,22 @@ export default function Login() {
     }
   );
 
-  console.log(response.data);
+  const authData = response.data?.data;
 
   localStorage.setItem(
     "token",
-    response.data.token
+    authData?.token || ""
+  );
+
+  localStorage.setItem("role", "user");
+  localStorage.setItem("email", authData?.admin?.email || formData.email);
+  localStorage.setItem(
+    "user",
+    JSON.stringify({
+      fullName: authData?.admin?.name || formData.email.split("@")[0],
+      email: authData?.admin?.email || formData.email,
+      role: "user",
+    })
   );
 
   alert("Login Successful");

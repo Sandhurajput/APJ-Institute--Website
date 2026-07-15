@@ -49,20 +49,34 @@ export default function AdminLogin() {
     if (!validateLogin()) return;
 
     setLoading(true);
-    setTimeout(() => {
-      localStorage.setItem('token', 'mock-admin-token-12345');
-      localStorage.setItem('role', 'admin');
-      localStorage.setItem('email', loginForm.email);
-      localStorage.setItem('user', JSON.stringify({
-        fullName: 'APJ Admin',
-        email: loginForm.email,
-        phone: '9876543210',
-        role: 'admin'
-      }));
-      alert('✅ Welcome Admin!');
-      navigate('/admin-dashboard');
-      setLoading(false);
-    }, 500);
+
+    axios.post('http://localhost:5000/api/auth/login', {
+      email: loginForm.email,
+      password: loginForm.password,
+    })
+      .then((response) => {
+        const authData = response.data?.data;
+
+        localStorage.setItem('token', authData?.token || '');
+        localStorage.setItem('role', 'admin');
+        localStorage.setItem('email', authData?.admin?.email || loginForm.email);
+        localStorage.setItem('user', JSON.stringify({
+          fullName: authData?.admin?.name || 'APJ Admin',
+          email: authData?.admin?.email || loginForm.email,
+          role: 'admin',
+        }));
+
+        alert('✅ Welcome Admin!');
+        navigate('/admin-dashboard');
+      })
+      .catch((error) => {
+        setErrors({
+          server: error.response?.data?.message || 'Admin login failed. Please try again.',
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (

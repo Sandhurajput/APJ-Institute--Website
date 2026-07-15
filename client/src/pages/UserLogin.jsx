@@ -41,20 +41,34 @@ export default function UserLogin() {
     if (!validateLogin()) return;
 
     setLoading(true);
-    setTimeout(() => {
-      localStorage.setItem('token', 'mock-user-token-12345');
-      localStorage.setItem('role', 'user');
-      localStorage.setItem('email', loginForm.email);
-      localStorage.setItem('user', JSON.stringify({
-        fullName: loginForm.email.split('@')[0],
-        email: loginForm.email,
-        phone: '9876543210',
-        role: 'user'
-      }));
-      alert('✅ Welcome User!');
-      navigate('/user-dashboard');
-      setLoading(false);
-    }, 500);
+
+    axios.post('http://localhost:5000/api/auth/login', {
+      email: loginForm.email,
+      password: loginForm.password,
+    })
+      .then((response) => {
+        const authData = response.data?.data;
+
+        localStorage.setItem('token', authData?.token || '');
+        localStorage.setItem('role', 'user');
+        localStorage.setItem('email', authData?.admin?.email || loginForm.email);
+        localStorage.setItem('user', JSON.stringify({
+          fullName: authData?.admin?.name || loginForm.email.split('@')[0],
+          email: authData?.admin?.email || loginForm.email,
+          role: 'user',
+        }));
+
+        alert('✅ Welcome User!');
+        navigate('/user-dashboard');
+      })
+      .catch((error) => {
+        setErrors({
+          server: error.response?.data?.message || 'Login Failed',
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (

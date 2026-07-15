@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import axios from 'axios';
 import signUpImage from '../1.webp';
 import '../styles/AuthSplitScreen.css';
 
@@ -47,13 +48,35 @@ export default function UserSignUp() {
     if (!validateSignUp()) return;
 
     setLoading(true);
-    setTimeout(() => {
-      localStorage.setItem('role', 'user');
-      localStorage.setItem('email', signUpForm.email);
-      alert('✅ Account created! Redirecting to login...');
-      navigate('/user-login');
-      setLoading(false);
-    }, 500);
+
+    axios.post('http://localhost:5000/api/auth/signup', {
+      name: `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
+      email: signUpForm.email,
+      password: signUpForm.password,
+    })
+      .then((response) => {
+        const authData = response.data?.data;
+
+        localStorage.setItem('token', authData?.token || '');
+        localStorage.setItem('role', 'user');
+        localStorage.setItem('email', authData?.admin?.email || signUpForm.email);
+        localStorage.setItem('user', JSON.stringify({
+          fullName: authData?.admin?.name || `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
+          email: authData?.admin?.email || signUpForm.email,
+          role: 'user',
+        }));
+
+        alert('✅ Account created! Redirecting to login...');
+        navigate('/user-login');
+      })
+      .catch((error) => {
+        setErrors({
+          server: error.response?.data?.message || 'Signup Failed',
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (

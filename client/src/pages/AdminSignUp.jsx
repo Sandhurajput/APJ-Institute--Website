@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import axios from 'axios';
 import signUpImage from '../1.webp';
 import '../styles/AdminAuthSplitScreen.css';
 
@@ -53,13 +54,35 @@ export default function AdminSignUp() {
     if (!validateSignUp()) return;
 
     setLoading(true);
-    setTimeout(() => {
-      localStorage.setItem('role', 'admin');
-      localStorage.setItem('email', signUpForm.email);
-      alert('✅ Admin account created! Redirecting to login...');
-      navigate('/admin-login');
-      setLoading(false);
-    }, 500);
+
+    axios.post('http://localhost:5000/api/auth/signup', {
+      name: signUpForm.fullName,
+      email: signUpForm.email,
+      password: signUpForm.password,
+    })
+      .then((response) => {
+        const authData = response.data?.data;
+
+        localStorage.setItem('token', authData?.token || '');
+        localStorage.setItem('role', 'admin');
+        localStorage.setItem('email', authData?.admin?.email || signUpForm.email);
+        localStorage.setItem('user', JSON.stringify({
+          fullName: authData?.admin?.name || signUpForm.fullName,
+          email: authData?.admin?.email || signUpForm.email,
+          role: 'admin',
+        }));
+
+        alert('✅ Admin account created! Redirecting to login...');
+        navigate('/admin-login');
+      })
+      .catch((error) => {
+        setErrors({
+          server: error.response?.data?.message || 'Admin signup failed. Please try again.',
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
