@@ -1,91 +1,66 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
 import Home from './pages/Home';
-import CoursesPage from './pages/CoursesPage';
-import CourseDetails from './pages/CourseDetails';
-import Faculty from './pages/Faculty';
 import About from './pages/About';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import AdminLogin from './pages/AdminLogin';
+import AdminSignUp from './pages/AdminSignUp';
+import AuthSplitScreen from './pages/AuthSplitScreen';
+import UserDashboard from './pages/UserDashboard';
+import AdminDashboard from './pages/AdminDashboard';
+import CoursesPage from './pages/CoursesPage';
 import FacilitiesPage from './pages/FacilitiesPage';
-import MainContactPage from './pages/ContactPage';
 import AdmissionPage from './pages/AdmissionPage';
-import Login from './pages/admin/Login';
-import Dashboard from './pages/admin/Dashboard';
-import StudentLogin from './pages/student/StudentLogin';
-import StudentSignup from './pages/student/StudentSignup';
-import StudentDashboard from './pages/student/StudentDashboard';
-import ExamLayout from './layouts/ExamLayout';
-import ExamDashboard from './pages/exam/ExamDashboard';
-import ExamLoginPage from './pages/exam/ExamLoginPage';
-import ExamStudentSignupPage from './pages/exam/ExamStudentSignupPage';
-import ResultsPage from './pages/exam/ResultsPage';
-import NoticesPage from './pages/exam/NoticesPage';
-import FormsPage from './pages/exam/FormsPage';
-import ContactPage from './pages/exam/ContactPage';
-import ExamAdminPanel from './pages/exam/AdminPanel';
-import { AuthProvider } from './context/AuthContext';
-import PrivateRoute from './routes/PrivateRoute';
-import StudentPrivateRoute from './routes/StudentPrivateRoute';
-import ExamProtectedRoute from './routes/ExamProtectedRoute';
+import CinematicGallery from './pages/CinematicGallery';
+import ContactPage from './pages/ContactPage';
+import AdminFinance from './pages/AdminFinance';
+import AdminAnnouncements from './pages/AdminAnnouncements';
+import AdminQueries from './pages/AdminQueries';
+import AdminSettings from './pages/AdminSettings';
+import AdminHelp from './pages/AdminHelp';
+import AdminCourses from './pages/AdminCourses';
+import UserLogin from './pages/UserLogin';
+import UserSignUp from './pages/UserSignUp';
+import PortalDashboard from './pages/PortalDashboard';
+import Notices from './pages/Notices';
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/:courseId" element={<CourseDetails />} />
-          <Route path="/facilities" element={<FacilitiesPage />} />
-          <Route path="/contact" element={<MainContactPage />} />
-          <Route path="/admission" element={<AdmissionPage />} />
-          <Route path="/academics/faculty" element={<Faculty />} />
+    <Router>
+      <Routes>
+        {/* Main Website Routes wrapped with Layout (Navbar + Footer) */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="courses" element={<CoursesPage />} />
+          <Route path="facilities" element={<FacilitiesPage />} />
+          <Route path="admission" element={<AdmissionPage />} />
+          <Route path="gallery" element={<CinematicGallery />} />
+          <Route path="contact" element={<ContactPage />} />
+        </Route>
 
-          {/* Admin routes */}
-          <Route path="/admin/login" element={<Login />} />
-          <Route
-            path="/admin/*"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
 
-          <Route path="/student/login" element={<StudentLogin />} />
-          <Route path="/student/signup" element={<StudentSignup />} />
-          <Route
-            path="/student/dashboard"
-            element={
-              <StudentPrivateRoute>
-                <StudentDashboard />
-              </StudentPrivateRoute>
-            }
-          />
-
-          {/* Examination dashboard routes */}
-          <Route path="/examination-dashboard" element={<ExamLayout />}>
-            <Route index element={<ExamDashboard />} />
-            <Route path="student-login" element={<ExamLoginPage role="student" />} />
-            <Route path="student-signup" element={<ExamStudentSignupPage />} />
-            <Route path="admin-login" element={<ExamLoginPage role="admin" />} />
-            <Route path="teacher-login" element={<ExamLoginPage role="teacher" />} />
-            <Route path="results" element={<ResultsPage />} />
-            <Route path="notices" element={<NoticesPage />} />
-            <Route path="forms" element={<FormsPage />} />
-            <Route path="contact" element={<ContactPage />} />
-            <Route
-              path="admin-panel"
-              element={
-                <ExamProtectedRoute roles={["admin"]}>
-                  <ExamAdminPanel />
-                </ExamProtectedRoute>
-              }
-            />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+        {/* Auth & Dashboard Routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin-signup" element={<AdminSignUp />} />
+        <Route path="/auth" element={<AuthSplitScreen />} />
+        <Route path="/user-login" element={<UserLogin />} />
+        <Route path="/user-signup" element={<UserSignUp />} />
+        <Route path="/portal" element={<PortalDashboard />} />
+        <Route path="/notices" element={<Notices />} />
+        <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/finance" element={<AdminFinance />} />
+        <Route path="/admin/announcements" element={<AdminAnnouncements />} />
+        <Route path="/admin/queries" element={<AdminQueries />} />
+        <Route path="/admin/settings" element={<AdminSettings />} />
+        <Route path="/admin/help" element={<AdminHelp />} />
+        <Route path="/admin/courses" element={<AdminCourses />} />
+      </Routes>
+    </Router>
   );
 }
 

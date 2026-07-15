@@ -4,8 +4,24 @@ export default {
     "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        brand: {
+          50: '#f4f7fa',
+          100: '#e4ecf3',
+          200: '#c8d9e7',
+          300: '#9dbcd5',
+          400: '#6c9cbf',
+          500: '#4680a9',
+          600: '#356796',
+          700: '#2b5279',
+          800: '#244565',
+          900: '#1f3a53',
+          950: '#132537',
+        }
+      },
       fontFamily: {
         sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },

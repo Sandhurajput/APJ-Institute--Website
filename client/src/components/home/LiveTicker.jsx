@@ -5,7 +5,7 @@ export default function LiveTicker({ notices = [] }) {
   const tickerItems = [...notices, ...notices];
 
   return (
-    <div className="ticker-shell overflow-hidden rounded-3xl border border-blue-200 bg-gradient-to-r from-blue-950 via-blue-900 to-red-700 shadow-soft">
+    <div className="ticker-shell overflow-hidden rounded-3xl border border-[#15305b]/20 bg-gradient-to-r from-[#15305b] via-[#0f2240] to-red-700 shadow-soft">
       <div className="flex flex-col gap-4 p-4 sm:p-5 lg:flex-row lg:items-center">
         <motion.div
           animate={{ opacity: [1, 0.45, 1] }}

@@ -9,13 +9,13 @@ Professional circular educational institute logo with premium blue and gold bran
 ## 📁 Files Generated
 
 ### Logo Assets
-✓ **`src/assets/logo/apj-logo.svg`** (4.8 KB)
+✓ **`src/assets/logo/APJ.jpeg`** (4.8 KB)
   - Main logo design
   - 200x200 viewBox
   - Scalable vector format
   - All elements included
 
-✓ **`src/assets/logo/favicon.svg`** (936 bytes)
+✓ **`src/assets/logo/APJ.jpeg`** (936 bytes)
   - Favicon version
   - Optimized for browser tab
   - Compact square design
@@ -191,8 +191,8 @@ import Logo from './components/Logo';
 
 | File | Type | Size | Purpose |
 |------|------|------|---------|
-| apj-logo.svg | SVG | 4.8 KB | Main logo |
-| favicon.svg | SVG | 936 B | Browser favicon |
+| APJ.jpeg | SVG | 4.8 KB | Main logo |
+| APJ.jpeg | SVG | 936 B | Browser favicon |
 | Logo.jsx | React | 523 B | Component wrapper |
 | LogoShowcase.jsx | React | 7.3 KB | Demo page |
 | LOGO_GUIDE.md | Docs | 7.4 KB | Full guide |
@@ -313,7 +313,7 @@ const sizeClasses = {
    - Browser tab should show favicon
 
 2. **Customize If Needed**
-   - Edit colors in `apj-logo.svg`
+   - Edit colors in `APJ.jpeg`
    - Modify text in SVG
    - Update favicon similarly
 
@@ -332,8 +332,8 @@ const sizeClasses = {
 ## 📞 Support
 
 **For Logo Modifications:**
-1. Edit `src/assets/logo/apj-logo.svg` directly
-2. Update `src/assets/logo/favicon.svg` similarly
+1. Edit `src/assets/logo/APJ.jpeg` directly
+2. Update `src/assets/logo/APJ.jpeg` similarly
 3. Restart dev server if needed
 4. Changes apply immediately
 

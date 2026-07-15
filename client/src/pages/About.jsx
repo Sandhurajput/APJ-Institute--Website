@@ -1,25 +1,50 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import TopHeaderBar from '../components/home/TopHeaderBar';
-import Navbar from '../components/home/Navbar';
-import Footer from '../components/home/Footer';
 import { buildingImage } from '../data/homepageData';
-// Import classroom images directly
-import classroomStudents1 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.09 PM.jpeg';
-import classroomStudents2 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.12 PM.jpeg';
-import classroomStudents3 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.14 PM.jpeg';
-import posterBanner from '../../WhatsApp Image 2026-05-17 at 9.40.59 PM.jpeg';
-import labCollageImage from '../../WhatsApp Image 2026-05-17 at 9.41.19 PM.jpeg';
-import sec1Image from '../sec1.jpg';
-import sec2Image from '../sec2.jpg';
+// Import new real campus images
+import new1 from '../new1.jpeg';
+import new2 from '../new2.jpeg';
+import new3 from '../new3.jpeg';
+import new4 from '../new4.png';
+import new5 from '../new5.jpeg';
+import new6 from '../new6.jpeg';
+import new7 from '../new7.jpeg';
+import new8 from '../new8.jpeg';
+import new9 from '../new9.jpeg';
+import new10 from '../new10.jpeg';
+import new11 from '../new11.jpeg';
+import new12 from '../new12.jpeg';
+import new13 from '../new13.jpeg';
+import new14 from '../new14.jpeg';
+import new15 from '../new15.jpeg';
+import new16 from '../new16.jpeg';
+import new16_png from '../new16.png';
+import new17 from '../new17.jpeg';
+import new18 from '../new18.jpeg';
+import new19 from '../new19.jpeg';
+import new20 from '../new20.jpeg';
+import new21 from '../new21.jpeg';
+import new22 from '../new22.png';
+import new24 from '../new24.jpeg';
+import new25 from '../new25.jpeg';
+
 import mainVideo from '../mainvd.mp4';
-import firstsc1 from '../fistsc1.jpg';
-import firstsc2 from '../firstsc2.jpg';
-import sectionImage from '../section .jpg';
-import lastsc1 from '../lastsc1.jpg';
-import lastsc2 from '../lastsc2.jpg';
-import lastsc3 from '../lastsc3.jpg';
-import lastsc4 from '../lastsc4.jpg';
+
+// Map variables to new images
+const firstsc1 = new1;
+const firstsc2 = new2;
+const sec1Image = new3;
+const sec2Image = new4;
+const classroomStudents1 = new5;
+const classroomStudents2 = new6;
+const classroomStudents3 = new7;
+const posterBanner = new8;
+const labCollageImage = new9;
+const lastsc1 = new10;
+const lastsc2 = new11;
+const lastsc3 = new12;
+const lastsc4 = new13;
+const sectionImage = new14;
 
 export default function About() {
   const navigate = useNavigate();
@@ -30,17 +55,16 @@ export default function About() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <TopHeaderBar />
-      <Navbar />
+
 
       {/* Main 2-Column Layout Container */}
-      <div className="flex bg-white gap-8 lg:gap-16 px-6 lg:px-12 py-8 lg:py-12">
+      <div className="flex flex-col lg:flex-row bg-white gap-8 lg:gap-16 px-6 lg:px-12 py-8 lg:py-12">
         {/* LEFT COLUMN */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-full lg:w-1/2 bg-white rounded-3xl shadow-lg p-8 md:p-16 border border-slate-200 mt-16 lg:mt-32"
+          className="w-full lg:w-1/2 bg-white rounded-3xl shadow-lg p-4 sm:p-8 md:p-16 border border-slate-200 mt-16 lg:mt-32"
         >
           {/* Section 1: Hero */}
           <div className="mb-12">
@@ -91,7 +115,7 @@ export default function About() {
                 </div>
                 
                 {/* Small Image - Overlay on top left */}
-                <div className="absolute -top-8 -left-8 rounded-2xl overflow-hidden w-40 h-40 bg-slate-300 shadow-xl border-4 border-white">
+                <div className="absolute -top-4 -left-4 sm:-top-8 sm:-left-8 rounded-2xl overflow-hidden w-28 h-28 sm:w-40 sm:h-40 bg-slate-300 shadow-xl border-4 border-white">
                   <img src={firstsc2} alt="Students" className="w-full h-full object-cover" />
                 </div>
               </motion.div>
@@ -177,7 +201,7 @@ export default function About() {
             </p>
 
             {/* Three Feature Cards */}
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 { 
                   icon: '📚', 
@@ -201,7 +225,7 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ delay: idx * 0.1 }}
-                  className={`text-center p-8 rounded-3xl transition-all flex flex-col justify-center items-center h-80 ${
+                  className={`text-center p-6 rounded-3xl transition-all flex flex-col justify-center items-center h-auto py-8 min-h-[300px] md:h-80 md:py-0 ${
                     idx === 1 
                       ? 'bg-white text-slate-900 border-2 border-[#1e3a5f] shadow-lg' 
                       : 'bg-white text-slate-900 border-2 border-slate-300 hover:shadow-lg'
@@ -233,20 +257,20 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-3xl overflow-hidden h-96 bg-slate-300 shadow-lg mb-0"
+            className="relative rounded-3xl overflow-hidden min-h-[24rem] h-auto lg:h-96 bg-slate-300 shadow-lg mb-0 flex flex-col justify-center"
           >
             {/* Background Image - Full Coverage */}
             <img 
               src={labCollageImage} 
               alt="Event Background" 
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
             />
             
             {/* Light Dark Overlay */}
             <div className="absolute inset-0 bg-black/25"></div>
             
             {/* Cylindrical Text Container - Expanded */}
-            <div className="absolute left-8 top-1/2 transform -translate-y-1/2 bg-black/40 rounded-3xl p-10 max-w-2xl backdrop-blur-sm">
+            <div className="relative lg:absolute lg:left-8 lg:top-1/2 lg:transform lg:-translate-y-1/2 bg-black/60 rounded-3xl p-6 md:p-10 max-w-full lg:max-w-2xl backdrop-blur-sm m-4 lg:m-0">
               {/* Heading - 3 rows */}
               <h2 className="text-4xl font-black text-white mb-6 leading-tight">
                 Excellence in<br />Healthcare<br />Education
@@ -319,9 +343,9 @@ export default function About() {
                 <div className="flex-1">
                   <h3 className="text-lg font-black text-[#1e3a5f] mb-3">Paramedical Program</h3>
                   <p className="text-sm text-slate-600 leading-relaxed mb-3">
-                    Specialized training in radiology, pharmacy, and laboratory sciences. Our paramedical courses ensure students gain practical expertise and professional certification to support healthcare delivery across diverse settings.
+                    Specialized training in nursing, radiology, and laboratory sciences. Our paramedical courses ensure students gain practical expertise and professional certification to support healthcare delivery across diverse settings.
                   </p>
-                  <p className="text-xs text-slate-500 font-semibold">• Pharmacy • Radiology • Lab Sciences</p>
+                  <p className="text-xs text-slate-500 font-semibold">• Nursing • Radiology • Lab Sciences</p>
                 </div>
               </motion.div>
 
@@ -431,7 +455,7 @@ export default function About() {
                   "A truly transformative learning experience. The curriculum is well-designed with practical exposure combined with theoretical knowledge. The campus environment is inclusive and supportive. I have gained confidence and practical skills that will help me excel in my healthcare career. Highly recommended!"
                 </p>
                 <div className="flex items-center gap-3">
-                  <img src={classroomStudents1} alt="Priya Sharma" className="w-12 h-12 rounded-full object-cover" />
+                  <img src={new15} alt="Priya Sharma" className="w-12 h-12 rounded-full object-cover" />
                   <div>
                     <p className="font-bold text-sm">Priya Sharma</p>
                     <p className="text-xs text-blue-50">Medical Student</p>
@@ -451,7 +475,7 @@ export default function About() {
                   "Education that builds confidence. The faculty here understand student needs and provide personalized guidance with compassion and professionalism. Every class is engaging and the practical labs are outstanding."
                 </p>
                 <div className="flex items-center gap-3">
-                  <img src={classroomStudents2} alt="Rahul Kumar" className="w-12 h-12 rounded-full object-cover" />
+                  <img src={new16} alt="Rahul Kumar" className="w-12 h-12 rounded-full object-cover" />
                   <div>
                     <p className="font-bold text-sm">Rahul Kumar</p>
                     <p className="text-xs text-slate-600">Paramedical Grad</p>
@@ -461,12 +485,12 @@ export default function About() {
             </div>
 
             {/* Bottom Row - 4 Regular Cards in One Row */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
               {[
-                { img: classroomStudents3, name: 'Sarah Ahmed', role: 'Hospital Assistant Student', quote: 'A unique place where dreams come true with dedication and hard work. Best institution!' },
-                { img: classroomStudents1, name: 'Arjun Patel', role: 'Lab Technician', quote: 'Exceptional training and guidance from experienced faculty. Career-focused approach throughout.' },
-                { img: classroomStudents2, name: 'Neha Singh', role: 'Medical Student', quote: 'Best faculty for quality learning and mentorship. Infrastructure and support are excellent.' },
-                { img: classroomStudents3, name: 'Rajesh Gautam', role: 'Paramedical Student', quote: 'Career-focused education at its best with practical emphasis and real-world exposure.' },
+                { img: new16_png, name: 'Sarah Ahmed', role: 'Nursing Student', quote: 'A unique place where dreams come true with dedication and hard work. Best institution!' },
+                { img: new17, name: 'Arjun Patel', role: 'Lab Technician', quote: 'Exceptional training and guidance from experienced faculty. Career-focused approach throughout.' },
+                { img: new18, name: 'Neha Singh', role: 'Medical Student', quote: 'Best faculty for quality learning and mentorship. Infrastructure and support are excellent.' },
+                { img: new19, name: 'Rajesh Gautam', role: 'Paramedical Student', quote: 'Career-focused education at its best with practical emphasis and real-world exposure.' },
               ].map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -694,8 +718,6 @@ export default function About() {
           </motion.div>
         </motion.div>
       </div>
-
-      <Footer />
     </motion.div>
   );
 }

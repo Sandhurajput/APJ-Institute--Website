@@ -472,3 +472,204 @@
 .success-message {
   animation: pulse 1s ease-in-out;
 }
+
+/* ===================== ADMIN PAGES STYLING ===================== */
+
+/* Admin Container - Red Theme */
+.admin-container {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+/* Admin Card */
+.admin-card {
+  border: 2px solid #dc3545;
+}
+
+/* Admin Header */
+.admin-header {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Admin Close Button */
+.admin-close-btn {
+  background: #dc3545;
+}
+
+.admin-close-btn:hover {
+  background: #c82333;
+}
+
+/* Admin Sign Up Page */
+.admin-signup-page {
+  background: #f5f5f5;
+}
+
+.admin-signup-card {
+  border-radius: 16px;
+  max-width: 420px;
+  padding: 0;
+  border: 2px solid #dc3545;
+}
+
+.admin-signup-header {
+  padding: 32px 24px 16px;
+  text-align: left;
+}
+
+.admin-signup-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #dc3545;
+}
+
+/* Admin Form Focus State */
+.admin-container .form-group input:focus {
+  outline: none;
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.08);
+}
+
+.admin-container .form-group input.error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+/* Admin Section - Mandatory */
+.admin-section-mandatory {
+  background: #ffe6e6;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 3px solid #dc3545;
+  margin: 12px 0;
+}
+
+.admin-note-red {
+  margin: 8px 0 0 0;
+  font-size: 11px;
+  color: #a52a2a;
+  font-style: italic;
+}
+
+/* Admin Submit Buttons */
+.admin-btn,
+.admin-signup-btn {
+  width: 100%;
+  padding: 12px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.admin-btn:hover:not(:disabled),
+.admin-signup-btn:hover:not(:disabled) {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.admin-btn:active:not(:disabled),
+.admin-signup-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.admin-btn:disabled,
+.admin-signup-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Admin Link */
+.admin-link {
+  color: #dc3545;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.admin-link:hover {
+  color: #c82333;
+  text-decoration: underline;
+}
+
+/* Admin Password Input Wrapper */
+.admin-container .password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.admin-container .password-input-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.admin-container .password-input-wrapper input:focus {
+  outline: none;
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.08);
+}
+
+.admin-container .password-input-wrapper input.error {
+  border-color: #ff4444;
+}
+
+.admin-container .password-input-wrapper input.error:focus {
+  box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.1);
+}
+
+.admin-container .toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.admin-container .toggle-password:hover {
+  color: #333;
+}
+
+/* Admin Signup Footer */
+.admin-signup-footer {
+  padding: 0 24px 12px 24px;
+  text-align: center;
+}
+
+.admin-signup-footer p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+/* Responsive Design for Admin Pages */
+@media (max-width: 600px) {
+  .admin-signup-header {
+    padding: 24px 16px 12px;
+  }
+
+  .admin-signup-header h1 {
+    font-size: 24px;
+  }
+}

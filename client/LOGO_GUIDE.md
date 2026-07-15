@@ -9,8 +9,8 @@ Professional circular educational institute logo for "APJ Institute Dantewada" w
 ## 📁 Files Created
 
 ### Logo Assets
-- **`src/assets/logo/apj-logo.svg`** - Main logo (200x200 SVG)
-- **`src/assets/logo/favicon.svg`** - Favicon version (square design)
+- **`src/assets/logo/APJ.jpeg`** - Main logo (200x200 SVG)
+- **`src/assets/logo/APJ.jpeg`** - Favicon version (square design)
 - **`src/components/Logo.jsx`** - React component wrapper
 
 ### Documentation
@@ -141,7 +141,7 @@ function Navbar() {
 ## 🖼️ Logo Formats
 
 ### SVG Format (Primary)
-- **File**: `apj-logo.svg`
+- **File**: `APJ-jpeg`
 - **Size**: 200x200 viewBox
 - **Format**: Scalable Vector Graphics
 - **Advantages**: 
@@ -151,7 +151,7 @@ function Navbar() {
   - Best for web
 
 ### Favicon
-- **File**: `favicon.svg`
+- **File**: `APJ.jpeg`
 - **Size**: Compact square design
 - **Usage**: Browser tab, bookmarks
 - **Integration**: Already added to `index.html`
@@ -180,7 +180,7 @@ function Navbar() {
 
 ### Change Colors in SVG
 
-Find the gradients in `apj-logo.svg`:
+Find the gradients in `APJ.jpeg`:
 ```xml
 <linearGradient id="blueGold" x1="0%" y1="0%" x2="100%" y2="100%">
   <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
@@ -329,7 +329,7 @@ Logo automatically scales via Tailwind classes:
 ## 📞 Support
 
 For logo modifications or brand guideline clarifications:
-1. Edit `src/assets/logo/apj-logo.svg` directly
+1. Edit `src/assets/logo/APJ.jpeg` directly
 2. Update color gradients as needed
 3. Modify text in SVG
 4. Test in all browsers
