@@ -58,7 +58,7 @@ export default function AdmissionPage() {
         {/* Dark Top Banner */}
         <div className="bg-gradient-to-r from-[#1b3d54] via-[#1f4864] to-[#15305b] py-8 px-6 text-center text-white">
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            APJ INSTITUTE RAIPUR
+            APJ INSTITUTE DANTEWADA
           </h1>
           <p className="mt-2 text-slate-300 text-sm sm:text-base font-medium">
             Your Gateway to Healthcare & Professional Education excellence
@@ -95,8 +95,10 @@ export default function AdmissionPage() {
               </div>
               <ul className="space-y-3.5">
                 {reasons.map((reason, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-sm text-slate-600 font-semibold">
-                    <FaCheck className="text-emerald-500 shrink-0 text-base" />
+                  <li key={idx} className="flex items-start gap-3 text-sm text-slate-600 font-semibold leading-relaxed">
+                    <span className="p-0.5 rounded-full bg-blue-50 text-blue-500 shrink-0 mt-0.5">
+                      <FaCheckCircle className="text-blue-500 w-4 h-4" />
+                    </span>
                     <span>{reason}</span>
                   </li>
                 ))}
@@ -200,12 +202,12 @@ export default function AdmissionPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 relative">
+              <div className="relative pt-6">
                 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full sm:w-auto bg-[#0066cc] hover:bg-[#0052a3] text-white font-extrabold py-3.5 px-8 rounded-xl transition duration-300 flex items-center justify-center gap-2 text-sm shadow-md"
+                  className="w-full bg-[#0066cc] hover:bg-[#0052a3] text-white font-extrabold py-3.5 px-8 rounded-xl transition duration-300 flex items-center justify-center gap-2 text-sm shadow-md"
                 >
                   Submit & Request Visit Schedule →
                 </button>
@@ -215,9 +217,24 @@ export default function AdmissionPage() {
                   href="https://wa.me/919243758191"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto bg-[#128c7e] hover:bg-[#075e54] text-white font-bold py-3.5 px-6 rounded-full shadow-lg flex items-center justify-center gap-2 transition duration-300 text-sm hover:scale-105"
+                  className="absolute right-4 top-[-20px] text-white font-bold py-3.5 px-6 rounded-full flex items-center justify-center gap-2 transition-all duration-300 text-sm z-10"
+                  style={{
+                    backgroundColor: '#1cbd5d',
+                    boxShadow: '0 10px 25px rgba(28, 189, 93, 0.35), 0 4px 10px rgba(0, 0, 0, 0.1)',
+                    cursor: 'pointer',
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#17a04f';
+                    e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
+                    e.currentTarget.style.boxShadow = '0 15px 30px rgba(28, 189, 93, 0.45), 0 6px 15px rgba(0, 0, 0, 0.15)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = '#1cbd5d';
+                    e.currentTarget.style.transform = 'none';
+                    e.currentTarget.style.boxShadow = '0 10px 25px rgba(28, 189, 93, 0.35), 0 4px 10px rgba(0, 0, 0, 0.1)';
+                  }}
                 >
-                  <FaWhatsapp size={18} />
+                  <FaWhatsapp size={20} />
                   Chat with Us on WhatsApp
                 </a>
 

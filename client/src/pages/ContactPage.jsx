@@ -12,7 +12,7 @@ const faqs = [
   { q: "How can I apply for admission?", a: "You can apply online through our website or visit the campus directly. Fill the enquiry form above and our team will guide you through the complete admission process." },
   { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (2 Years), X-Ray / Radiography Technician (2 Years), OT Technician (2 Years), B.Sc. Nursing (4 Years), and Hospital Assistant Certification (6 Months)." },
   { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable separate hostel facilities for boys and girls with mess, Wi-Fi, and 24/7 security." },
-  { q: "How to contact the administration office?", a: "You can call us at 9243758191 / 9307616474, email info@apjinstitutedantewada.com, or visit us at Sanjay Nagar, near BSNL Exchange Office, Dantewada (C.G.)." },
+  { q: "How to contact the administration office?", a: "You can call us at 9243758191 / 9307616474, email apjinstituteparamedicaldantewa@gmail.com, or visit us at Sanjay Nagar, near BSNL Exchange Office, Dantewada (C.G.)." },
   { q: "What is the fee structure?", a: "Fee varies by course. BMLT starts at ₹45,000/year. Contact our admission office for the complete fee breakdown and available scholarship options." },
 ];
 
@@ -178,7 +178,7 @@ export default function ContactPage() {
           {[
             { icon: <MapPin size={28} />, label: 'Our Address', value: 'Sanjay Nagar, Dantewada', color: 'text-blue-600', bg: 'bg-blue-50' },
             { icon: <Phone size={28} />, label: 'Phone Number', value: '92437 58191', color: 'text-[#1e3a5f]', bg: 'bg-[#1e3a5f]/5' },
-            { icon: <Mail size={28} />, label: 'Email Address', value: 'info@apjinstitute.com', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+            { icon: <Mail size={28} />, label: 'Email Address', value: 'apjinstituteparamedicaldantewa@gmail.com', color: 'text-indigo-600', bg: 'bg-indigo-50' },
             { icon: <Clock size={28} />, label: 'Working Hours', value: 'Mon – Sat: 9 AM – 5 PM', color: 'text-purple-600', bg: 'bg-purple-50' },
           ].map((card, i) => (
             <motion.div

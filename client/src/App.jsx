@@ -36,10 +36,10 @@ function App() {
           <Route path="courses" element={<CoursesPage />} />
           <Route path="facilities" element={<FacilitiesPage />} />
           <Route path="admission" element={<AdmissionPage />} />
+          <Route path="gallery" element={<CinematicGallery />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
 
-        <Route path="/gallery" element={<CinematicGallery />} />
 
         {/* Auth & Dashboard Routes */}
         <Route path="/login" element={<Login />} />

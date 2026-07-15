@@ -51,7 +51,7 @@ export default function Footer() {
             <h4 className="text-lg font-bold">Contact</h4>
             <p className="mt-4 text-sm leading-7 text-slate-300">APJ Institute Dantewada, Near Medical Campus, Dantewada, Chhattisgarh</p>
             <p className="mt-3 text-sm text-slate-300">Phone: +91 98765 43210</p>
-            <p className="mt-2 text-sm text-slate-300">Email: info@apjinstitutedantewada.com</p>
+            <p className="mt-2 text-sm text-slate-300">Email: apjinstituteparamedicaldantewa@gmail.com</p>
           </div>
         </div>
 

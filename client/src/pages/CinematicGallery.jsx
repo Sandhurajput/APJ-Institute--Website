@@ -29,15 +29,14 @@ import new21 from '../new21.jpeg';
 import new22 from '../new22.png';
 import new24 from '../new24.jpeg';
 import new25 from '../new25.jpeg';
+import ghar from '../ghar.jpeg';
+import ss from '../ss.jpeg';
+import sss from '../sss.jpeg';
 
 export default function CinematicGallery() {
   return (
     <div className="bg-[#f8fafc] min-h-screen text-slate-900 font-sans selection:bg-[#1e3a5f]/10 selection:text-[#1e3a5f] overflow-x-hidden">
-      
-      {/* Navigation Bar */}
-      <div className="relative z-50 bg-slate-900">
-        <Navbar />
-      </div>
+
 
       {/* Main Gallery Section */}
       <section className="relative overflow-hidden w-full p-0 m-0 pb-24">
@@ -447,12 +446,47 @@ export default function CinematicGallery() {
             </p>
           </div>
 
+          {/* Card 28: Campus Building Showcase (ghar) */}
+          <div className="bg-white relative overflow-hidden border-r border-b border-slate-200/60 h-[380px] group flex flex-col justify-between p-6 sm:p-8 cursor-pointer">
+            <div className="absolute inset-0 z-0">
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 z-10" />
+              <img src={ghar} className="w-full h-full object-cover object-center contrast-110 brightness-90 group-hover:scale-105 transition duration-700" alt="Grid 3 Card 9" />
+            </div>
+            <div className="relative z-20 text-left select-none">
+              <h4 className="font-serif text-white text-3xl sm:text-4xl font-light leading-none tracking-wide">
+                MAIN
+              </h4>
+              <h4 className="font-serif text-white text-3xl sm:text-4xl font-light leading-none tracking-wide mt-1">
+                CAMPUS
+              </h4>
+            </div>
+          </div>
+
+          {/* Card 29: Philosophy & Image Layout (ss) */}
+          <div className="bg-white p-6 sm:p-8 relative overflow-hidden border-r border-b border-slate-200/60 flex h-[380px] justify-between items-center hover:bg-slate-50 transition duration-300">
+            <div className="w-[50%] flex flex-col justify-between h-[85%] py-2 text-left">
+              <p className="text-[9.5px] sm:text-[10.5px] text-slate-500 font-sans leading-relaxed text-justify tracking-wide font-medium">
+                Modern medical machinery and practice gear ensuring that all paramedical scholars gain real-time diagnostics familiarity.
+              </p>
+              <span className="font-serif italic text-[#1e3a5f] text-[11px] sm:text-xs font-black tracking-widest mt-4 uppercase block">
+                APJ INSTITUTE
+              </span>
+            </div>
+            <div className="w-[45%] h-[80%] rounded-2xl overflow-hidden border border-slate-100 shadow-md">
+              <img src={ss} className="w-full h-full object-cover contrast-110 brightness-95" alt="Grid 3 Card 10" />
+            </div>
+          </div>
+
+          {/* Card 30: High-Contrast Close-up Portrait (sss) */}
+          <div className="bg-white relative overflow-hidden border-r border-b border-slate-200/60 h-[380px] group cursor-pointer">
+            <div className="absolute inset-0 bg-[#1e3a5f]/15 mix-blend-multiply z-10 group-hover:bg-transparent transition duration-500" />
+            <img src={sss} className="w-full h-full object-cover object-center grayscale brightness-90 contrast-125 transition duration-700 group-hover:scale-105" alt="Grid 3 Card 11" />
+          </div>
+
         </div>
 
       </section>
 
-      {/* Common Page Footer */}
-      <Footer />
     </div>
   );
 }
