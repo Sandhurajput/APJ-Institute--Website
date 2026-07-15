@@ -214,6 +214,13 @@ export default function About() {
                   <p className={`text-sm mb-4 leading-relaxed ${idx === 1 ? 'text-slate-600' : 'text-slate-600'}`}>
                     {item.desc}
                   </p>
+                  <button className={`px-4 py-2 rounded-full text-xs font-bold transition ${
+                    idx === 1 
+                      ? 'bg-[#1e3a5f] text-white hover:bg-[#152a45]' 
+                      : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                  }`}>
+                    Read More →
+                  </button>
                 </motion.div>
               ))}
             </div>
@@ -453,22 +460,39 @@ export default function About() {
               </motion.div>
             </div>
 
-            {/* Bottom Row - 4 Real Campus/Student Images */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-              {[new20, new21, new22, new24].map((imgSrc, idx) => (
+            {/* Bottom Row - 4 Regular Cards in One Row */}
+            <div className="grid grid-cols-4 gap-4">
+              {[
+                { img: classroomStudents3, name: 'Sarah Ahmed', role: 'Hospital Assistant Student', quote: 'A unique place where dreams come true with dedication and hard work. Best institution!' },
+                { img: classroomStudents1, name: 'Arjun Patel', role: 'Lab Technician', quote: 'Exceptional training and guidance from experienced faculty. Career-focused approach throughout.' },
+                { img: classroomStudents2, name: 'Neha Singh', role: 'Medical Student', quote: 'Best faculty for quality learning and mentorship. Infrastructure and support are excellent.' },
+                { img: classroomStudents3, name: 'Rajesh Gautam', role: 'Paramedical Student', quote: 'Career-focused education at its best with practical emphasis and real-world exposure.' },
+              ].map((item, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  className="rounded-3xl overflow-hidden h-72 shadow-lg border-2 border-slate-200 group"
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-white text-slate-900 rounded-2xl p-5 border-2 border-slate-200 h-72 flex flex-col justify-between shadow-sm hover:shadow-md transition"
                 >
-                  <img 
-                    src={imgSrc} 
-                    alt={`Campus Activity ${idx + 1}`} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                  />
+                  <div>
+                    <p className="text-xs text-slate-700 leading-relaxed mb-4 font-medium">"{item.quote}"</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <img src={item.img} alt={item.name} className="w-12 h-12 rounded-full object-cover border-2 border-blue-300" />
+                      <div className="flex-1">
+                        <p className="font-bold text-sm">{item.name}</p>
+                        <p className="text-xs text-slate-600">{item.role}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-sm">⭐</span>
+                      ))}
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -580,16 +604,10 @@ export default function About() {
                   </p>
                   
                   <div className="flex gap-4">
-                    <a 
-                      href="mailto:apjinstituteparamedicaldantewa@gmail.com"
-                      className="flex-1 px-4 py-2 bg-[#1e3a5f] text-white font-bold rounded-lg hover:bg-[#152a45] transition text-sm text-center flex items-center justify-center gap-2"
-                    >
+                    <button className="flex-1 px-4 py-2 bg-[#1e3a5f] text-white font-bold rounded-lg hover:bg-[#152a45] transition text-sm">
                       ✉ Email Us
-                    </a>
-                    <button 
-                      onClick={() => navigate('/admission')}
-                      className="flex-1 px-4 py-2 border-2 border-blue-600 text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition text-sm text-center flex items-center justify-center gap-2"
-                    >
+                    </button>
+                    <button className="flex-1 px-4 py-2 border-2 border-blue-600 text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition text-sm">
                       📞 Call Us
                     </button>
                   </div>
@@ -636,10 +654,7 @@ export default function About() {
               Join a diverse, forward-thinking academic community committed to excellence, innovation, and creating lasting impact on society.
             </p>
             
-            <button 
-              onClick={() => navigate('/admission')}
-              className="px-8 py-3 bg-[#1e3a5f] hover:bg-[#152a45] text-white font-bold rounded-full transition"
-            >
+            <button className="px-8 py-3 bg-[#1e3a5f] hover:bg-[#152a45] text-white font-bold rounded-full transition">
               Apply Now →
             </button>
           </motion.div>

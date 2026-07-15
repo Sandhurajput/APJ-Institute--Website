@@ -1,50 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Phone, Mail, Send, ChevronDown, ArrowRight } from 'lucide-react';
-
-/* ─── FAQ Data ─── */
-const faqs = [
-  { q: "How can I apply for admission?", a: "You can apply online through our website or visit the campus directly. Fill the enquiry form above and our admission team will guide you through the complete registration process." },
-  { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (3 Years), DOA (2 Years), and CCH (6 Months)." },
-  { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable separate hostel facilities for boys and girls with mess, Wi-Fi, and 24/7 security." },
-  { q: "How to contact the administration office?", a: "You can call us at +91 92437 58191 / +91 93076 16474, email apjinstituteparamedicaldantewa@gmail.com, or visit us at Sanjay Nagar, near BSNL Exchange Office, Dantewada (C.G.)." },
-  { q: "What is the fee structure?", a: "Fee varies by course. BMLT starts at ₹45,000/year. Contact our admission office for the complete fee breakdown and available scholarship options." },
-];
-
-/* ─── Accordion Item Component ─── */
-function FaqItem({ faq, isOpen, onToggle }) {
-  return (
-    <div className="border-b border-slate-200 py-5 transition-all duration-300">
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between text-left group"
-      >
-        <span className={`text-lg font-sans font-bold transition-colors duration-300 ${isOpen ? 'text-[#1e3a5f]' : 'text-slate-800 group-hover:text-[#1e3a5f]'}`}>
-          {faq.q}
-        </span>
-        <ChevronDown 
-          size={18} 
-          className={`text-slate-400 shrink-0 transition-transform duration-500 ${isOpen ? 'rotate-180 text-[#1e3a5f]' : 'group-hover:text-[#1e3a5f]'}`} 
-        />
-      </button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
-            className="overflow-hidden"
-          >
-            <p className="mt-4 text-sm font-light leading-relaxed text-slate-600 pr-6">
-              {faq.a}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+import { motion } from 'framer-motion';
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function ContactSection() {
   return (

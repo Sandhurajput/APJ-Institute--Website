@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { Link } from 'react-router-dom';
 import { heroSlides } from '../../data/homepageData';
 
 import 'swiper/css';
@@ -34,12 +33,12 @@ export default function HeroSlider() {
                   </motion.p>
 
                   <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.18 }} className="mt-8 flex flex-wrap items-center gap-4">
-                    <Link to={slide.link || '/'} className="rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#15305b] shadow-lg transition hover:-translate-y-0.5">
+                    <a href="#contact" className="rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#15305b] shadow-lg transition hover:-translate-y-0.5">
                       {slide.cta}
-                    </Link>
-                    <Link to="/courses" className="rounded-full border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20">
+                    </a>
+                    <a href="#courses" className="rounded-full border border-white/25 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20">
                       Explore Courses
-                    </Link>
+                    </a>
                   </motion.div>
                 </div>
               </div>

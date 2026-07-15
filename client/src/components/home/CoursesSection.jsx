@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiCheckCircle, FiAward, FiBookOpen } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 import { courses } from '../../data/homepageData';
 
 const courseDetails = {
@@ -19,19 +18,33 @@ const courseDetails = {
     careers: ["Pathology Laboratory Assistant", "Health Center Technician", "Diagnostic Representative"],
     facts: ["Hands-on laboratory training", "Highly in-demand career pathway"]
   },
-  DOA: {
+  Pharmacy: {
+    stream: "💊 Pharmaceutical Sciences",
+    eligibility: "12th Pass (PCB/PCM)",
+    curriculum: ["Pharmaceutics", "Pharmacology & Toxicology", "Pharmaceutical Chemistry", "Clinical Pharmacy Practice"],
+    careers: ["Licensed Pharmacist", "Medical Retail Specialist", "Pharmaceutical Officer", "Quality Assurance Assistant"],
+    facts: ["Approved professional curriculum", "Mandatory drug-dispensing clinical internships"]
+  },
+  Nursing: {
+    stream: "🩺 Clinical Nursing Care",
+    eligibility: "12th Pass (PCB/PCM/Arts)",
+    curriculum: ["Anatomy & Clinical Physiology", "Nursing Foundations", "Community Medical Nursing", "Surgical Clinical Care"],
+    careers: ["Registered General Nurse", "ICU Specialization Nurse", "Public Health Center Officer", "Nurse Educator"],
+    facts: ["Rigorous bedside clinical training", "Highest healthcare sector placement rate"]
+  },
+  "Ophthalmic Assistant": {
     stream: "👁️ Vision & Optometry Support",
     eligibility: "12th Pass (PCB/PCM)",
     curriculum: ["Ophthalmic Anatomy & Optics", "Clinical Refraction", "Diagnostic Eye Equipment", "Dispensing Opticianry"],
     careers: ["Certified Refractionist", "Ophthalmic Assistant", "Vision Care Clinic Coordinator"],
     facts: ["Direct training with senior ophthalmologists", "Great self-employment and clinical prospects"]
   },
-  CCH: {
-    stream: "🩺 Community Health",
+  "Medical Lab Technician": {
+    stream: "🔬 Essential Diagnostics",
     eligibility: "10th / 12th Pass",
-    curriculum: ["Primary Healthcare", "First-Aid & Emergency Care", "Maternal & Child Health", "Community Health Management"],
-    careers: ["Community Health Worker", "Primary Health Coordinator", "Health Clinic Assistant"],
-    facts: ["Essential public health focus", "Fast track to healthcare service"]
+    curriculum: ["Specimen Sample Processing", "Basic Biochemistry", "Microscopic Examination", "Clinical Lab Safety"],
+    careers: ["Laboratory Assistant", "Collection Center Specialist", "Mobile Clinic Technician"],
+    facts: ["Intense practice sessions in active labs", "Swift path to entry-level jobs"]
   }
 };
 
@@ -222,13 +235,13 @@ export default function CoursesSection() {
 
                   {/* Primary CTA button */}
                   <div className="mt-8 border-t border-slate-100 pt-6">
-                    <Link
-                      to="/admission"
+                    <a
+                      href="#contact"
                       className="inline-flex w-full sm:w-auto justify-center items-center gap-3 bg-[#15305b] hover:bg-[#112649] text-white transition-all duration-300 rounded-2xl px-7 py-4 text-xs font-black uppercase tracking-widest shadow-md hover:scale-[1.02]"
                     >
                       Enquire for Admission
                       <FiArrowRight size={14} className="stroke-[2.5]" />
-                    </Link>
+                    </a>
                   </div>
 
                 </div>
