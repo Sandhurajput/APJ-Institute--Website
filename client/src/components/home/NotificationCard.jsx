@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaEye, FaExclamationTriangle, FaFilePdf } from 'react-icons/fa';
+import { FaCalendarAlt, FaDownload, FaEye, FaExclamationTriangle, FaFilePdf } from 'react-icons/fa';
 
 export default function NotificationCard({ item, index = 0 }) {
   return (
@@ -59,6 +59,14 @@ export default function NotificationCard({ item, index = 0 }) {
         >
           <FaEye />
           View
+        </a>
+        <a
+          href={item.pdfUrl}
+          download
+          className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#15305b] to-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:scale-[1.02]"
+        >
+          <FaDownload />
+          Download PDF
         </a>
       </div>
     </motion.article>

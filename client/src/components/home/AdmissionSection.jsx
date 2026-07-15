@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 import { admissionSteps } from '../../data/homepageData';
 import admissionBg from '../../assets/admission_bg.png';
 
@@ -98,13 +97,13 @@ export default function AdmissionSection({ variant = "original" }) {
 
           {/* Centered call-to-action button */}
           <div className="mt-12 flex justify-center">
-            <Link 
-              to="/admission" 
+            <a 
+              href="#contact" 
               className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-8 py-4 text-xs font-black tracking-widest uppercase text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/35"
             >
               Start Admission Process
               <FiArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -133,10 +132,10 @@ export default function AdmissionSection({ variant = "original" }) {
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">Step {index + 1}</p>
                 <h3 className="mt-2 text-lg font-bold text-slate-900">{step.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{step.description}</p>
-                <Link to="/admission" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#15305b]">
+                <a href="#contact" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#15305b]">
                   Get Started
                   <FiArrowRight />
-                </Link>
+                </a>
               </div>
             </motion.article>
           ))}

@@ -38,9 +38,10 @@ export default function AdmissionPage() {
 
   const programs = [
     'BMLT (Bachelor of Medical Laboratory Technology) - 3 Years',
-    'DMLT (Diploma in Medical Laboratory Technology) - 3 Years',
-    'DOA (Diploma in Ophthalmic Assistant) - 2 Years',
-    'CCH (Certificate in Community Health) - 6 Months'
+    'DMLT (Diploma in Medical Laboratory Technology) - 2 Years',
+    'Pharmacy (D.Pharma) - 2 Years',
+    'Medical Lab Technician - 2 Years',
+    'Ophthalmic Assistant - 2 Years'
   ];
 
   const reasons = [
@@ -176,8 +177,10 @@ export default function AdmissionPage() {
                     <option value="">-- Choose Course --</option>
                     <option value="BMLT">BMLT</option>
                     <option value="DMLT">DMLT</option>
-                    <option value="DOA">DOA</option>
-                    <option value="CCH">CCH</option>
+                    <option value="Pharmacy">Pharmacy (D.Pharma)</option>
+                    <option value="Nursing">Nursing</option>
+                    <option value="Ophthalmic Assistant">Ophthalmic Assistant</option>
+                    <option value="Medical Lab Technician">Medical Lab Technician</option>
                   </select>
                 </div>
 

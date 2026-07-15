@@ -25,7 +25,6 @@ export const heroSlides = [
       'APJ Institute Raipur offers practical training, experienced faculty, and career-focused programs for the next generation of healthcare professionals.',
     image: classroomStudents1,
     cta: 'Apply for Admission',
-    link: '/admission',
   },
   {
     eyebrow: 'Modern Lab Training',
@@ -34,7 +33,6 @@ export const heroSlides = [
       'Learn with modern equipment, guided lab sessions, and structured academic support across all key paramedical streams.',
     image: classroomStudents2,
     cta: 'Explore Courses',
-    link: '/courses',
   },
   {
     eyebrow: 'Student Success',
@@ -43,7 +41,6 @@ export const heroSlides = [
       'Build confidence through expert mentorship, practical exposure, and a curriculum aligned with real healthcare requirements.',
     image: classroomStudents3,
     cta: 'View Facilities',
-    link: '/facilities',
   },
 ];
 
@@ -99,10 +96,10 @@ export const admissionSteps = [
 ];
 
 export const courses = [
-  { title: 'BMLT', duration: '3 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: new12 },
-  { title: 'DMLT', duration: '3 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: new13 },
-  { title: 'DOA', duration: '2 Years', description: 'Specialized eye care training for assisting in ophthalmic diagnostics and clinic operations.', image: new16 },
-  { title: 'CCH', duration: '6 Months', description: 'Certificate program for primary healthcare, community health, and first-aid support.', image: new16_png },
+  { title: 'BMLT', slug: 'bmlt', duration: '3 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: buildingImage },
+  { title: 'DMLT', slug: 'dmlt', duration: '3 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: labCollageImage },
+  { title: 'DOA', slug: 'doa', duration: '2 Years', description: 'Focused learning for eye care support and clinical assistance.', image: classroomImage },
+  { title: 'CCH', slug: 'cch', duration: '6 Months', description: 'Job-ready diagnostics training with robust lab exposure.', image: labCollageImage },
 ];
 
 export const galleryImages = [
