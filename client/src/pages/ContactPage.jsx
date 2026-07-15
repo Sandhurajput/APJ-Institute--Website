@@ -5,9 +5,9 @@ import {
   MapPin, Phone, Mail, Clock, Send, ArrowRight,
   ChevronDown, GraduationCap, HelpCircle, PhoneCall
 } from 'lucide-react';
-import TopHeaderBar from '../components/home/TopHeaderBar';
-import Navbar from '../components/home/Navbar';
-import Footer from '../components/home/Footer';
+// import TopHeaderBar from '../components/home/TopHeaderBar';
+// import Navbar from '../components/home/Navbar';
+// import Footer from '../components/home/Footer';
 import contactImage from '../contact.jpeg';
 
 const faqs = [
@@ -91,8 +91,8 @@ export default function ContactPage() {
 
   return (
     <div className="bg-slate-100 min-h-screen text-slate-800 overflow-x-hidden selection:bg-[#1e3a5f]/30">
-      <TopHeaderBar />
-      <Navbar />
+      {/* <TopHeaderBar /> */}
+      {/* <Navbar /> */}
 
       {/* ════════════════════════════════════════════
           1. HERO SECTION
@@ -398,7 +398,7 @@ export default function ContactPage() {
         </motion.div>
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
