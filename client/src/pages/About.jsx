@@ -319,9 +319,9 @@ export default function About() {
                 <div className="flex-1">
                   <h3 className="text-lg font-black text-[#1e3a5f] mb-3">Paramedical Program</h3>
                   <p className="text-sm text-slate-600 leading-relaxed mb-3">
-                    Specialized training in radiology, pharmacy, and laboratory sciences. Our paramedical courses ensure students gain practical expertise and professional certification to support healthcare delivery across diverse settings.
+                    Specialized training in radiology and laboratory sciences. Our paramedical courses ensure students gain practical expertise and professional certification to support healthcare delivery across diverse settings.
                   </p>
-                  <p className="text-xs text-slate-500 font-semibold">• Pharmacy • Radiology • Lab Sciences</p>
+                  <p className="text-xs text-slate-500 font-semibold">• Radiology • Lab Sciences</p>
                 </div>
               </motion.div>
 

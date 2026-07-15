@@ -95,11 +95,10 @@ export const admissionSteps = [
 ];
 
 export const courses = [
-  { title: 'BMLT', slug: 'bmlt', duration: '2 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: buildingImage },
-  { title: 'DMLT', slug: 'dmlt', duration: '2 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: labCollageImage },
-  { title: 'Pharmacy', slug: 'pharmacy', duration: '2 Years', description: 'Practical pharmaceutical training with patient care focus.', image: classroomImage },
-  { title: 'Ophthalmic Assistant', slug: 'ophthalmic-assistant', duration: '2 Years', description: 'Focused learning for eye care support and clinical assistance.', image: classroomImage },
-  { title: 'Medical Lab Technician', slug: 'medical-lab-technician', duration: '2 Years', description: 'Job-ready diagnostics training with robust lab exposure.', image: labCollageImage },
+  { title: 'BMLT', slug: 'bmlt', duration: '3 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: buildingImage },
+  { title: 'DMLT', slug: 'dmlt', duration: '3 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: labCollageImage },
+  { title: 'DOA', slug: 'doa', duration: '2 Years', description: 'Focused learning for eye care support and clinical assistance.', image: classroomImage },
+  { title: 'CCH', slug: 'cch', duration: '6 Months', description: 'Job-ready diagnostics training with robust lab exposure.', image: labCollageImage },
 ];
 
 export const galleryImages = [
@@ -115,14 +114,14 @@ export { posterBanner };
 export const testimonials = [
   { name: 'Aditi Sahu', role: 'BMLT Student', quote: 'The labs, faculty support, and disciplined environment helped me gain practical confidence for my career.', image: classroomStudents1 },
   { name: 'Rohit Kumar', role: 'DMLT Student', quote: 'The teaching approach is structured and professional. Every class feels focused on real medical practice.', image: classroomStudents2 },
-  { name: 'Pooja Verma', role: 'Pharmacy Student', quote: 'APJ Institute gives a genuine institute atmosphere with strong guidance and meaningful exposure.', image: classroomStudents3 },
+  { name: 'Pooja Verma', role: 'DOA Student', quote: 'APJ Institute gives a genuine institute atmosphere with strong guidance and meaningful exposure.', image: classroomStudents3 },
 ];
 
 export const quickLinks = ['About', 'Courses', 'Admission', 'Gallery', 'Contact'];
-export const courseNames = ['BMLT', 'DMLT', 'Pharmacy', 'Ophthalmic Assistant', 'Medical Lab Technician'];
+export const courseNames = ['BMLT', 'DMLT', 'DOA', 'CCH'];
 export const liveTickerNotices = [
   { id: 'ticker-1', label: 'ADMISSION OPEN 2026-27 — Apply Now', category: 'Admission', emphasis: 'Open' },
-  { id: 'ticker-2', label: 'BMLT (3Y), DMLT (2Y), X-RAY (2Y)', category: 'Courses', emphasis: 'Info' },
+  { id: 'ticker-2', label: 'BMLT (3Y), DMLT (3Y), DOA (2Y), CCH (6M)', category: 'Courses', emphasis: 'Info' },
   { id: 'ticker-3', label: 'Eligibility: 12th Pass (Biology)', category: 'Eligibility', emphasis: 'Info' },
   { id: 'ticker-4', label: 'Limited Seats — Contact: 9243758191', category: 'Admission', emphasis: 'Alert' },
   { id: 'ticker-5', label: 'Download Admission Form / Apply via WhatsApp', category: 'Applications', emphasis: 'Action' },
@@ -135,7 +134,7 @@ export const liveNotificationCards = [
     category: 'Admission Notice',
     title: 'ADMISSION OPEN 2026-27',
     description:
-      'Apply now for BMLT (3 Years), DMLT (2 Years), X-RAY (2 Years) and Lab Technician (Certificate). Limited seats available with scholarship options.',
+      'Apply now for BMLT (3 Years), DMLT (3 Years), DOA (2 Years) and CCH (6 Months). Limited seats available with scholarship options.',
     isNew: true,
     important: true,
     pdfUrl: '#admission',

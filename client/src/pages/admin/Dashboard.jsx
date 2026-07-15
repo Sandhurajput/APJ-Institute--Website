@@ -1077,7 +1077,7 @@ function renderTestimonials(testimonials, form, editingId, saving, updateForm, s
             </div>
             <div>
               <Label>Course</Label>
-              <Input value={form.course} onChange={(e) => updateForm('testimonial', 'course', e.target.value)} placeholder="BMLT / DMLT / Pharmacy" />
+              <Input value={form.course} onChange={(e) => updateForm('testimonial', 'course', e.target.value)} placeholder="BMLT / DMLT" />
             </div>
             <div>
               <Label>Message</Label>

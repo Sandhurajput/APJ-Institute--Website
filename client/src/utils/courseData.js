@@ -17,7 +17,7 @@ export const courses = [
     id: 'dmlt',
     name: 'DMLT',
     fullName: 'Diploma in Medical Lab Technology',
-    duration: '2 Years',
+    duration: '3 Years',
     eligibility: '10+2 (Science)',
     description: 'Skill-focused diploma for diagnostic labs, sample handling, and testing workflows.',
     overview:
@@ -55,25 +55,12 @@ export const courses = [
     careers: ['Lab Technician', 'Lab Assistant', 'Phlebotomy Support', 'Diagnostic Support Staff'],
     training: 'Foundational lab practice, basic equipment use, and routine sample processing skills.',
   },
-  {
-    id: 'pharmacy',
-    name: 'Pharmacy',
-    fullName: 'Diploma in Pharmacy Support',
-    duration: '2 Years',
-    eligibility: '10+2 (Science)',
-    description: 'Healthcare-oriented pharmacy fundamentals, dispensing support, and medication awareness.',
-    overview:
-      'This pharmacy-focused program introduces students to medicine handling, dispensing support, prescription awareness, and pharmacy workflow in clinics and retail settings.',
-    highlights: ['Medicine knowledge', 'Dispensing basics', 'Patient communication', 'Retail and hospital pharmacy exposure'],
-    subjects: ['Pharmacology Basics', 'Drug Dispensing', 'Prescription Reading', 'Pharmacy Law Basics', 'Patient Safety'],
-    careers: ['Pharmacy Assistant', 'Dispensing Assistant', 'Retail Pharmacy Staff', 'Hospital Pharmacy Support'],
-    training: 'Practical support in medicine organization, dispensing procedures, and pharmacy record keeping.',
-  },
+
 
   {
-    id: 'ophthalmic-assistant',
-    name: 'Ophthalmic Assistant',
-    fullName: 'Ophthalmic Assistant Program',
+    id: 'doa',
+    name: 'DOA',
+    fullName: 'Diploma in Ophthalmic Assistant',
     duration: '2 Years',
     eligibility: '10+2',
     description: 'Eye care support training for clinics, vision testing, and ophthalmology assistance.',
@@ -85,10 +72,10 @@ export const courses = [
     training: 'Practical exposure to eye examination support, vision screening, and clinic workflow.',
   },
   {
-    id: 'medical-lab-technician',
-    name: 'Medical Lab Technician',
-    fullName: 'Medical Lab Technician Program',
-    duration: '2 Years',
+    id: 'cch',
+    name: 'CCH',
+    fullName: 'Certificate in Community Health',
+    duration: '6 Months',
     eligibility: '10+2 (Science)',
     description: 'Advanced lab support program for diagnostic testing, lab processing, and technical assistance.',
     overview:

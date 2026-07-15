@@ -30,7 +30,7 @@ const paramedicalCourses = [
     title: "DMLT (Diploma in Medical Laboratory Technology)",
     category: "Diploma",
     description: "Intensive diploma covering fundamental lab techniques, hematology, and microbiology.",
-    duration: "2 Years",
+    duration: "3 Years",
     fees: "₹35,000/year",
     seats: 50,
     eligibility: "10+2 (Science)",
@@ -38,22 +38,10 @@ const paramedicalCourses = [
     image: "/assets/course-images/centrifuge.png",
     icon: <Activity size={24} />
   },
-  {
-    id: 3,
-    title: "Pharmacy (D.Pharma)",
-    category: "Diploma",
-    description: "Comprehensive pharmacy program preparing students for pharmaceutical sciences and community healthcare.",
-    duration: "2 Years",
-    fees: "₹55,000/year",
-    seats: 60,
-    eligibility: "10+2 (Science)",
-    salary: "₹2.5-5 LPA",
-    image: "/assets/course-images/classroom.png",
-    icon: <Stethoscope size={24} />
-  },
+
   {
     id: 4,
-    title: "Ophthalmic Assistant",
+    title: "DOA (Diploma in Ophthalmic Assistant)",
     category: "Diploma",
     description: "Eye care support training for clinics, vision testing, and ophthalmology assistance.",
     duration: "2 Years",
@@ -66,10 +54,10 @@ const paramedicalCourses = [
   },
   {
     id: 5,
-    title: "Medical Lab Technician",
-    category: "Diploma",
+    title: "CCH (Certificate in Community Health)",
+    category: "Certification",
     description: "Advanced lab support program for diagnostic testing, lab processing, and technical assistance.",
-    duration: "2 Years",
+    duration: "6 Months",
     fees: "₹35,000/year",
     seats: 50,
     eligibility: "10+2 (Science)",
@@ -289,7 +277,7 @@ export default function CoursesPage() {
               className="group relative flex flex-col overflow-hidden rounded-3xl bg-white backdrop-blur-xl border border-slate-200 hover:border-blue-500/50 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_50px_rgba(37,99,235,0.4)]"
             >
               {/* Image Section */}
-              <div className="relative h-60 w-full overflow-hidden">
+              <div className="relative h-48 w-full overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent z-10"></div>
                 <img
                   src={course.image}
@@ -341,32 +329,22 @@ export default function CoursesPage() {
 
           return (
             <>
-              {filteredCourses.length === 5 ? (
+              {filteredCourses.length === 4 ? (
                 <motion.div 
                   variants={containerVariants}
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: false, amount: 0.1 }}
-                  className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                  className="grid gap-28 grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto"
                 >
                   {/* Left Column (2 cards) */}
-                  <div className="flex flex-col gap-8">
+                  <div className="flex flex-col gap-28">
                     {filteredCourses.slice(0, 2).map((c) => renderCourseCard(c, 'left'))}
                   </div>
                   
-                  {/* Center Column (1 card, vertically centered, desktop only) */}
-                  <div className="hidden lg:flex flex-col gap-8 justify-center">
-                    {filteredCourses.slice(4, 5).map((c) => renderCourseCard(c, 'center'))}
-                  </div>
-                  
                   {/* Right Column (2 cards) */}
-                  <div className="flex flex-col gap-8">
+                  <div className="flex flex-col gap-28">
                     {filteredCourses.slice(2, 4).map((c) => renderCourseCard(c, 'right'))}
-                  </div>
-                  
-                  {/* Center Column (1 card, mobile/tablet only, stacked at bottom) */}
-                  <div className="flex lg:hidden flex-col gap-8 justify-center sm:col-span-2">
-                    {filteredCourses.slice(4, 5).map((c) => renderCourseCard(c, 'center'))}
                   </div>
                 </motion.div>
               ) : (

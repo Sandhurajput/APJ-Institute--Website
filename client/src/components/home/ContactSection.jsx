@@ -20,8 +20,8 @@ export default function ContactSection() {
                 <option>Choose a course</option>
                 <option>BMLT</option>
                 <option>DMLT</option>
-                <option>Pharmacy</option>
-                <option>Ophthalmic Assistant</option>
+                <option>DOA</option>
+                <option>CCH</option>
               </select>
               <textarea rows="5" className="rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-blue-400 md:col-span-2" placeholder="Write your message here" />
             </div>
