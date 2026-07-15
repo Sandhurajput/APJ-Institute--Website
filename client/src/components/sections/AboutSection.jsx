@@ -64,7 +64,7 @@ export default function AboutSection() {
               variants={itemVariants}
               className="text-lg text-gray-600 mb-6 leading-relaxed"
             >
-              APJ Institute Dantewada is committed to providing world-class education and training 
+              APJ Institute Raipur is committed to providing world-class education and training 
               in technology, design, and business. With industry experts as trainers and real-world 
               projects as curriculum, we prepare students for the challenges of the modern workplace.
             </motion.p>

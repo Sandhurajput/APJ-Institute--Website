@@ -78,7 +78,7 @@ export default function AdvancedNavbar() {
             </div>
             <div className="hidden md:block">
               <h1 className="text-lg font-bold text-gray-900">APJ Institute</h1>
-              <p className="text-xs text-gray-500 -mt-1">Dantewada</p>
+              <p className="text-xs text-gray-500 -mt-1">Raipur</p>
             </div>
           </Link>
 
