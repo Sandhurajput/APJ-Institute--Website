@@ -212,6 +212,18 @@ export const liveNotificationCards = [
     pdfUrl: '#contact',
     viewUrl: '#contact',
   },
+  {
+    id: 'notice-6',
+    date: '13 May 2026',
+    category: 'Academic Calendar',
+    title: 'Summer Vacation Declaration',
+    description:
+      'The institute will remain closed for summer vacation from May 25 to June 5, 2026. Regular classes will resume on June 8.',
+    isNew: false,
+    important: false,
+    pdfUrl: '#about',
+    viewUrl: '#about',
+  },
 ];
 
 export const sidebarUpdateGroups = [

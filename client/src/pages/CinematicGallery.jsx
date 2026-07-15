@@ -62,6 +62,14 @@ export default function CinematicGallery() {
               APJ GALLERY CONCEPT
             </span>
           </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-6 max-w-2xl text-sm sm:text-base leading-relaxed text-slate-600 font-sans tracking-wide"
+          >
+            Explore our state-of-the-art laboratory setups, modern campus classrooms, and vibrant student activities. Take a virtual walkthrough of our clinical learning environment.
+          </motion.p>
         </div>
 
         {/* Four Floating Stories Circles Row (Navy Blue Theme) */}
