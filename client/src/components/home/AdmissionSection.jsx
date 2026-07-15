@@ -16,6 +16,13 @@ const stepDetails = [
 
 export default function AdmissionSection({ variant = "original" }) {
   if (variant === "homepage") {
+    const simplifiedSteps = [
+      { ...admissionSteps[0], stepNum: 1 }, // Inquiry & Counseling
+      { ...admissionSteps[3], stepNum: 2 }, // Document Submission
+      { ...admissionSteps[4], stepNum: 3 }, // Fee Payment
+      { ...admissionSteps[5], stepNum: 4 }  // Confirmation
+    ];
+
     return (
       <section id="admission" className="py-20 sm:py-24 bg-slate-900 relative overflow-hidden">
         {/* Crisp twilight medical campus background image clearly visible with high opacity */}
@@ -43,8 +50,7 @@ export default function AdmissionSection({ variant = "original" }) {
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {admissionSteps.map((step, index) => {
-              const meta = stepDetails[index] || { duration: "Immediate", requirement: "None", status: "Assisted" };
+            {simplifiedSteps.map((step, index) => {
               return (
                 <motion.article 
                   key={step.title} 
@@ -55,7 +61,7 @@ export default function AdmissionSection({ variant = "original" }) {
                   className="group flex flex-col justify-between overflow-hidden rounded-[2.2rem] bg-white border border-slate-100 p-5 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_70px_rgba(15,23,42,0.12)] hover:-translate-y-2 transition-all duration-500 cursor-pointer"
                 >
                   <div>
-                    {/* Pinterest Card Image Container */}
+                    {/* pinterest card image container */}
                     <div className="relative w-full aspect-[4/3] rounded-[1.6rem] overflow-hidden bg-slate-100 shadow-inner">
                       <img 
                         src={step.image} 
@@ -70,19 +76,12 @@ export default function AdmissionSection({ variant = "original" }) {
                       {/* Step badge overlay */}
                       <div className="absolute top-3.5 left-3.5 bg-slate-950/90 backdrop-blur-md text-white font-extrabold text-[9px] tracking-wider uppercase px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
                         <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                        Step {index + 1}
-                      </div>
-
-                      {/* Top right bookmark / indicator icon */}
-                      <div className="absolute top-3.5 right-3.5 bg-white/90 backdrop-blur-md text-slate-800 p-1.5 rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
+                        Step {step.stepNum}
                       </div>
                     </div>
 
                     {/* Title & Description */}
-                    <div className="pt-5 px-1">
+                    <div className="pt-5 px-1 pb-4">
                       <h3 className="text-xl font-extrabold text-slate-800 tracking-tight leading-snug group-hover:text-[#15305b] transition-colors duration-300">
                         {step.title}
                       </h3>
@@ -91,36 +90,20 @@ export default function AdmissionSection({ variant = "original" }) {
                       </p>
                     </div>
                   </div>
-
-                  {/* Footer Actions (Rich Metadata + Button) */}
-                  <div className="px-1 mt-5">
-                    {/* Divider */}
-                    <div className="w-full h-[1px] bg-slate-100" />
-                    
-                    {/* Elegant Metadata Row */}
-                    <div className="py-4 flex items-center justify-between text-[10px] text-slate-400 font-black tracking-wider uppercase">
-                      <span className="flex items-center gap-1 text-slate-600">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#15305b]" />
-                        {meta.duration}
-                      </span>
-                      <span className="w-1 h-1 rounded-full bg-slate-200" />
-                      <span className="text-slate-500">{meta.status}</span>
-                      <span className="w-1 h-1 rounded-full bg-slate-200" />
-                      <span className="text-slate-600">{meta.requirement}</span>
-                    </div>
-
-                    {/* Solid Pill Action Button */}
-                    <a 
-                      href="#contact" 
-                      className="w-full bg-slate-950 text-white font-extrabold text-[10px] tracking-widest uppercase py-3.5 rounded-full text-center transition-all duration-300 hover:bg-[#15305b] hover:shadow-[0_10px_25px_rgba(21,48,91,0.25)] flex items-center justify-center gap-2 group/btn"
-                    >
-                      Get Started
-                      <FiArrowRight className="w-3.5 h-3.5 transform group-hover/btn:translate-x-1.5 transition-transform duration-300" />
-                    </a>
-                  </div>
                 </motion.article>
               );
             })}
+          </div>
+
+          {/* Centered call-to-action button */}
+          <div className="mt-12 flex justify-center">
+            <a 
+              href="#contact" 
+              className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-8 py-4 text-xs font-black tracking-widest uppercase text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/35"
+            >
+              Start Admission Process
+              <FiArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>

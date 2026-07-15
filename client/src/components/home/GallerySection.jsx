@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaPlay, FaPause, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { galleryImages } from '../../data/homepageData';
 
-import img11 from '../../11.jpg';
-import img22 from '../../22.jpg';
-import img33 from '../../33.jpg';
-import img44 from '../../44.jpg';
+import img11 from '../../new25.jpeg';
+import img22 from '../../new1.jpeg';
+import img33 from '../../new2.jpeg';
+import img44 from '../../new3.jpeg';
 
 export default function GallerySection() {
   const [activeIndex, setActiveIndex] = useState(0);

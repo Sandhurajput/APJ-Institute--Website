@@ -5,8 +5,6 @@ import UpdatesSection from '../components/home/UpdatesSection';
 import AdmissionSection from '../components/home/AdmissionSection';
 import AboutSection from '../components/home/AboutSection';
 import CoursesSection from '../components/home/CoursesSection';
-import GallerySection from '../components/home/GallerySection';
-import TestimonialsSection from '../components/home/TestimonialsSection';
 import ContactSection from '../components/home/ContactSection';
 
 export default function Home() {
@@ -18,8 +16,6 @@ export default function Home() {
       <AdmissionSection variant="homepage" />
       <AboutSection />
       <CoursesSection />
-      <GallerySection />
-      <TestimonialsSection />
       <ContactSection />
     </motion.main>
   );

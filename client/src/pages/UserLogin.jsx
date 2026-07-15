@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { FiEye, FiEyeOff } from 'react-icons/fi';
-import axios from 'axios';
+import { FiEye, FiEyeOff, FiArrowLeft } from 'react-icons/fi';
 import loginImage from '../2.webp';
 import '../styles/AuthSplitScreen.css';
 
@@ -77,6 +76,36 @@ export default function UserLogin() {
       {/* Left Side - Form */}
       <div className="auth-split-left">
         <div className="form-container">
+          <button
+            onClick={() => navigate('/portal')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: '#4b5563',
+              fontSize: '14px',
+              fontWeight: '600',
+              backgroundColor: '#f3f4f6',
+              border: '1px solid #e5e7eb',
+              borderRadius: '9999px',
+              padding: '8px 16px',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              marginBottom: '20px',
+              outline: 'none',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = '#e5e7eb';
+              e.currentTarget.style.color = '#1f2937';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = '#f3f4f6';
+              e.currentTarget.style.color = '#4b5563';
+            }}
+          >
+            <FiArrowLeft size={16} />
+            Back to Dashboard
+          </button>
           <form onSubmit={handleLoginSubmit} className="auth-form login-form active">
             <div className="form-header">
               <h1>LOGIN</h1>
@@ -162,12 +191,6 @@ export default function UserLogin() {
             {/* Links */}
             <div className="auth-links">
               <p>
-                Don't have an account?{' '}
-                <Link to="/user-signup">
-                  Sign up here
-                </Link>
-              </p>
-              <p>
                 <Link to="/admin-login">
                   Login as Admin?
                 </Link>
@@ -182,14 +205,6 @@ export default function UserLogin() {
         <div className="toggle-section">
           <h2>Welcome Back !</h2>
           <p>Log in to your account and access exclusive content, manage your profile, and explore amazing opportunities with APJ Institute.</p>
-          <div className="toggle-buttons-group">
-            <button className="toggle-btn join-variant" onClick={() => navigate('/user-signup')}>
-              SIGN UP
-            </button>
-            <button className="toggle-btn login-variant" disabled>
-              LOGIN
-            </button>
-          </div>
         </div>
         <div className="illustration">
           <img src={loginImage} alt="User Login" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
