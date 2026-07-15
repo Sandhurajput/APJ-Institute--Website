@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import TopHeaderBar from '../components/home/TopHeaderBar';
-import Navbar from '../components/home/Navbar';
-import Footer from '../components/home/Footer';
+// import TopHeaderBar from '../components/home/TopHeaderBar';
+// import Navbar from '../components/home/Navbar';
+// import Footer from '../components/home/Footer';
 import { buildingImage } from '../data/homepageData';
 // Import classroom images directly
 import classroomStudents1 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.09 PM.jpeg';
@@ -30,8 +30,8 @@ export default function About() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <TopHeaderBar />
-      <Navbar />
+      {/* <TopHeaderBar /> */}
+      {/* <Navbar /> */}
 
       {/* Main 2-Column Layout Container */}
       <div className="flex bg-white gap-8 lg:gap-16 px-6 lg:px-12 py-8 lg:py-12">
@@ -695,7 +695,7 @@ export default function About() {
         </motion.div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </motion.div>
   );
 }
