@@ -46,6 +46,7 @@ export const heroSlides = [
       'APJ Institute Dantewada offers practical training, experienced faculty, and career-focused programs for the next generation of healthcare professionals.',
     image: new1,
     cta: 'Apply for Admission',
+    link: '/admission',
   },
   {
     eyebrow: 'Modern Lab Training',
@@ -54,6 +55,7 @@ export const heroSlides = [
       'Learn with modern equipment, guided lab sessions, and structured academic support across all key paramedical streams.',
     image: new2,
     cta: 'Explore Courses',
+    link: '/courses',
   },
   {
     eyebrow: 'Student Success',
@@ -62,6 +64,7 @@ export const heroSlides = [
       'Build confidence through expert mentorship, practical exposure, and a curriculum aligned with real healthcare requirements.',
     image: new3,
     cta: 'View Facilities',
+    link: '/facilities',
   },
 ];
 
@@ -117,12 +120,10 @@ export const admissionSteps = [
 ];
 
 export const courses = [
-  { title: 'BMLT', duration: '2 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: new12 },
-  { title: 'DMLT', duration: '2 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: new13 },
-  { title: 'Pharmacy', duration: '2 Years', description: 'Practical pharmaceutical training with patient care focus.', image: new14 },
-  { title: 'Nursing', duration: '3 Years', description: 'Nursing education built for clinical compassion and competence.', image: new15 },
-  { title: 'Ophthalmic Assistant', duration: '2 Years', description: 'Focused learning for eye care support and clinical assistance.', image: new16 },
-  { title: 'Medical Lab Technician', duration: '2 Years', description: 'Job-ready diagnostics training with robust lab exposure.', image: new16_png },
+  { title: 'BMLT', duration: '3 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: new12 },
+  { title: 'DMLT', duration: '3 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: new13 },
+  { title: 'DOA', duration: '2 Years', description: 'Specialized eye care training for assisting in ophthalmic diagnostics and clinic operations.', image: new16 },
+  { title: 'CCH', duration: '6 Months', description: 'Certificate program for primary healthcare, community health, and first-aid support.', image: new16_png },
 ];
 
 export const galleryImages = [
@@ -141,7 +142,7 @@ export const testimonials = [
 ];
 
 export const quickLinks = ['About', 'Courses', 'Admission', 'Gallery', 'Contact'];
-export const courseNames = ['BMLT', 'DMLT', 'Pharmacy', 'Nursing', 'Ophthalmic Assistant'];
+export const courseNames = ['BMLT', 'DMLT', 'DOA', 'CCH'];
 export const liveTickerNotices = [
   { id: 'ticker-1', label: 'Admissions Open for 2026', category: 'Admission', emphasis: 'Open' },
   { id: 'ticker-2', label: 'BMLT & DMLT Applications Started', category: 'Applications', emphasis: 'New' },

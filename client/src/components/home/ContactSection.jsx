@@ -5,7 +5,7 @@ import { MapPin, Phone, Mail, Send, ChevronDown, ArrowRight } from 'lucide-react
 /* ─── FAQ Data ─── */
 const faqs = [
   { q: "How can I apply for admission?", a: "You can apply online through our website or visit the campus directly. Fill the enquiry form above and our admission team will guide you through the complete registration process." },
-  { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (2 Years), X-Ray / Radiography Technician (2 Years), OT Technician (2 Years), B.Sc. Nursing (4 Years), and Hospital Assistant Certification (6 Months)." },
+  { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (3 Years), DOA (2 Years), and CCH (6 Months)." },
   { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable separate hostel facilities for boys and girls with mess, Wi-Fi, and 24/7 security." },
   { q: "How to contact the administration office?", a: "You can call us at +91 92437 58191 / +91 93076 16474, email apjinstituteparamedicaldantewa@gmail.com, or visit us at Sanjay Nagar, near BSNL Exchange Office, Dantewada (C.G.)." },
   { q: "What is the fee structure?", a: "Fee varies by course. BMLT starts at ₹45,000/year. Contact our admission office for the complete fee breakdown and available scholarship options." },
