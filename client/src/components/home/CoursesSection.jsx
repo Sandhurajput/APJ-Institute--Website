@@ -207,7 +207,7 @@ export default function CoursesSection() {
                       <p className="text-[11px] font-black text-slate-800 uppercase tracking-widest flex items-center gap-1.5 mb-3">
                         <FiBookOpen className="text-[#15305b]" /> Core Clinical Curriculum
                       </p>
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {activeDetail.curriculum.map((item) => (
                           <div key={item} className="flex items-center gap-2 text-xs text-slate-700 bg-slate-50 px-3.5 py-2.5 rounded-xl border border-slate-100">
                             <span className="h-1.5 w-1.5 rounded-full bg-[#15305b]" />

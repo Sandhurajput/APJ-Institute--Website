@@ -58,13 +58,13 @@ export default function About() {
 
 
       {/* Main 2-Column Layout Container */}
-      <div className="flex bg-white gap-8 lg:gap-16 px-6 lg:px-12 py-8 lg:py-12">
+      <div className="flex flex-col lg:flex-row bg-white gap-8 lg:gap-16 px-6 lg:px-12 py-8 lg:py-12">
         {/* LEFT COLUMN */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-full lg:w-1/2 bg-white rounded-3xl shadow-lg p-8 md:p-16 border border-slate-200 mt-16 lg:mt-32"
+          className="w-full lg:w-1/2 bg-white rounded-3xl shadow-lg p-4 sm:p-8 md:p-16 border border-slate-200 mt-16 lg:mt-32"
         >
           {/* Section 1: Hero */}
           <div className="mb-12">
@@ -115,7 +115,7 @@ export default function About() {
                 </div>
                 
                 {/* Small Image - Overlay on top left */}
-                <div className="absolute -top-8 -left-8 rounded-2xl overflow-hidden w-40 h-40 bg-slate-300 shadow-xl border-4 border-white">
+                <div className="absolute -top-4 -left-4 sm:-top-8 sm:-left-8 rounded-2xl overflow-hidden w-28 h-28 sm:w-40 sm:h-40 bg-slate-300 shadow-xl border-4 border-white">
                   <img src={firstsc2} alt="Students" className="w-full h-full object-cover" />
                 </div>
               </motion.div>
@@ -201,7 +201,7 @@ export default function About() {
             </p>
 
             {/* Three Feature Cards */}
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 { 
                   icon: '📚', 
@@ -225,7 +225,7 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ delay: idx * 0.1 }}
-                  className={`text-center p-8 rounded-3xl transition-all flex flex-col justify-center items-center h-80 ${
+                  className={`text-center p-6 rounded-3xl transition-all flex flex-col justify-center items-center h-auto py-8 min-h-[300px] md:h-80 md:py-0 ${
                     idx === 1 
                       ? 'bg-white text-slate-900 border-2 border-[#1e3a5f] shadow-lg' 
                       : 'bg-white text-slate-900 border-2 border-slate-300 hover:shadow-lg'
@@ -257,20 +257,20 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-3xl overflow-hidden h-96 bg-slate-300 shadow-lg mb-0"
+            className="relative rounded-3xl overflow-hidden min-h-[24rem] h-auto lg:h-96 bg-slate-300 shadow-lg mb-0 flex flex-col justify-center"
           >
             {/* Background Image - Full Coverage */}
             <img 
               src={labCollageImage} 
               alt="Event Background" 
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
             />
             
             {/* Light Dark Overlay */}
             <div className="absolute inset-0 bg-black/25"></div>
             
             {/* Cylindrical Text Container - Expanded */}
-            <div className="absolute left-8 top-1/2 transform -translate-y-1/2 bg-black/40 rounded-3xl p-10 max-w-2xl backdrop-blur-sm">
+            <div className="relative lg:absolute lg:left-8 lg:top-1/2 lg:transform lg:-translate-y-1/2 bg-black/60 rounded-3xl p-6 md:p-10 max-w-full lg:max-w-2xl backdrop-blur-sm m-4 lg:m-0">
               {/* Heading - 3 rows */}
               <h2 className="text-4xl font-black text-white mb-6 leading-tight">
                 Excellence in<br />Healthcare<br />Education
@@ -485,7 +485,7 @@ export default function About() {
             </div>
 
             {/* Bottom Row - 4 Regular Cards in One Row */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
               {[
                 { img: new16_png, name: 'Sarah Ahmed', role: 'Nursing Student', quote: 'A unique place where dreams come true with dedication and hard work. Best institution!' },
                 { img: new17, name: 'Arjun Patel', role: 'Lab Technician', quote: 'Exceptional training and guidance from experienced faculty. Career-focused approach throughout.' },

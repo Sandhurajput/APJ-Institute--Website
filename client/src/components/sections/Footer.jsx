@@ -103,7 +103,7 @@ export default function Footer() {
               </p>
               <p>
                 <strong>Email:</strong><br />
-                info@apjinstitute.com
+                apjinstituteparamedicaldantewa@gmail.com
               </p>
             </div>
           </motion.div>
