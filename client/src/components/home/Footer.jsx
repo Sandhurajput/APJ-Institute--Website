@@ -20,7 +20,7 @@ export default function Footer() {
               <span className="text-blue-500">APJ</span> Institute
             </h3>
             <p className="mt-4 text-xs leading-relaxed text-slate-400 text-justify">
-              AP Education Institute (also known as AP Paramedical Institute) is a career-oriented training center located at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur. They offer vocational and diploma programs in allied healthcare, including BMLT, DMLT, OT Technician, and X-Ray Technician.
+              AP Education Institute (also known as AP Paramedical Institute) is a career-oriented training center located at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Dantewada. They offer vocational and diploma programs in allied healthcare, including BMLT, DMLT, OT Technician, and X-Ray Technician.
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export default function Footer() {
                   <FaMapMarkerAlt size={14} />
                 </div>
                 <a href="https://maps.google.com/?q=Sector+9,+Raghuraj+Tower+(Opposite+MMR+Hospital),+Kamal+Vihar,+Raipur" target="_blank" rel="noopener noreferrer" className="text-slate-400 leading-relaxed hover:text-blue-400 transition-colors">
-                  Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur
+                  Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Dantewada
                 </a>
               </li>
               <li className="flex items-center gap-3">
