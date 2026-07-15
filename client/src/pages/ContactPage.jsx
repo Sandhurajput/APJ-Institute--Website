@@ -11,10 +11,10 @@ import Footer from '../components/home/Footer';
 import contactImage from '../contact.jpeg';
 
 const faqs = [
-  { q: "How can I apply for admission?", a: "Admission is conducted offline only. Please visit the campus directly to collect and submit your admission form. You can fill the enquiry form above and our team will guide you through the complete admission process." },
-  { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (2 Years), X-Ray / Radiography Technician (2 Years), OT Technician (2 Years), and Hospital Assistant Certification (6 Months)." },
-  { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable hostel facilities exclusively for boys with mess, Wi-Fi, and 24/7 security." },
-  { q: "How to contact the administration office?", a: "You can call us at 9243758191, email info@apjinstitute.com, or visit us at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur." },
+  { q: "How can I apply for admission?", a: "You can apply online through our website or visit the campus directly. Fill the enquiry form above and our team will guide you through the complete admission process." },
+  { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (3 Years), DOA (2 Years), and CCH (6 Months)." },
+  { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable separate hostel facilities for boys and girls with mess, Wi-Fi, and 24/7 security." },
+  { q: "How to contact the administration office?", a: "You can call us at 9243758191 / 9307616474, email apjinstituteparamedicaldantewa@gmail.com, or visit us at Sanjay Nagar, near BSNL Exchange Office, Dantewada (C.G.)." },
   { q: "What is the fee structure?", a: "Fee varies by course. BMLT starts at ₹45,000/year. Contact our admission office for the complete fee breakdown and available scholarship options." },
 ];
 
