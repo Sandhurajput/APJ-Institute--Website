@@ -1,4 +1,4 @@
-import { FaInstagram, FaLinkedinIn, FaChevronRight, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import { FaChevronRight, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { courseNames, quickLinks } from '../../data/homepageData';
 
@@ -22,17 +22,6 @@ export default function Footer() {
             <p className="mt-4 text-xs leading-relaxed text-slate-400 text-justify">
               AP Education Institute (also known as AP Paramedical Institute) is a career-oriented training center located at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur. They offer vocational and diploma programs in allied healthcare, including BMLT, DMLT, OT Technician, X-Ray Technician, D. Pharmacy, and B. Pharmacy.
             </p>
-
-            <div className="mt-6 flex gap-3">
-              {[
-                { icon: FaInstagram, href: 'https://www.instagram.com/apjinstitutekanker?igsh=NngwZmxzYmNnZ3Fp' },
-                { icon: FaLinkedinIn, href: '#' }
-              ].map((social, index) => (
-                <a key={index} href={social.href} className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 transition-all duration-300 hover:bg-blue-600 hover:text-white hover:border-blue-500 hover:-translate-y-1 shadow-lg">
-                  <social.icon size={14} />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Column 2: Quick Links */}

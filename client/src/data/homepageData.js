@@ -47,7 +47,7 @@ export const highlights = [
   { title: 'Modern Smart Classrooms', description: 'Comfortable, technology-enabled classrooms designed for focused and interactive learning.', icon: 'faculty' },
   { title: 'Advanced Computer & Digital Lab', description: 'Hands-on computer and digital lab access for practical skill development and modern training.', icon: 'excellence' },
   { title: 'Experienced & Qualified Teachers', description: 'Dedicated faculty members who guide students with clarity, care, and subject expertise.', icon: 'activity' },
-  { title: 'Safe Hostel Facility', description: 'Secure and student-friendly hostel support for boys and girls with a disciplined environment.', icon: 'placement' },
+  { title: 'Safe Hostel Facility', description: 'Secure and student-friendly hostel support exclusively for boys with a disciplined environment.', icon: 'placement' },
   { title: 'Library & E-Learning Access', description: 'Study resources, reference books, and digital learning support to strengthen academic performance.', icon: 'package' },
 ];
 

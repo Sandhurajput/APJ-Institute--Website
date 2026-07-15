@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import TopHeaderBar from '../components/home/TopHeaderBar';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
+import courseImage from '../course.jpeg';
 
 const paramedicalCourses = [
   {
@@ -147,7 +148,7 @@ export default function CoursesPage() {
       <section className="relative min-h-[70vh] flex flex-col justify-center items-center pt-28 pb-36 overflow-hidden bg-slate-900 border-b border-slate-800">
         {/* Background Effects */}
         <div className="absolute inset-0 z-0 bg-slate-900">
-          <div className="absolute inset-0 bg-[url('/assets/course-images/new_building.png')] bg-cover bg-center opacity-60"></div>
+          <div className="absolute inset-0 bg-cover bg-center opacity-60" style={{ backgroundImage: `url(${courseImage})` }}></div>
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/20 to-slate-900/80"></div>
           {/* Animated Glows */}
           <motion.div 
@@ -188,17 +189,17 @@ export default function CoursesPage() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row justify-center items-center gap-4"
+            className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-4 sm:px-0"
           >
             <motion.a 
               href="#courses" 
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="px-8 py-4 rounded-full bg-[#1e3a5f] text-white font-bold text-lg shadow-[0_0_30px_rgba(30,58,95,0.6)] hover:shadow-[0_0_50px_rgba(30,58,95,0.8)] hover:brightness-125 transition-all duration-300"
+              className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#1e3a5f] text-white font-bold text-lg shadow-[0_0_30px_rgba(30,58,95,0.6)] hover:shadow-[0_0_50px_rgba(30,58,95,0.8)] hover:brightness-125 transition-all duration-300 flex items-center justify-center"
             >
               Explore Courses
             </motion.a>
-            <Link to="/contact" className="group px-8 py-4 rounded-full border border-slate-500 bg-white/10 backdrop-blur-md text-white font-bold text-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2">
+            <Link to="/contact" className="w-full sm:w-auto group px-8 py-4 rounded-full border border-slate-500 bg-white/10 backdrop-blur-md text-white font-bold text-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2">
               Contact Advisor <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>
@@ -236,8 +237,8 @@ export default function CoursesPage() {
 
       {/* 3. PREMIUM COURSE CARDS SECTION */}
       <section id="courses" className="mx-auto max-w-7xl px-4 lg:px-8 pt-4 sm:pt-8 pb-24 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+          <div className="w-full md:w-auto">
             <h2 className="text-4xl font-extrabold text-slate-900 mb-4"><span className="text-[#1e3a5f]">Premium</span> Programs</h2>
             <p className="text-slate-600 max-w-xl">Choose from our industry-aligned paramedical courses designed to secure your future in the booming healthcare sector.</p>
           </div>
@@ -414,7 +415,7 @@ export default function CoursesPage() {
               { title: "Assured Placement", desc: "Dedicated placement cell with tie-ups to 50+ leading hospitals and diagnostic centers.", icon: <Building size={24} />, image: "/assets/course-images/classroom.png" },
               { title: "Experienced Faculty", desc: "Learn directly from practicing doctors, surgeons, and expert technologists.", icon: <GraduationCap size={24} />, image: "/assets/course-images/centrifuge.png" },
               { title: "Modern Medical Labs", desc: "Fully equipped pathology, microbiology, and radiology practical labs.", icon: <Microscope size={24} />, image: "/assets/course-images/blood_sample.png" },
-              { title: "Hostel Facility", desc: "Safe, secure, and comfortable hostel facility exclusively for girls.", icon: <CheckCircle2 size={24} />, image: "/assets/course-images/building.png" },
+              { title: "Hostel Facility", desc: "Safe, secure, and comfortable hostel facility exclusively for boys.", icon: <CheckCircle2 size={24} />, image: "/assets/course-images/ghar.jpeg", hideText: true },
               { title: "Govt. Approved", desc: "All courses are fully recognized and affiliated with medical boards.", icon: <Star size={24} />, image: "/assets/course-images/tejasvi_front.png" },
             ].map((feature, i) => (
               <motion.div 
@@ -423,17 +424,21 @@ export default function CoursesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: i * 0.2, duration: 0.6, ease: "easeOut" }}
-                className="bg-slate-50 border border-slate-200 p-6 rounded-3xl hover:bg-white hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:border-blue-300 transition-all duration-300 hover:-translate-y-2 flex flex-col gap-3 group"
+                className={`bg-slate-50 border border-slate-200 ${feature.hideText ? 'p-0' : 'p-6'} rounded-3xl hover:bg-white hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:border-blue-300 transition-all duration-300 hover:-translate-y-2 flex flex-col gap-3 group overflow-hidden`}
               >
-                <div className="w-full h-48 rounded-2xl overflow-hidden mb-2 relative">
+                <div className={`w-full ${feature.hideText ? 'h-full min-h-[320px]' : 'h-48 mb-2'} rounded-2xl overflow-hidden relative`}>
                   <img src={feature.image} alt={feature.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md text-white flex items-center justify-center border border-white/30 shadow-lg">
                     {feature.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mt-2">{feature.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+                {!feature.hideText && (
+                  <>
+                    <h3 className="text-xl font-bold text-slate-900 mt-2">{feature.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+                  </>
+                )}
               </motion.div>
             ))}
           </div>
@@ -443,26 +448,26 @@ export default function CoursesPage() {
 
 
       {/* 6. PREMIUM CTA SECTION */}
-      <section className="relative py-24 mx-4 sm:mx-8 lg:mx-auto max-w-7xl mb-24 overflow-hidden rounded-[3rem] shadow-[0_0_100px_rgba(37,99,235,0.2)]">
+      <section className="relative py-16 sm:py-24 mx-4 sm:mx-8 lg:mx-auto max-w-7xl mb-16 sm:mb-24 overflow-hidden rounded-3xl sm:rounded-[3rem] shadow-[0_0_100px_rgba(37,99,235,0.2)]">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0f1f3a] via-[#1e3a5f] to-[#0f1f3a] z-0"></div>
         <div className="absolute inset-0 bg-[url('/assets/course-images/blood_close.png')] bg-cover bg-center opacity-30 mix-blend-overlay"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
         
-        <div className="relative z-10 text-center px-4 md:px-12 py-16 flex flex-col items-center">
+        <div className="relative z-10 text-center px-4 md:px-12 py-10 sm:py-16 flex flex-col items-center">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
-            className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 border border-white/20 shadow-2xl"
+            className="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 sm:mb-8 border border-white/20 shadow-2xl"
           >
-            <Stethoscope size={40} className="text-blue-300" />
+            <Stethoscope size={32} className="text-blue-300 sm:w-10 sm:h-10" />
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 drop-shadow-lg">Your Medical Career <br/>Starts Here</h2>
-          <p className="text-xl text-blue-100/90 max-w-2xl mb-10 font-light">Join thousands of successful healthcare professionals. Limited seats available for the upcoming academic session.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 sm:mb-6 drop-shadow-lg">Your Medical Career <br className="hidden sm:block"/>Starts Here</h2>
+          <p className="text-lg sm:text-xl text-blue-100/90 max-w-2xl mb-8 sm:mb-10 font-light px-2">Join thousands of successful healthcare professionals. Limited seats available for the upcoming academic session.</p>
           
-          <div className="flex flex-col sm:flex-row gap-5 mt-4">
-            <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}>
-              <Link to="/contact" className="px-10 py-5 rounded-full bg-[#1e3a5f] hover:bg-[#2a4d75] text-white font-black text-lg shadow-[0_0_40px_rgba(30,58,95,0.6)] transition-colors duration-300 flex items-center justify-center gap-2 group">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-2 sm:mt-4 w-full sm:w-auto px-4 sm:px-0">
+            <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }} className="w-full sm:w-auto">
+              <Link to="/contact" className="w-full px-8 sm:px-10 py-4 sm:py-5 rounded-full bg-[#1e3a5f] hover:bg-[#2a4d75] text-white font-black text-base sm:text-lg shadow-[0_0_40px_rgba(30,58,95,0.6)] transition-colors duration-300 flex items-center justify-center gap-2 group">
                 Apply Now <ArrowRight size={20} className="group-hover:translate-x-1.5 transition-transform duration-300" />
               </Link>
             </motion.div>
@@ -471,7 +476,7 @@ export default function CoursesPage() {
               target="_blank" 
               rel="noreferrer" 
               whileHover={{ scale: 1.05 }}
-              className="px-10 py-5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-black text-lg shadow-[0_0_40px_rgba(37,211,102,0.4)] transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-black text-base sm:text-lg shadow-[0_0_40px_rgba(37,211,102,0.4)] transition-all duration-300 flex items-center justify-center gap-2"
             >
               Chat on WhatsApp
             </motion.a>
