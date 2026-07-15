@@ -1,21 +1,22 @@
-import posterBanner from '../../WhatsApp Image 2026-05-19 at 6.06.32 PM.jpeg';
-import classroomImage from '../../WhatsApp Image 2026-05-17 at 9.41.02 PM.jpeg';
-import labCollageImage from '../../WhatsApp Image 2026-05-17 at 9.41.19 PM.jpeg';
-import instituteBuildingImage from '../../WhatsApp Image 2026-05-17 at 9.41.22 PM.jpeg';
-import classroomStudents1 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.09 PM.jpeg';
-import classroomStudents2 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.12 PM.jpeg';
-import classroomStudents3 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.14 PM.jpeg';
-import buildingImage from '../../WhatsApp Image 2026-05-17 at 9.41.22 PM.jpeg';
+import posterBanner from '/admission-promo.png';
+import classroomImage from '/assets/classroom.png';
+import labCollageImage from '/assets/lab_demo.png';
+import instituteBuildingImage from '/assets/course-images/building.png';
+import classroomStudents1 from '/assets/course-images/classroom.png';
+import classroomStudents2 from '/assets/course-images/classroom.png';
+import classroomStudents3 from '/assets/course-images/classroom.png';
+import buildingImage from '/assets/course-images/building.png';
+
 import inquiryCounselingImage from '../../enquiry1.webp';
 import eligibilityCheckImage from '../../documents.webp';
 import applicationFormImage from '../../form.webp';
 import documentSubmissionImage from '../../marksheet.webp';
 import feePaymentImage from '../../fees.webp';
 import confirmationImage from '../../receipt.webp';
-import admissionSupportImage from '../components/home/WhatsApp Image 2026-05-17 at 9.41.14 PM.jpeg';
-import admissionCampusImage from '../../WhatsApp Image 2026-05-17 at 9.41.22 PM.jpeg';
-import newsImage from '../../WhatsApp Image 2026-05-19 at 6.06.32 PM.jpeg';
 
+import admissionSupportImage from '/assets/teacher.png';
+import admissionCampusImage from '/assets/course-images/new_building.png';
+import newsImage from '/assets/hero_bg.png';
 export const heroSlides = [
   {
     eyebrow: 'Admissions Open 2026',
