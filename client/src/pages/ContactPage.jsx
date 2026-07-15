@@ -5,14 +5,16 @@ import {
   MapPin, Phone, Mail, Clock, Send, ArrowRight,
   ChevronDown, GraduationCap, HelpCircle, PhoneCall
 } from 'lucide-react';
+import TopHeaderBar from '../components/home/TopHeaderBar';
+import Navbar from '../components/home/Navbar';
+import Footer from '../components/home/Footer';
+import contactImage from '../contact.jpeg';
 
-
-/* ─── FAQ Data ─── */
 const faqs = [
-  { q: "How can I apply for admission?", a: "You can apply online through our website or visit the campus directly. Fill the enquiry form above and our team will guide you through the complete admission process." },
-  { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (2 Years), X-Ray / Radiography Technician (2 Years), OT Technician (2 Years), B.Sc. Nursing (4 Years), and Hospital Assistant Certification (6 Months)." },
-  { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable separate hostel facilities for boys and girls with mess, Wi-Fi, and 24/7 security." },
-  { q: "How to contact the administration office?", a: "You can call us at 9243758191 / 9307616474, email apjinstituteparamedicaldantewa@gmail.com, or visit us at Sanjay Nagar, near BSNL Exchange Office, Dantewada (C.G.)." },
+  { q: "How can I apply for admission?", a: "Admission is conducted offline only. Please visit the campus directly to collect and submit your admission form. You can fill the enquiry form above and our team will guide you through the complete admission process." },
+  { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (2 Years), X-Ray / Radiography Technician (2 Years), OT Technician (2 Years), and Hospital Assistant Certification (6 Months)." },
+  { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable hostel facilities exclusively for boys with mess, Wi-Fi, and 24/7 security." },
+  { q: "How to contact the administration office?", a: "You can call us at 9243758191, email info@apjinstitute.com, or visit us at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur." },
   { q: "What is the fee structure?", a: "Fee varies by course. BMLT starts at ₹45,000/year. Contact our admission office for the complete fee breakdown and available scholarship options." },
 ];
 
@@ -89,6 +91,8 @@ export default function ContactPage() {
 
   return (
     <div className="bg-slate-100 min-h-screen text-slate-800 overflow-x-hidden selection:bg-[#1e3a5f]/30">
+      <TopHeaderBar />
+      <Navbar />
 
       {/* ════════════════════════════════════════════
           1. HERO SECTION
@@ -100,9 +104,10 @@ export default function ContactPage() {
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center bg-fixed opacity-50 mix-blend-luminosity"
+            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-70"
+            style={{ backgroundImage: `url(${contactImage})` }}
           ></motion.div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#071028]/80 via-[#071028]/60 to-[#071028]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#071028]/70 via-[#071028]/40 to-[#071028]/95"></div>
           {/* Animated Glows */}
           <motion.div 
             animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }} 
@@ -133,7 +138,7 @@ export default function ContactPage() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl"
           >
-            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-[#1e3a5f] filter drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]">APJ Institute</span>
+            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-500 filter drop-shadow-[0_0_30px_rgba(59,130,246,0.8)]">APJ Institute</span>
           </motion.h1>
 
           <motion.p 
@@ -149,15 +154,15 @@ export default function ContactPage() {
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row justify-center items-center gap-5"
+            className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5 w-full sm:w-auto px-4 sm:px-0"
           >
             <a 
               href="tel:9243758191" 
-              className="group px-8 py-4 rounded-full bg-[#1e3a5f] text-white font-bold text-lg shadow-[0_0_30px_rgba(30,58,95,0.5)] hover:shadow-[0_0_50px_rgba(30,58,95,0.8)] hover:-translate-y-1 hover:bg-[#152a45] transition-all duration-300 flex items-center gap-2"
+              className="w-full sm:w-auto group px-8 py-4 rounded-full bg-[#1e3a5f] text-white font-bold text-lg shadow-[0_0_30px_rgba(30,58,95,0.5)] hover:shadow-[0_0_50px_rgba(30,58,95,0.8)] hover:-translate-y-1 hover:bg-[#152a45] transition-all duration-300 flex items-center justify-center gap-2"
             >
               <PhoneCall size={20} className="group-hover:scale-110 transition-transform duration-300" /> Call Now
             </a>
-            <a href="https://wa.me/919243758191" target="_blank" rel="noreferrer" className="group px-8 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl text-white font-bold text-lg hover:bg-white/15 hover:-translate-y-1 shadow-lg transition-all duration-300 flex items-center gap-2">
+            <a href="https://wa.me/919243758191" target="_blank" rel="noreferrer" className="w-full sm:w-auto group px-8 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl text-white font-bold text-lg hover:bg-white/15 hover:-translate-y-1 shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
               Contact Advisor <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform duration-300" />
             </a>
           </motion.div>
@@ -176,9 +181,9 @@ export default function ContactPage() {
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-white/80 backdrop-blur-xl rounded-3xl border border-white shadow-[0_20px_50px_rgba(30,58,95,0.08)]"
         >
           {[
-            { icon: <MapPin size={28} />, label: 'Our Address', value: 'Sanjay Nagar, Dantewada', color: 'text-blue-600', bg: 'bg-blue-50' },
+            { icon: <MapPin size={28} />, label: 'Our Address', value: 'Jawahar ward, Raipur', color: 'text-blue-600', bg: 'bg-blue-50' },
             { icon: <Phone size={28} />, label: 'Phone Number', value: '92437 58191', color: 'text-[#1e3a5f]', bg: 'bg-[#1e3a5f]/5' },
-            { icon: <Mail size={28} />, label: 'Email Address', value: 'apjinstituteparamedicaldantewa@gmail.com', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+            { icon: <Mail size={28} />, label: 'Email Address', value: 'info@apjinstitute.com', color: 'text-indigo-600', bg: 'bg-indigo-50' },
             { icon: <Clock size={28} />, label: 'Working Hours', value: 'Mon – Sat: 9 AM – 5 PM', color: 'text-purple-600', bg: 'bg-purple-50' },
           ].map((card, i) => (
             <motion.div
@@ -292,14 +297,14 @@ export default function ContactPage() {
             className="flex flex-col gap-6">
             <div className="mb-4">
               <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Find Us on <span className="text-[#1e3a5f]">Map</span></h2>
-              <p className="text-slate-600 text-lg font-medium">Visit our campus in Dantewada for a personal tour and guidance session.</p>
+              <p className="text-slate-600 text-lg font-medium">Visit our campus in Raipur for a personal tour and guidance session.</p>
             </div>
 
-            <div className="relative flex-1 min-h-[450px] rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_rgba(30,58,95,0.08)] bg-white group p-2">
-              <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
+            <div className="relative flex-1 min-h-[350px] sm:min-h-[450px] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_rgba(30,58,95,0.08)] bg-white group p-2">
+              <div className="w-full h-full rounded-2xl sm:rounded-[1.5rem] overflow-hidden relative">
                 <iframe
-                  title="APJ Institute Dantewada Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.0!2d81.35!3d18.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sDantewada%2C+Chhattisgarh!5e0!3m2!1sen!2sin!4v1"
+                  title="APJ Institute Raipur Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.0!2d81.35!3d18.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRaipur%2C+Chhattisgarh!5e0!3m2!1sen!2sin!4v1"
                   className="absolute inset-0 w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -311,14 +316,14 @@ export default function ContactPage() {
                   initial={{ y: 20, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.5 }}
-                  className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-xl border border-white rounded-2xl p-5 flex items-center gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-transform duration-300"
+                  className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-xl border border-white rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-transform duration-300"
                 >
-                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center shrink-0 border border-blue-100/50">
-                    <MapPin size={28} className="text-[#1e3a5f]" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-50 rounded-xl flex items-center justify-center shrink-0 border border-blue-100/50">
+                    <MapPin size={24} className="text-[#1e3a5f] sm:w-7 sm:h-7" />
                   </div>
                   <div>
-                    <p className="text-slate-900 font-extrabold text-base">APJ Institute Campus</p>
-                    <p className="text-slate-500 text-sm font-medium mt-0.5">Sanjay Nagar, Near BSNL Exchange, Dantewada</p>
+                    <p className="text-slate-900 font-extrabold text-sm sm:text-base">APJ Institute Campus</p>
+                    <p className="text-slate-500 text-xs sm:text-sm font-medium mt-0.5">Sector 9, Raghuraj Tower, Kamal Vihar, Raipur</p>
                   </div>
                 </motion.div>
               </div>
@@ -332,21 +337,21 @@ export default function ContactPage() {
       ════════════════════════════════════════════ */}
       <section className="mx-auto max-w-7xl px-4 lg:px-8 pb-20">
         <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-[3rem] bg-white border border-white shadow-[0_20px_60px_rgba(30,58,95,0.08)] group hover:shadow-[0_30px_70px_rgba(30,58,95,0.12)] transition-shadow duration-500">
+          className="relative overflow-hidden rounded-3xl sm:rounded-[3rem] bg-white border border-white shadow-[0_20px_60px_rgba(30,58,95,0.08)] group hover:shadow-[0_30px_70px_rgba(30,58,95,0.12)] transition-shadow duration-500">
           
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/80 rounded-full blur-[100px] pointer-events-none group-hover:bg-blue-100/80 transition-colors duration-700"></div>
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-50/50 rounded-full blur-[80px] pointer-events-none"></div>
 
-          <div className="relative z-10 grid md:grid-cols-[1fr_auto] gap-10 items-center p-12 md:p-16 lg:p-20">
+          <div className="relative z-10 grid md:grid-cols-[1fr_auto] gap-8 md:gap-10 items-center p-6 sm:p-12 md:p-16 lg:p-20">
             <div>
               <motion.div 
                 whileHover={{ rotate: 10, scale: 1.1 }}
-                className="w-20 h-20 bg-blue-50 rounded-[1.5rem] flex items-center justify-center mb-8 border border-blue-100 shadow-sm"
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-50 rounded-2xl sm:rounded-[1.5rem] flex items-center justify-center mb-6 sm:mb-8 border border-blue-100 shadow-sm"
               >
-                <GraduationCap size={40} className="text-[#1e3a5f]" />
+                <GraduationCap size={32} className="text-[#1e3a5f] sm:w-10 sm:h-10" />
               </motion.div>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">Need Admission<br />Guidance?</h2>
-              <p className="text-slate-600 text-lg font-medium leading-relaxed max-w-lg">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 sm:mb-5 leading-tight tracking-tight">Need Admission <br className="hidden sm:block" />Guidance?</h2>
+              <p className="text-slate-600 text-base sm:text-lg font-medium leading-relaxed max-w-lg">
                 Our support team helps students choose the right healthcare and paramedical career path. Get personalized counseling and complete admission support.
               </p>
             </div>
@@ -392,6 +397,8 @@ export default function ContactPage() {
           ))}
         </motion.div>
       </section>
+
+      <Footer />
     </div>
   );
 }
