@@ -4,8 +4,8 @@ import { Mail, PhoneCall, MessageCircle } from 'lucide-react';
 const contactItems = [
   {
     icon: Mail,
-    label: 'info@apjinstitute.com',
-    href: 'mailto:info@apjinstitute.com',
+    label: 'apjinstituteparamedicaldantewa@gmail.com',
+    href: 'mailto:apjinstituteparamedicaldantewa@gmail.com',
     align: 'md:justify-self-start',
   },
   {
@@ -47,7 +47,7 @@ export default function TopHeaderBar() {
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white transition group-hover:bg-white/20">
                   <Icon className="h-4 w-4" />
                 </span>
-                <span className="truncate">{label}</span>
+                <span>{label}</span>
               </motion.a>
             ))}
           </div>

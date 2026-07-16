@@ -30,7 +30,7 @@ const paramedicalCourses = [
     title: "DMLT (Diploma in Medical Laboratory Technology)",
     category: "Diploma",
     description: "Intensive diploma covering fundamental lab techniques, hematology, and microbiology.",
-    duration: "3 Years",
+    duration: "2 Years",
     fees: "₹35,000/year",
     seats: 50,
     eligibility: "10+2 (Science)",
@@ -38,10 +38,22 @@ const paramedicalCourses = [
     image: "/assets/course-images/centrifuge.png",
     icon: <Activity size={24} />
   },
-
+  {
+    id: 3,
+    title: "X-Ray Technician (Diploma in X-Ray Technology)",
+    category: "Diploma",
+    description: "Learn to operate x-ray equipment, process images, and assist radiologists in diagnostic imaging.",
+    duration: "2 Years",
+    fees: "₹40,000/year",
+    seats: 40,
+    eligibility: "10+2 (Science)",
+    salary: "₹2.5-4.5 LPA",
+    image: "/assets/course-images/classroom.png",
+    icon: <ActivitySquare size={24} />
+  },
   {
     id: 4,
-    title: "DOA (Diploma in Ophthalmic Assistant)",
+    title: "Ophthalmic Assistant",
     category: "Diploma",
     description: "Eye care support training for clinics, vision testing, and ophthalmology assistance.",
     duration: "2 Years",
@@ -54,10 +66,10 @@ const paramedicalCourses = [
   },
   {
     id: 5,
-    title: "CCH (Certificate in Community Health)",
-    category: "Certification",
+    title: "Medical Lab Technician",
+    category: "Diploma",
     description: "Advanced lab support program for diagnostic testing, lab processing, and technical assistance.",
-    duration: "6 Months",
+    duration: "2 Years",
     fees: "₹35,000/year",
     seats: 50,
     eligibility: "10+2 (Science)",
@@ -69,7 +81,7 @@ const paramedicalCourses = [
 
 const categories = ["All", "Degree", "Diploma", "Certification"];
 
-const CountUp = ({ to, duration = 2, suffix = "" }) => {
+const CountUp = ({ to, duration = 2, suffix = "", prefix = "" }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px" });
@@ -93,7 +105,7 @@ const CountUp = ({ to, duration = 2, suffix = "" }) => {
     }
   }, [isInView, to, duration]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  return <span ref={ref}>{prefix}{count}{suffix}</span>;
 };
 
 export default function CoursesPage() {
@@ -121,7 +133,7 @@ export default function CoursesPage() {
   const itemVariants = {
     hidden: (direction) => ({
       opacity: 0,
-      x: direction === 'left' ? 100 : direction === 'right' ? -100 : 0,
+      x: direction === 'left' ? -100 : direction === 'right' ? 100 : 0,
       y: direction === 'center' ? 50 : 0
     }),
     show: { opacity: 1, x: 0, y: 0, transition: { type: "spring", stiffness: 60 } }
@@ -199,9 +211,9 @@ export default function CoursesPage() {
         <div className="-mt-16 mb-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-white/90 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
             {[
-              { label: "Students", value: 5000, suffix: "+", icon: <Users className="text-[#1e3a5f] mb-2" size={28} /> },
+              { label: "Students", value: 3, prefix: "2-", suffix: "k+", icon: <Users className="text-[#1e3a5f] mb-2" size={28} /> },
               { label: "Placement", value: 95, suffix: "%", icon: <Trophy className="text-blue-400 mb-2" size={28} /> },
-              { label: "Experience", value: 10, suffix: "+ Yrs", icon: <Award className="text-indigo-400 mb-2" size={28} /> },
+              { label: "Experience", value: 5, suffix: "+ Yrs", icon: <Award className="text-indigo-400 mb-2" size={28} /> },
               { label: "Modern Labs", value: 15, suffix: "+", icon: <Microscope className="text-purple-400 mb-2" size={28} /> }
             ].map((stat, idx) => (
               <motion.div 
@@ -214,7 +226,7 @@ export default function CoursesPage() {
               >
                 <div className="group-hover:-translate-y-2 transition-transform duration-300 ease-out">{stat.icon}</div>
                 <h3 className="text-3xl font-black text-slate-900 tracking-wider my-1 drop-shadow-md">
-                  <CountUp to={stat.value} duration={2} suffix={stat.suffix} />
+                  <CountUp to={stat.value} duration={2} suffix={stat.suffix} prefix={stat.prefix || ""} />
                 </h3>
                 <p className="text-sm font-medium text-slate-500 uppercase tracking-widest">{stat.label}</p>
               </motion.div>
@@ -329,21 +341,44 @@ export default function CoursesPage() {
 
           return (
             <>
-              {filteredCourses.length === 4 ? (
+              {filteredCourses.length === 5 ? (
                 <motion.div 
                   variants={containerVariants}
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: false, amount: 0.1 }}
-                  className="grid gap-28 grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto"
+                  className="grid gap-8 lg:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
                 >
                   {/* Left Column (2 cards) */}
-                  <div className="flex flex-col gap-28">
+                  <div className="flex flex-col gap-8 lg:gap-12">
+                    {filteredCourses.slice(0, 2).map((c) => renderCourseCard(c, 'left'))}
+                  </div>
+                  
+                  {/* Center Column (1 card, vertically centered) */}
+                  <div className="flex flex-col justify-center mt-8 lg:mt-0">
+                    {filteredCourses.slice(2, 3).map((c) => renderCourseCard(c, 'center'))}
+                  </div>
+                  
+                  {/* Right Column (2 cards) */}
+                  <div className="flex flex-col gap-8 lg:gap-12 mt-8 lg:mt-0">
+                    {filteredCourses.slice(3, 5).map((c) => renderCourseCard(c, 'right'))}
+                  </div>
+                </motion.div>
+              ) : filteredCourses.length === 4 ? (
+                <motion.div 
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: false, amount: 0.1 }}
+                  className="grid gap-12 grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto"
+                >
+                  {/* Left Column (2 cards) */}
+                  <div className="flex flex-col gap-12">
                     {filteredCourses.slice(0, 2).map((c) => renderCourseCard(c, 'left'))}
                   </div>
                   
                   {/* Right Column (2 cards) */}
-                  <div className="flex flex-col gap-28">
+                  <div className="flex flex-col gap-12">
                     {filteredCourses.slice(2, 4).map((c) => renderCourseCard(c, 'right'))}
                   </div>
                 </motion.div>
@@ -356,7 +391,7 @@ export default function CoursesPage() {
                   className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
                 >
                   <AnimatePresence mode="popLayout">
-                    {filteredCourses.map(renderCourseCard)}
+                    {filteredCourses.map((c) => renderCourseCard(c, 'center'))}
                   </AnimatePresence>
                 </motion.div>
               )}

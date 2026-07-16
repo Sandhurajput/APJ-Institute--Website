@@ -50,7 +50,7 @@ export const resultsData = [
 
 export const contactCards = [
   { title: 'Examination Cell', value: '+91 78945 11223', note: 'Mon-Sat, 10:00 AM - 4:00 PM' },
-  { title: 'Email', value: 'exam@apjinstitute.edu', note: 'Response within 24 hours' },
+  { title: 'Email', value: 'apjinstituteparamedicaldantewa@gmail.com', note: 'Response within 24 hours' },
   { title: 'Campus Address', value: 'APJ Institute Raipur', note: 'Main campus, Raipur, Chhattisgarh' },
 ];
 

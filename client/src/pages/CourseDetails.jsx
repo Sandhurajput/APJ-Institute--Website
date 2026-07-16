@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { courses } from '../utils/courseData';
 import { FiArrowLeft, FiCheckCircle, FiBriefcase, FiBookOpen, FiClipboard } from 'react-icons/fi';
+import TopHeaderBar from '../components/home/TopHeaderBar';
+import Navbar from '../components/home/Navbar';
+import Footer from '../components/home/Footer';
 
 export default function CourseDetails() {
   const { courseId } = useParams();
   const course = courses.find((item) => item.id === courseId);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [courseId]);
 
   if (!course) {
     return <Navigate to="/courses" replace />;
   }
 
   return (
-    <main className="bg-slate-50 pb-16 pt-6">
+    <div className="min-h-screen flex flex-col">
+      <TopHeaderBar />
+      <Navbar />
+      <main className="bg-slate-50 pb-16 pt-6 flex-grow">
       <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <Link to="/courses" className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-50">
           <FiArrowLeft />
@@ -115,5 +125,7 @@ export default function CourseDetails() {
         </div>
       </div>
     </main>
+      <Footer />
+    </div>
   );
 }

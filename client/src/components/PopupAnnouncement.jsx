@@ -62,7 +62,7 @@ export default function PopupAnnouncement() {
                   </div>
                   <div>
                     <p className="text-xs font-bold text-white">APJ Institute</p>
-                    <p className="text-[11px] text-blue-100">Raipur</p>
+                    <p className="text-[11px] text-blue-100">Dantewada</p>
                   </div>
                 </div>
                 {/* Header Badge */}
@@ -193,7 +193,7 @@ export default function PopupAnnouncement() {
                     </div>
                     <div className="flex items-center gap-2 text-xs">
                       <FaMapMarkerAlt />
-                      <span className="leading-tight">Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur</span>
+                      <span className="leading-tight">Sanjay Nagar, near New BSNL Exchange Office, Shani Mandir Road, Dantewada (C.G.)</span>
                     </div>
                   </div>
                 </motion.div>
@@ -212,7 +212,7 @@ export default function PopupAnnouncement() {
               </div>
               <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
                 <a
-                  href="https://wa.me/919243758191?text=Hi, I'm interested in admission for paramedical courses at APJ Institute Raipur"
+                  href="https://wa.me/919243758191?text=Hi, I'm interested in admission for paramedical courses at APJ Institute Dantewada"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}

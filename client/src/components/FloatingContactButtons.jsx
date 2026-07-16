@@ -31,7 +31,7 @@ export default function FloatingContactButtons() {
     {
       icon: <Mail size={22} />,
       label: 'Email Us',
-      href: 'mailto:info@apjinstitutedantewada.com',
+      href: 'mailto:apjinstituteparamedicaldantewa@gmail.com',
       color: 'hover:text-indigo-400',
       glow: 'hover:shadow-[0_0_20px_rgba(99,102,241,0.6)]',
       border: 'hover:border-indigo-500'
