@@ -9,12 +9,8 @@ const navLinks = [
   { label: 'About', href: '/about' },
   { label: 'Courses', href: '/courses' },
   { label: 'Admission', href: '/admission' },
-<<<<<<< HEAD
   { label: 'News & Announcements', href: '/#news' },
-  { label: 'Gallery', href: '/facilities' },
-=======
   { label: 'Gallery', href: '/gallery' },
->>>>>>> origin/main
   { label: 'Facilities', href: '/facilities' },
   { label: 'Contact', href: '/contact' },
 ];

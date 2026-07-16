@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { FaFlask, FaEye, FaMicroscope, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
 import medicalFlyer from '../assets/medical_flyer.jpg';
 
 export default function PopupAnnouncement() {
@@ -54,8 +56,6 @@ export default function PopupAnnouncement() {
             >
               <X size={24} />
             </button>
-
-<<<<<<< HEAD
             {/* Digital Poster Section */}
               <div className="relative overflow-hidden bg-gradient-to-b from-blue-700 via-blue-600 to-blue-800 p-6 sm:p-8 max-h-[70vh] overflow-y-auto">
               {/* Animated background elements */}
@@ -237,41 +237,6 @@ export default function PopupAnnouncement() {
                 </button>
               </div>
             </div>
-=======
-            {/* Poster Container with floating animation and glassmorphism */}
-            <motion.div
-              animate={{ y: [-8, 8, -8] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative w-full rounded-2xl md:rounded-[2.5rem] bg-transparent p-2 md:p-5 backdrop-blur-2xl border border-blue-400/30 shadow-[0_0_60px_-5px_rgba(37,99,235,0.6)] hover:shadow-[0_0_90px_-5px_rgba(59,130,246,0.8)] transition-shadow duration-500"
-            >
-              {/* Blue Corner Glows */}
-              <div className="pointer-events-none absolute -top-3 -left-3 w-16 h-16 rounded-full bg-blue-500/60 blur-xl z-20"></div>
-              <div className="pointer-events-none absolute -top-3 -right-3 w-16 h-16 rounded-full bg-blue-400/60 blur-xl z-20"></div>
-              <div className="pointer-events-none absolute -bottom-3 -left-3 w-16 h-16 rounded-full bg-sky-500/60 blur-xl z-20"></div>
-              <div className="pointer-events-none absolute -bottom-3 -right-3 w-16 h-16 rounded-full bg-blue-500/60 blur-xl z-20"></div>
-              <Link 
-                to="/contact" 
-                onClick={() => setIsOpen(false)}
-                className="relative w-full flex justify-center items-center overflow-hidden rounded-xl md:rounded-[2rem] group cursor-pointer"
-              >
-                <img
-                  src={medicalFlyer}
-                  alt="APJ Paramedical Admissions Open Flyer"
-                  className="w-full h-auto max-h-[70vh] object-contain block transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-                
-                {/* Glow border overlay on image */}
-                <div className="absolute inset-0 rounded-xl md:rounded-[2rem] ring-1 ring-inset ring-white/20 group-hover:ring-blue-400/60 transition-all duration-500 pointer-events-none"></div>
-
-                {/* Premium overlay badge */}
-                <div className="absolute inset-0 bg-blue-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[4px]">
-                  <span className="bg-gradient-to-r from-blue-600 to-sky-500 text-white text-sm md:text-lg font-black tracking-[0.2em] uppercase px-8 py-4 rounded-full shadow-[0_20px_40px_rgba(37,99,235,0.6)] border border-white/20 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
-                    Apply Admission Online
-                  </span>
-                </div>
-              </Link>
-            </motion.div>
->>>>>>> origin/main
           </motion.div>
         </motion.div>
       )}
