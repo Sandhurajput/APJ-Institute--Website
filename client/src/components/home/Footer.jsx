@@ -20,7 +20,7 @@ export default function Footer() {
               <span className="text-blue-500">APJ</span> Institute
             </h3>
             <p className="mt-4 text-xs leading-relaxed text-slate-400 text-justify">
-              AP Education Institute (also known as AP Paramedical Institute) is a career-oriented training center located at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Dantewada. They offer vocational and diploma programs in allied healthcare, including BMLT, DMLT, OT Technician, and X-Ray Technician.
+              AP Education Institute (also known as AP Paramedical Institute) is a career-oriented training center located at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur. They offer vocational and diploma programs in allied healthcare, including BMLT, DMLT, OT Technician, and X-Ray Technician.
             </p>
           </div>
 
@@ -33,7 +33,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               {quickLinks.map((item) => (
                 <li key={item}>
-                  <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} className="group flex items-center gap-2 text-slate-400 transition-colors hover:text-blue-400">
+                  <Link to={item === 'Home' ? '/' : item === 'Gallery' ? '/facilities' : `/${item.toLowerCase()}`} className="group flex items-center gap-2 text-slate-400 transition-colors hover:text-blue-400">
                     <FaChevronRight className="text-[10px] text-slate-600 group-hover:text-blue-400 transition-colors" />
                     {item}
                   </Link>
@@ -53,8 +53,9 @@ export default function Footer() {
                 const courseRoutes = {
                   'BMLT': '/courses/bmlt',
                   'DMLT': '/courses/dmlt',
-                  'DOA': '/courses/doa',
-                  'CCH': '/courses/cch',
+                  'X-Ray Technician': '/courses/xray',
+                  'Ophthalmic Assistant': '/courses/doa',
+                  'Medical Lab Technician': '/courses/lab-tech',
                 };
                 return (
                   <li key={course}>
@@ -81,7 +82,7 @@ export default function Footer() {
                   <FaMapMarkerAlt size={14} />
                 </div>
                 <a href="https://maps.google.com/?q=Sector+9,+Raghuraj+Tower+(Opposite+MMR+Hospital),+Kamal+Vihar,+Raipur" target="_blank" rel="noopener noreferrer" className="text-slate-400 leading-relaxed hover:text-blue-400 transition-colors">
-                  Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Dantewada
+                  Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -96,8 +97,8 @@ export default function Footer() {
                 <div className="text-blue-400 shrink-0">
                   <FaEnvelope size={14} />
                 </div>
-                <a href="mailto:info@apjinstitute.com" className="text-slate-400 truncate hover:text-blue-400 transition-colors">
-                  info@apjinstitute.com
+                <a href="mailto:apjinstituteparamedicaldantewa@gmail.com" className="text-slate-400 break-all hover:text-blue-400 transition-colors">
+                  apjinstituteparamedicaldantewa@gmail.com
                 </a>
               </li>
             </ul>
@@ -123,7 +124,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="mt-12 pt-6 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} APJ Institute Raipur. All rights reserved.
+            © {new Date().getFullYear()} APJ Institute Dantewada. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-slate-500">
             <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>

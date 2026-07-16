@@ -256,7 +256,7 @@ export const homeData = {
   ],
 
   contact: {
-    address: 'Raipur, Chhattisgarh, India',
+    address: 'Sanjay Nagar, near New BSNL Exchange Office, Shani Mandir Road, Dantewada (C.G.)',
     phone: '+91-XXXXXXXXXX',
     email: 'apjinstituteparamedicaldantewa@gmail.com',
     hours: 'Monday - Friday: 10:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed',

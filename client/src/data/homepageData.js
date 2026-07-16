@@ -118,8 +118,8 @@ export const testimonials = [
   { name: 'Pooja Verma', role: 'DOA Student', quote: 'APJ Institute gives a genuine institute atmosphere with strong guidance and meaningful exposure.', image: classroomStudents3 },
 ];
 
-export const quickLinks = ['About', 'Courses', 'Admission', 'Gallery', 'Contact'];
-export const courseNames = ['BMLT', 'DMLT', 'DOA', 'CCH'];
+export const quickLinks = ['Home', 'About', 'Courses', 'Admission', 'Gallery', 'Contact'];
+export const courseNames = ['BMLT', 'DMLT', 'X-Ray Technician', 'Ophthalmic Assistant', 'Medical Lab Technician'];
 export const liveTickerNotices = [
   { id: 'ticker-1', label: 'ADMISSION OPEN 2026-27 — Apply Now', category: 'Admission', emphasis: 'Open' },
   { id: 'ticker-2', label: 'BMLT (3Y), DMLT (3Y), DOA (2Y), CCH (6M)', category: 'Courses', emphasis: 'Info' },
@@ -151,7 +151,7 @@ export const liveNotificationCards = [
     contact: {
       whatsapp: ['9243758191', '9243758191'],
       phone: ['9243758191', '9243758191'],
-      address: 'Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur',
+      address: 'Sanjay Nagar, near New BSNL Exchange Office, Shani Mandir Road, Dantewada (C.G.)',
     },
   },
   {

@@ -48,7 +48,7 @@ export default function ContactSection() {
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-blue-700"><FaEnvelope /></span>
-                  <a href="mailto:info@apjinstitute.com" className="hover:text-blue-700">info@apjinstitute.com</a>
+                  <a href="mailto:apjinstituteparamedicaldantewa@gmail.com" className="hover:text-blue-700">apjinstituteparamedicaldantewa@gmail.com</a>
                 </div>
               </div>
             </div>

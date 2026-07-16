@@ -14,8 +14,8 @@ const faqs = [
   { q: "How can I apply for admission?", a: "Admission is conducted offline only. Please visit the campus directly to collect and submit your admission form. You can fill the enquiry form above and our team will guide you through the complete admission process." },
   { q: "What courses are available at APJ Institute?", a: "We offer BMLT (3 Years), DMLT (2 Years), X-Ray / Radiography Technician (2 Years), OT Technician (2 Years), and Hospital Assistant Certification (6 Months)." },
   { q: "Is hostel facility available?", a: "Yes, we provide safe and comfortable hostel facilities exclusively for boys with mess, Wi-Fi, and 24/7 security." },
-  { q: "How to contact the administration office?", a: "You can call us at 9243758191, email info@apjinstitute.com, or visit us at Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur." },
-  { q: "What is the fee structure?", a: "Fee varies by course. BMLT starts at ₹45,000/year. Contact our admission office for the complete fee breakdown and available scholarship options." },
+  { q: "How to contact the administration office?", a: "You can call us at 9243758191, email apjinstituteparamedicaldantewa@gmail.com, or visit us at Sanjay Nagar, near New BSNL Exchange Office, Shani Mandir Road, Dantewada (C.G.)." },
+  { q: "What is the fee structure?", a: "Fees vary depending on the course you choose. Please contact our admission office for detailed information regarding the fee structure for specific programs." },
 ];
 
 /* ─── Accordion Item ─── */
@@ -181,9 +181,9 @@ export default function ContactPage() {
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-white/80 backdrop-blur-xl rounded-3xl border border-white shadow-[0_20px_50px_rgba(30,58,95,0.08)]"
         >
           {[
-            { icon: <MapPin size={28} />, label: 'Our Address', value: 'Jawahar ward, Raipur', color: 'text-blue-600', bg: 'bg-blue-50' },
+            { icon: <MapPin size={28} />, label: 'Our Address', value: 'Sanjay Nagar, near New BSNL Exchange Office, Shani Mandir Road, Dantewada (C.G.)', color: 'text-blue-600', bg: 'bg-blue-50' },
             { icon: <Phone size={28} />, label: 'Phone Number', value: '92437 58191', color: 'text-[#1e3a5f]', bg: 'bg-[#1e3a5f]/5' },
-            { icon: <Mail size={28} />, label: 'Email Address', value: 'info@apjinstitute.com', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+            { icon: <Mail size={28} />, label: 'Email Address', value: 'apjinstituteparamedicaldantewa@gmail.com', color: 'text-indigo-600', bg: 'bg-indigo-50' },
             { icon: <Clock size={28} />, label: 'Working Hours', value: 'Mon – Sat: 9 AM – 5 PM', color: 'text-purple-600', bg: 'bg-purple-50' },
           ].map((card, i) => (
             <motion.div
@@ -198,7 +198,7 @@ export default function ContactPage() {
                 <div className={`${card.color}`}>{card.icon}</div>
               </div>
               <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest my-1 relative z-10">{card.label}</h3>
-              <p className="text-base font-extrabold text-slate-800 leading-relaxed whitespace-pre-line relative z-10">{card.value}</p>
+              <p className="text-sm md:text-base font-extrabold text-slate-800 leading-relaxed whitespace-pre-line relative z-10 break-all">{card.value}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -301,15 +301,15 @@ export default function ContactPage() {
             </div>
 
             <div className="relative flex-1 min-h-[350px] sm:min-h-[450px] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_rgba(30,58,95,0.08)] bg-white group p-2">
-              <div className="w-full h-full rounded-2xl sm:rounded-[1.5rem] overflow-hidden relative">
+              <div className="w-full h-full rounded-2xl sm:rounded-[1.5rem] overflow-hidden relative group/map">
                 <iframe
                   title="APJ Institute Raipur Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.0!2d81.35!3d18.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRaipur%2C+Chhattisgarh!5e0!3m2!1sen!2sin!4v1"
-                  className="absolute inset-0 w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
+                  className="absolute inset-0 w-full h-full grayscale opacity-80 group-hover/map:grayscale-0 group-hover/map:scale-[1.03] group-hover/map:opacity-100 transition-all duration-700"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                <div className="absolute inset-0 bg-[#1e3a5f]/5 pointer-events-none transition-opacity duration-700 group-hover:opacity-0"></div>
+                <div className="absolute inset-0 pointer-events-none transition-all duration-700 bg-[#1e3a5f]/10 group-hover/map:bg-blue-500/30 mix-blend-color"></div>
                 
                 {/* Glass overlay label */}
                 <motion.div 
@@ -323,7 +323,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-slate-900 font-extrabold text-sm sm:text-base">APJ Institute Campus</p>
-                    <p className="text-slate-500 text-xs sm:text-sm font-medium mt-0.5">Sector 9, Raghuraj Tower, Kamal Vihar, Raipur</p>
+                    <p className="text-slate-500 text-xs sm:text-sm font-medium mt-0.5">Sanjay Nagar, near New BSNL Exchange Office, Shani Mandir Road, Dantewada (C.G.)</p>
                   </div>
                 </motion.div>
               </div>
@@ -356,15 +356,17 @@ export default function ContactPage() {
               </p>
             </div>
             
-            <div className="flex flex-col gap-4 min-w-[200px]">
+            <div className="flex flex-col gap-4 min-w-[250px]">
               <a href="tel:9243758191"
-                className="px-8 py-5 rounded-2xl bg-[#1e3a5f] text-white font-bold text-base shadow-[0_10px_20px_rgba(30,58,95,0.2)] hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(30,58,95,0.3)] hover:bg-[#152a45] transition-all duration-300 flex items-center justify-center gap-3 group/btn">
-                <PhoneCall size={20} className="group-hover/btn:scale-110 transition-transform" /> Call Now
+                className="px-6 py-4 rounded-2xl bg-[#1e3a5f] text-white font-bold text-sm sm:text-base shadow-[0_10px_20px_rgba(30,58,95,0.2)] hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(30,58,95,0.3)] hover:bg-[#152a45] transition-all duration-300 flex items-center justify-center gap-3 group/btn">
+                <PhoneCall size={20} className="group-hover/btn:scale-110 transition-transform shrink-0" /> 
+                <span>+91 92437 58191</span>
               </a>
-              <Link to="/admission"
-                className="px-8 py-5 rounded-2xl bg-white border border-slate-200 text-slate-800 font-bold text-base hover:bg-slate-50 hover:border-slate-300 hover:text-[#1e3a5f] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group/link">
-                Apply Online <ArrowRight size={20} className="group-hover/link:translate-x-1.5 transition-transform" />
-              </Link>
+              <a href="mailto:apjinstituteparamedicaldantewa@gmail.com"
+                className="px-6 py-4 rounded-2xl bg-white border border-slate-200 text-slate-800 font-bold text-sm sm:text-base hover:bg-slate-50 hover:border-slate-300 hover:text-[#1e3a5f] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group/link">
+                <Mail size={20} className="group-hover/link:scale-110 transition-transform shrink-0 text-slate-500 group-hover/link:text-[#1e3a5f]" /> 
+                <span>apjinstituteparamedicaldantewa@gmail.com</span>
+              </a>
             </div>
           </div>
         </motion.div>
