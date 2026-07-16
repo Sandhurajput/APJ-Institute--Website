@@ -1,6 +1,7 @@
 import db from "../config/db.js";
+import { addToGoogleSheet } from "../services/googleSheetService.js";
 
-export const submitContactForm = (req, res) => {
+export const submitContactForm = async (req, res) => {
   const { name, email, phone, subject, message } = req.body;
 
   const sql = `
@@ -12,7 +13,7 @@ export const submitContactForm = (req, res) => {
   db.query(
     sql,
     [name, email, phone, subject, message],
-    (err, result) => {
+    async (err, result) => {
       if (err) {
         console.log(err);
 
@@ -20,6 +21,20 @@ export const submitContactForm = (req, res) => {
           success: false,
           message: "Database Error",
         });
+      }
+
+      // Save inquiry to Google Sheet
+      try {
+        await addToGoogleSheet({
+          name,
+          email,
+          phone,
+          subject,
+          message,
+          date: new Date().toISOString(),
+        });
+      } catch (error) {
+        console.log("Google Sheet Sync Failed");
       }
 
       res.status(201).json({
