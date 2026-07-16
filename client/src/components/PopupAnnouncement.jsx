@@ -54,8 +54,6 @@ export default function PopupAnnouncement() {
             >
               <X size={24} />
             </button>
-
-<<<<<<< HEAD
             {/* Digital Poster Section */}
               <div className="relative overflow-hidden bg-gradient-to-b from-blue-700 via-blue-600 to-blue-800 p-6 sm:p-8 max-h-[70vh] overflow-y-auto">
               {/* Animated background elements */}
@@ -237,7 +235,6 @@ export default function PopupAnnouncement() {
                 </button>
               </div>
             </div>
-=======
             {/* Poster Container with floating animation and glassmorphism */}
             <motion.div
               animate={{ y: [-8, 8, -8] }}
@@ -271,7 +268,6 @@ export default function PopupAnnouncement() {
                 </div>
               </Link>
             </motion.div>
->>>>>>> origin/main
           </motion.div>
         </motion.div>
       )}
