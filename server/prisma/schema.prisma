@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,180 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Admin Model - For authentication and admin management
 model Admin {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique @db.VarChar(255)
-  password  String  @db.VarChar(255)
-  name      String  @db.VarChar(255)
-  role Role @default(ADMIN)
-  isActive  Boolean @default(true)
-
-  notifications Notification[]
-  activityLogs  ActivityLog[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("admins")
-}
-
-// Inquiry Model - For storing contact form inquiries
-model Inquiry {
-  id        Int     @id @default(autoincrement())
-  name      String  @db.VarChar(255)
-  email     String  @db.VarChar(255)
-  phone     String  @db.VarChar(20)
-  message   String  @db.LongText
-  status InquiryStatus @default(NEW)
-  
-  // Timestamps
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
-
-  @@map("inquiries")
-  @@index([email])
-  @@index([createdAt])
-}
-
-// Notification Model - For live notifications and announcements
-model Notification {
-  id        Int    @id @default(autoincrement())
-  title     String
-  message   String
-  type      String @default("info")
-  priority  Int    @default(0)
-
-  adminId   Int?
-  admin     Admin? @relation(fields: [adminId], references: [id])
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-// Event Model - For managing college events
-model Event {
-  id          Int     @id @default(autoincrement())
-  title       String  @db.VarChar(255)
-  description String  @db.LongText
-  date        DateTime
-  location    String  @db.VarChar(255)
-  image       String? @db.VarChar(255) // Optional image URL
-  isActive    Boolean @default(true)
-  
-  // Timestamps
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("events")
-  @@index([date])
-  @@index([isActive])
-}
-
-// Gallery Model - For managing gallery images
-model Gallery {
-  id        Int     @id @default(autoincrement())
-  title     String  @db.VarChar(255)
-  image     String  @db.VarChar(255) // Image file path
-  category  String? @db.VarChar(100) // Optional: campus, events, faculty, etc.
-  isActive  Boolean @default(true)
-  
-  // Timestamps
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("galleries")
-  @@index([category])
-  @@index([isActive])
-}
-
-// Faculty Model - For managing faculty/staff information
-model Faculty {
-  id        Int     @id @default(autoincrement())
-  name      String  @db.VarChar(255)
-  role      String  @db.VarChar(255) // Professor, Lecturer, Assistant, etc.
-  email     String? @db.VarChar(255)
-  phone     String? @db.VarChar(20)
-  image     String? @db.VarChar(255) // Optional image URL
-  department String? @db.VarChar(100)
-  bio       String? @db.LongText
-  isActive  Boolean @default(true)
-  
-  // Timestamps
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("faculties")
-  @@index([department])
-  @@index([isActive])
-}
-
-// Course Model - For managing course information
-model Course {
-  id          Int      @id @default(autoincrement())
-  slug        String   @unique @db.VarChar(255)
-  title       String   @db.VarChar(255)
-  duration    String   @db.VarChar(100)
-  eligibility String   @db.VarChar(255)
-  description String   @db.LongText
-  image       String?  @db.VarChar(255)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@map("courses")
-  @@index([slug])
-  @@index([title])
-}
-
-// Testimonial Model - For student feedback and public testimonials
-model Testimonial {
   id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(255)
-  message   String   @db.LongText
-  course    String   @db.VarChar(255)
-  approved  Boolean  @default(false)
+  name      String
+  email     String   @unique
+  password  String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("testimonials")
-  @@index([approved])
-  @@index([course])
 }
+model Contact {
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(255)
+  email     String    @db.VarChar(255)
+  phone     String    @db.VarChar(20)
+  subject   String    @db.VarChar(255)
+  message   String    @db.Text
+  createdAt DateTime? @default(now()) @db.Timestamp(0)
 
-// FAQ Model - For managing frequently asked questions
-model FAQ {
-  id        Int      @id @default(autoincrement())
-  question  String   @db.LongText
-  answer    String   @db.LongText
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("faqs")
-  @@index([createdAt])
-}
-model ActivityLog {
-  id        Int      @id @default(autoincrement())
-  action    String
-  entity    String
-  entityId  Int?
-
-  adminId   Int
-  admin     Admin    @relation(fields: [adminId], references: [id])
-
-  createdAt DateTime @default(now())
-
-  @@index([adminId])
-  @@index([createdAt])
-}
-enum Role {
-  ADMIN
-  EDITOR
-  VIEWER
-}
-
-enum InquiryStatus {
-  NEW
-  READ
-  RESOLVED
+  @@map("contacts")
 }

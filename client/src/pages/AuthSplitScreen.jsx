@@ -95,8 +95,17 @@ export default function AuthSplitScreen() {
     setLoading(true);
     try {
       console.log('Login:', loginForm);
+      localStorage.setItem('token', 'mock-user-token-12345');
+      localStorage.setItem('role', 'user');
+      localStorage.setItem('email', loginForm.email);
+      localStorage.setItem('user', JSON.stringify({
+        fullName: loginForm.email.split('@')[0],
+        email: loginForm.email,
+        phone: '9876543210',
+        role: 'user'
+      }));
       alert('Login successful!');
-      navigate('/');
+      navigate('/user-dashboard');
     } catch (error) {
       setErrors({ server: 'Login failed. Please try again.' });
     } finally {

@@ -1,105 +1,146 @@
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiCheckCircle, FiClock, FiShield } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 import { admissionSteps } from '../../data/homepageData';
-import AdmissionVideoSection from './AdmissionVideoSection';
+import admissionBg from '../../assets/admission_bg.png';
 
-export default function AdmissionSection() {
-  return (
-    <section id="admission" className="relative overflow-hidden py-16 sm:py-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(132,204,22,0.12),transparent_28%),linear-gradient(180deg,#06111f_0%,#0f172a_100%)]" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+const stepDetails = [
+  { duration: "15 Mins", requirement: "Free Counseling", status: "Walk-in" },
+  { duration: "Same Day", requirement: "Marksheets", status: "Instant Check" },
+  { duration: "10 Mins", requirement: "Online Form", status: "Easy Apply" },
+  { duration: "Immediate", requirement: "Original Docs", status: "Verified" },
+  { duration: "Instant", requirement: "Fee Receipt", status: "Secure Pay" },
+  { duration: "Same Day", requirement: "Student ID", status: "Seat Confirmed" },
+  { duration: "24/7 Access", requirement: "Welcome Kit", status: "Assisted" },
+  { duration: "1 Hour", requirement: "Campus Tour", status: "Weekly" }
+];
 
-      <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.35fr] lg:items-end">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.5 }}
-            className="rounded-[2rem] border border-white/10 bg-white/8 p-6 text-white shadow-[0_24px_80px_rgba(2,6,23,0.35)] backdrop-blur-xl sm:p-8"
-          >
-            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200/90">Admission Process</p>
-            <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
-              Smooth, professional and student-friendly admission flow
-            </h2>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-blue-100/85 sm:text-base">
-              Complete your enrollment in a clean, transparent process with guided support at every step. The cards below are designed to feel premium, readable and visually balanced.
+export default function AdmissionSection({ variant = "original" }) {
+  if (variant === "homepage") {
+    const simplifiedSteps = [
+      { ...admissionSteps[0], stepNum: 1 }, // Inquiry & Counseling
+      { ...admissionSteps[3], stepNum: 2 }, // Document Submission
+      { ...admissionSteps[4], stepNum: 3 }, // Fee Payment
+      { ...admissionSteps[5], stepNum: 4 }  // Confirmation
+    ];
+
+    return (
+      <section id="admission" className="py-20 sm:py-24 bg-slate-900 relative overflow-hidden">
+        {/* Crisp twilight medical campus background image clearly visible with high opacity */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={admissionBg} 
+            alt="APJ Biomedical Campus" 
+            className="w-full h-full object-cover opacity-85 select-none pointer-events-none" 
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-slate-950/20 pointer-events-none" />
+        </div>
+
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-blue-300 bg-blue-500/5 inline-block px-4 py-1.5 rounded-full border border-blue-500/10">
+              Admission Process
             </p>
-
-            <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              {[
-                { icon: FiCheckCircle, title: 'Clear steps', text: 'No confusion' },
-                { icon: FiShield, title: 'Verified process', text: 'Trusted guidance' },
-                { icon: FiClock, title: 'Quick support', text: 'Fast response' },
-              ].map((item) => (
-                <div key={item.title} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/8 px-4 py-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-200">
-                    <item.icon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-white">{item.title}</p>
-                    <p className="text-xs text-blue-100/70">{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <a href="#contact" className="mt-7 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-lime-500 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02]">
-              Start Admission Enquiry
-              <FiArrowRight />
-            </a>
-          </motion.div>
-
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {admissionSteps.map((step, index) => (
-              <motion.article
-                key={step.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.42, delay: index * 0.05 }}
-                whileHover={{ y: -8 }}
-                className="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/95 shadow-[0_18px_45px_rgba(2,6,23,0.2)] transition"
-              >
-                <div className="relative h-52 overflow-hidden">
-                  <img
-                    src={step.image}
-                    alt={step.title}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />
-                  <div className="absolute left-4 top-4 inline-flex items-center rounded-full border border-white/15 bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-md">
-                    Step {index + 1}
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-cyan-200/90">Admission Step</p>
-                    <h3 className="mt-1 text-xl font-bold leading-tight text-white">{step.title}</h3>
-                  </div>
-                </div>
-
-                <div className="p-5">
-                  <p className="text-sm leading-6 text-slate-600">{step.description}</p>
-                  <a href="#contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 transition group-hover:gap-3">
-                    Get Started
-                    <FiArrowRight />
-                  </a>
-                </div>
-              </motion.article>
-            ))}
+            <h2 className="mt-6 text-4xl font-extrabold text-white sm:text-5xl tracking-tight leading-tight">
+              How to Get <span className="bg-gradient-to-r from-blue-300 via-blue-100 to-sky-300 bg-clip-text text-transparent">Admitted</span>
+            </h2>
+            <p className="mt-4 mx-auto max-w-2xl text-slate-400 text-base sm:text-lg font-medium leading-relaxed">
+              Our admission process is simple, transparent and student-friendly. Follow the steps below to complete your enrollment.
+            </p>
           </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {simplifiedSteps.map((step, index) => {
+              return (
+                <motion.article 
+                  key={step.title} 
+                  initial={{ opacity: 0, y: 30 }} 
+                  whileInView={{ opacity: 1, y: 0 }} 
+                  viewport={{ once: true, amount: 0.15 }} 
+                  transition={{ duration: 0.6, delay: index * 0.05, ease: [0.215, 0.61, 0.355, 1] }} 
+                  className="group flex flex-col justify-between overflow-hidden rounded-[2.2rem] bg-white border border-slate-100 p-5 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_70px_rgba(15,23,42,0.12)] hover:-translate-y-2 transition-all duration-500 cursor-pointer"
+                >
+                  <div>
+                    {/* pinterest card image container */}
+                    <div className="relative w-full aspect-[4/3] rounded-[1.6rem] overflow-hidden bg-slate-100 shadow-inner">
+                      <img 
+                        src={step.image} 
+                        alt={step.title} 
+                        className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
+                        loading="lazy" 
+                      />
+                      
+                      {/* Dark overlay on hover */}
+                      <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                      {/* Step badge overlay */}
+                      <div className="absolute top-3.5 left-3.5 bg-slate-950/90 backdrop-blur-md text-white font-extrabold text-[9px] tracking-wider uppercase px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                        Step {step.stepNum}
+                      </div>
+                    </div>
+
+                    {/* Title & Description */}
+                    <div className="pt-5 px-1 pb-4">
+                      <h3 className="text-xl font-extrabold text-slate-800 tracking-tight leading-snug group-hover:text-[#15305b] transition-colors duration-300">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-xs leading-relaxed text-slate-500 font-semibold line-clamp-3">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+
+          {/* Centered call-to-action button */}
+          <div className="mt-12 flex justify-center">
+            <a 
+              href="#contact" 
+              className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-8 py-4 text-xs font-black tracking-widest uppercase text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/35"
+            >
+              Start Admission Process
+              <FiArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Original Horizontal Split Cards
+  return (
+    <section id="admission" className="py-16 sm:py-20 bg-slate-900">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-blue-200">Admission Process</p>
+          <h2 className="mt-4 text-3xl font-black text-white sm:text-4xl">Admission Process</h2>
+          <p className="mt-4 mx-auto max-w-2xl text-slate-300">
+            Our admission process is simple, transparent and student-friendly. Follow the steps below to complete your enrollment.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {admissionSteps.map((step, index) => (
+            <motion.article key={step.title} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.4, delay: index * 0.06 }} whileHover={{ y: -6 }} className="flex overflow-hidden rounded-2xl bg-white shadow-lg">
+              <div className="w-32 shrink-0 overflow-hidden">
+                <img src={step.image} alt={step.title} className="h-full w-full object-cover" loading="lazy" />
+              </div>
+              <div className="p-5 flex-1">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">Step {index + 1}</p>
+                <h3 className="mt-2 text-lg font-bold text-slate-900">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{step.description}</p>
+                <a href="#contact" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#15305b]">
+                  Get Started
+                  <FiArrowRight />
+                </a>
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>
-  );
-}
-
-// Render the video section just below the admission section
-export function AdmissionSectionWithVideo() {
-  return (
-    <>
-      <AdmissionSection />
-      <AdmissionVideoSection />
-    </>
   );
 }

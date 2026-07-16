@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 import '../styles/Auth.css';
 
 export default function Login() {
@@ -7,7 +8,6 @@ export default function Login() {
     email: '',
     password: '',
     role: 'user',
-    adminPasskey: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -36,22 +36,11 @@ export default function Login() {
       newErrors.password = 'Password is required';
     }
 
-    if (formData.role === 'admin' && !formData.adminPasskey) {
-      newErrors.adminPasskey = 'Admin passkey is required';
-    }
-
-    if (formData.role === 'admin') {
-      const ADMIN_PASSKEY = 'APJ@2024Admin'; // Secret admin passkey
-      if (formData.adminPasskey !== ADMIN_PASSKEY) {
-        newErrors.adminPasskey = 'Invalid admin passkey';
-      }
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -60,45 +49,72 @@ export default function Login() {
 
     setLoading(true);
 
-    try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-          role: formData.role,
-        }),
-      });
+  //   setTimeout(() => {
+  //     localStorage.setItem('token', 'mock-user-token-12345');
+  //     localStorage.setItem('role', 'user');
+  //     localStorage.setItem('email', formData.email);
+  //     localStorage.setItem('user', JSON.stringify({
+  //       fullName: formData.email.split('@')[0],
+  //       email: formData.email,
+  //       phone: '9876543210',
+  //       role: 'user'
+  //     }));
+  //     alert('✅ Welcome User! Login successful.');
+  //     navigate('/user-dashboard');
+  //     setLoading(false);
+  //   }, 500);
+  // };
 
-      const data = await response.json();
+  try {
 
-      if (response.ok) {
-        // Store token in localStorage
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('role', formData.role);
-        localStorage.setItem('user', JSON.stringify(data.user));
-
-        alert(`Welcome ${data.user.fullName}!`);
-
-        // Redirect based on role
-        if (formData.role === 'admin') {
-          navigate('/admin-dashboard');
-        } else {
-          navigate('/user-dashboard');
-        }
-      } else {
-        setErrors({ server: data.message || 'Login failed' });
-      }
-    } catch (error) {
-      setErrors({ server: 'Network error. Please try again.' });
-      console.error('Login error:', error);
-    } finally {
-      setLoading(false);
+  const response = await axios.post(
+    "http://localhost:5000/api/auth/login",
+    {
+      email: formData.email,
+      password: formData.password,
     }
-  };
+  );
+
+  const authData = response.data?.data;
+
+  localStorage.setItem(
+    "token",
+    authData?.token || ""
+  );
+
+  localStorage.setItem("role", "user");
+  localStorage.setItem("email", authData?.admin?.email || formData.email);
+  localStorage.setItem(
+    "user",
+    JSON.stringify({
+      fullName: authData?.admin?.name || formData.email.split("@")[0],
+      email: authData?.admin?.email || formData.email,
+      role: "user",
+    })
+  );
+
+  alert("Login Successful");
+
+  navigate("/");
+
+} catch (error) {
+
+  console.log(error.response?.data);
+
+  alert(
+    error.response?.data?.message ||
+    "Login Failed"
+  );
+
+} finally {
+
+  setLoading(false);
+
+}
+
+ };
+
+
 
   return (
     <div className="auth-container">
@@ -113,48 +129,6 @@ export default function Login() {
           </div>
 
           <form onSubmit={handleSubmit} className="auth-form">
-            {/* Role Selection */}
-            <div className="role-selector">
-              <label>Login As:</label>
-              <div className="role-options">
-                <div
-                  className={`role-option ${
-                    formData.role === 'user' ? 'active' : ''
-                  }`}
-                  onClick={() =>
-                    setFormData((prev) => ({ ...prev, role: 'user' }))
-                  }
-                >
-                  <input
-                    type="radio"
-                    name="role"
-                    value="user"
-                    checked={formData.role === 'user'}
-                    onChange={handleInputChange}
-                  />
-                  <span>Student/User</span>
-                </div>
-
-                <div
-                  className={`role-option ${
-                    formData.role === 'admin' ? 'active' : ''
-                  }`}
-                  onClick={() =>
-                    setFormData((prev) => ({ ...prev, role: 'admin' }))
-                  }
-                >
-                  <input
-                    type="radio"
-                    name="role"
-                    value="admin"
-                    checked={formData.role === 'admin'}
-                    onChange={handleInputChange}
-                  />
-                  <span>Admin</span>
-                </div>
-              </div>
-            </div>
-
             {/* Email */}
             <div className="form-group">
               <label htmlFor="email">Email Address *</label>
@@ -199,28 +173,6 @@ export default function Login() {
               )}
             </div>
 
-            {/* Admin Passkey (Only for Admin) */}
-            {formData.role === 'admin' && (
-              <div className="form-group admin-section">
-                <label htmlFor="adminPasskey">Admin Passkey *</label>
-                <input
-                  type="password"
-                  id="adminPasskey"
-                  name="adminPasskey"
-                  placeholder="Enter admin passkey"
-                  value={formData.adminPasskey}
-                  onChange={handleInputChange}
-                  className={errors.adminPasskey ? 'error' : ''}
-                />
-                {errors.adminPasskey && (
-                  <span className="error-text">{errors.adminPasskey}</span>
-                )}
-                <p className="admin-note">
-                  🔒 Only admins know the passkey
-                </p>
-              </div>
-            )}
-
             {/* Server Error */}
             {errors.server && (
               <div className="server-error">{errors.server}</div>
@@ -245,8 +197,8 @@ export default function Login() {
               </Link>
             </p>
             <p>
-              <Link to="#" className="auth-link forgot-link">
-                Forgot password?
+              <Link to="/admin-login" className="auth-link forgot-link">
+                Login as Admin?
               </Link>
             </p>
           </div>

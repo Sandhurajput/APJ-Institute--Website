@@ -1,12 +1,13 @@
 {
   "private": true,
   "name": "apj-institute-website-root",
-  "workspaces": [
-    "client"
-  ],
   "scripts": {
-    "dev": "npm run dev --workspace client",
-    "build": "npm run build --workspace client",
-    "preview": "npm run preview --workspace client"
+    "dev": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "preview": "npm run preview --prefix client"
+  },
+  "dependencies": {
+    "axios": "^1.16.1",
+    "mysql2": "^3.22.3"
   }
 }

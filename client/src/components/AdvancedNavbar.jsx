@@ -114,7 +114,7 @@ export default function AdvancedNavbar() {
                       <Link
                         key={item.label}
                         to={item.href}
-                        className={`block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center gap-3 ${
+                        className={`px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center gap-3 ${
                           index === 0 ? 'rounded-t-lg' : ''
                         } ${index === link.submenu.length - 1 ? 'rounded-b-lg' : ''}`}
                       >
@@ -241,7 +241,7 @@ export default function AdvancedNavbar() {
                       key={item.label}
                       to={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="block px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center gap-2"
+                      className="px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center gap-2"
                     >
                       <span>{item.icon}</span>
                       {item.label}

@@ -21,7 +21,7 @@ export default function NewsSection() {
   ];
 
   return (
-    <section id="news" className="py-16 sm:py-20 bg-gradient-to-r from-slate-50 to-blue-50">
+    <section id="news" className="py-16 sm:py-20 bg-gradient-to-r from-slate-50 to-[#15305b]/5">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2 items-stretch">
           {/* News Image Section */}
@@ -49,7 +49,7 @@ export default function NewsSection() {
             className="flex flex-col justify-center"
           >
             <div className="mb-8">
-              <div className="inline-block bg-gradient-to-r from-blue-600 to-sky-500 text-white px-4 py-2 rounded-lg mb-4">
+              <div className="inline-block bg-gradient-to-r from-[#15305b] to-blue-600 text-white px-4 py-2 rounded-lg mb-4">
                 <p className="text-sm font-semibold uppercase tracking-wide">Latest News & Notifications</p>
               </div>
               <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">Stay Updated With Institute News</h2>
@@ -67,9 +67,9 @@ export default function NewsSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.35, delay: index * 0.08 }}
-                  className="p-4 bg-white rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow"
+                  className="p-4 bg-white rounded-xl border border-[#15305b]/10 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <p className="text-xs font-semibold uppercase text-blue-600 tracking-wide mb-1">{item.date}</p>
+                  <p className="text-xs font-semibold uppercase text-[#15305b] tracking-wide mb-1">{item.date}</p>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
                   <p className="text-sm text-slate-600 leading-6">{item.description}</p>
                 </motion.div>
@@ -78,7 +78,7 @@ export default function NewsSection() {
 
             <a
               href="#contact"
-              className="mt-6 inline-flex w-fit rounded-full bg-gradient-to-r from-blue-700 to-sky-500 px-7 py-3.5 text-sm font-bold text-white shadow-soft transition hover:scale-[1.02]"
+              className="mt-6 inline-flex w-fit rounded-full bg-gradient-to-r from-[#15305b] to-blue-600 px-7 py-3.5 text-sm font-bold text-white shadow-soft transition hover:scale-[1.02]"
             >
               View All Updates
             </a>

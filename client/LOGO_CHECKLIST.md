@@ -11,14 +11,14 @@
 ## 📋 DELIVERABLES CHECKLIST
 
 ### ✅ Logo Design Files
-- [x] Main logo SVG created (`apj-logo.svg` - 4.8 KB)
+- [x] Main logo SVG created (`APJ.jpeg` - 4.8 KB)
   - Circular emblem design
   - All design elements included
   - Blue + gold color scheme
   - Institution name curved text
   - 200x200 viewBox
 
-- [x] Favicon SVG created (`favicon.svg` - 936 bytes)
+- [x] Favicon SVG created (`APJ.jpeg` - 936 bytes)
   - Compact square design
   - Optimized for browser tabs
   - Gradient fills
@@ -106,8 +106,8 @@
 ### SVG Logo Files
 | File | Size | Location | Purpose |
 |------|------|----------|---------|
-| apj-logo.svg | 4.8 KB | src/assets/logo/ | Main logo |
-| favicon.svg | 936 B | src/assets/logo/ | Browser favicon |
+| APJ.jpeg | 4.8 KB | src/assets/logo/ | Main logo |
+| APJ.jpeg | 936 B | src/assets/logo/ | Browser favicon |
 
 ### React Components
 | File | Size | Location | Purpose |
@@ -228,7 +228,7 @@ const sizeClasses = {
 ## 🔧 CUSTOMIZATION GUIDE
 
 ### Changing Colors
-1. Open `src/assets/logo/apj-logo.svg`
+1. Open `src/assets/logo/APJ.jpeg`
 2. Find the `<linearGradient>` sections
 3. Edit hex color values
 4. Save and refresh browser
@@ -239,7 +239,7 @@ Example:
 ```
 
 ### Changing Text
-1. Open `src/assets/logo/apj-logo.svg`
+1. Open `src/assets/logo/APJ.jpeg`
 2. Find `<textPath>` elements
 3. Edit text content
 4. Adjust font-size if needed

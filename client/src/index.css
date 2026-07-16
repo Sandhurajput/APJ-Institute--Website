@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -17,15 +17,6 @@ body {
     radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 30%),
     linear-gradient(180deg, #f8fbff 0%, #ffffff 36%, #f8fbff 100%);
   color: #0f172a;
-}
-
-.dark body {
-  background: #020617;
-  color: #e2e8f0;
-}
-
-input, select, textarea, button {
-  font: inherit;
 }
 
 ::selection {
@@ -100,41 +91,43 @@ input, select, textarea, button {
   scrollbar-color: rgba(37, 99, 235, 0.85) rgba(226, 232, 240, 0.7);
 }
 
-/* Horizontal gallery + 3D tilt + Ken Burns effect */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-.gallery-track { display: flex; gap: 1rem; padding: 1rem 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-.gallery-item { min-width: 320px; flex: 0 0 320px; scroll-snap-align: center; transform-style: preserve-3d; perspective: 1200px; }
-.gallery-card { transform: translateZ(0); transition: transform 0.45s cubic-bezier(.2,.9,.2,1); border-radius: 1rem; overflow: hidden; }
-.gallery-card:hover { transform: rotateY(-8deg) scale(1.03); }
-.gallery-img { width: 100%; height: 18rem; object-fit: cover; display: block; transform-origin: center center; }
-
-@keyframes kenburns {
-  0% { transform: scale(1) translateY(0); }
-  50% { transform: scale(1.06) translateY(-2%); }
-  100% { transform: scale(1) translateY(0); }
+@keyframes cinematic-zoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
-.kenburns { animation: kenburns 18s ease-in-out infinite; }
-.gallery-track:hover .kenburns { animation-play-state: paused; }
 
-/* Auto-scroll the gallery slowly (pauses on hover) */
-@keyframes gallery-autoscroll { 0% { transform: translateX(0); } 100% { transform: translateX(-30%); } }
-.gallery-autoscroll { animation: gallery-autoscroll 28s linear infinite; }
-.gallery-autoscroll:hover { animation-play-state: paused; }
+.animate-cinematic-zoom {
+  animation: cinematic-zoom 8s ease-in-out infinite;
+}
 
-/* Make hero images use kenburns */
-.hero-kenburns { animation: kenburns 20s ease-in-out infinite; }
-.hero-kenburns:hover { animation-play-state: paused; }
 
-/* Lightbox modal styles for gallery */
-.lightbox-overlay { position: fixed; inset: 0; background: rgba(2,6,23,0.72); display: flex; align-items: center; justify-content: center; z-index: 60; }
-.lightbox-content { max-width: 90%; max-height: 90%; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 20px 50px rgba(2,6,23,0.8); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); }
-.lightbox-img { width: 100%; height: auto; display: block; object-fit: contain; }
-.lightbox-meta { padding: 1rem 1.25rem; color: #e6eef8; background: linear-gradient(180deg, rgba(0,0,0,0.25), transparent); }
-.lightbox-close { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); padding: 0.5rem; border-radius: 999px; cursor: pointer; color: #fff; }
 
-/* Gallery card polish */
-.gallery-card { border-radius: 1rem; overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow: 0 8px 30px rgba(2,6,23,0.35); border: 1px solid rgba(255,255,255,0.03); }
-.gallery-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 0.75rem 1rem; background: linear-gradient(180deg, transparent, rgba(2,6,23,0.6)); color: #fff; font-weight: 600; font-size: 0.95rem; }
-.gallery-card .meta { position: relative; }
+/* Global Dark Mode Overrides for Demo */
+html.dark body {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+html.dark * {
+  border-color: #334155 !important;
+}
+
+html.dark .bg-white {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+html.dark .bg-slate-50, html.dark .bg-slate-100 {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+html.dark .text-slate-900, html.dark .text-slate-800, html.dark .text-slate-700 {
+  color: #ffffff !important;
+}
+
+html.dark .text-slate-600, html.dark .text-slate-500 {
+  color: #cbd5e1 !important;
+}
+

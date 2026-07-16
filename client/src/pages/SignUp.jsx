@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiX, FiEye, FiEyeOff } from 'react-icons/fi';
+import axios from "axios";
+
 import '../styles/Auth.css';
 
 export default function SignUp() {
@@ -13,7 +15,6 @@ export default function SignUp() {
     password: '',
     confirmPassword: '',
     role: 'user',
-    adminPasskey: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -29,6 +30,54 @@ export default function SignUp() {
       [name]: value,
     }));
   };
+
+  const handleSignup = async (e) => {
+
+   e.preventDefault();
+
+   try {
+
+      const response = await axios.post(
+         "http://localhost:5000/api/auth/signup",
+         {
+            name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            password: formData.password,
+         }
+      );
+
+      const authData = response.data?.data;
+
+      alert("Signup Successful");
+
+      localStorage.setItem(
+         "token",
+        authData?.token || ""
+      );
+
+      localStorage.setItem("role", "user");
+      localStorage.setItem("email", authData?.admin?.email || formData.email);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          fullName: authData?.admin?.name || `${formData.firstName} ${formData.lastName}`.trim(),
+          email: authData?.admin?.email || formData.email,
+          role: "user",
+        })
+      );
+
+      navigate("/login");
+
+   } catch (error) {
+
+      console.log(error.response?.data);
+
+      alert(
+         error.response?.data?.message ||
+         "Signup Failed"
+      );
+   }
+};
 
   const validateForm = () => {
     const newErrors = {};
@@ -67,63 +116,87 @@ export default function SignUp() {
       newErrors.confirmPassword = 'Passwords do not match';
     }
 
-    if (formData.role === 'admin' && !formData.adminPasskey) {
-      newErrors.adminPasskey = 'Admin passkey is required';
-    }
-
-    if (formData.role === 'admin') {
-      const ADMIN_PASSKEY = 'APJ@2024Admin'; // Secret admin passkey
-      if (formData.adminPasskey !== ADMIN_PASSKEY) {
-        newErrors.adminPasskey = 'Invalid admin passkey';
-      }
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    if (!validateForm()) {
+  //   if (!validateForm()) {
+  //     return;
+  //   }
+
+  //   setLoading(true);
+
+  //   setTimeout(() => {
+  //     localStorage.setItem('role', 'user');
+  //     localStorage.setItem('email', formData.email);
+  //     alert('✅ Account created successfully! Redirecting to login...');
+  //     navigate('/login');
+  //     setLoading(false);
+  //   }, 500);
+  // };
+
+
+const handleSubmit = async (e) => {
+
+   e.preventDefault();
+
+   if (!validateForm()) {
       return;
-    }
+   }
 
-    setLoading(true);
+   try {
 
-    try {
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          fullName: `${formData.firstName} ${formData.lastName}`,
-          email: formData.email,
-          birthDate: formData.birthDate,
-          phone: formData.phone,
-          password: formData.password,
-          role: formData.role,
-        }),
-      });
+      setLoading(true);
 
-      const data = await response.json();
+      const response = await axios.post(
+         "http://localhost:5000/api/auth/signup",
+         {
+            name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            password: formData.password,
+         }
+      );
 
-      if (response.ok) {
-        alert('Account created successfully! Please login');
-        navigate('/login');
-      } else {
-        setErrors({ server: data.message || 'Sign up failed' });
-      }
-    } catch (error) {
-      setErrors({ server: 'Network error. Please try again.' });
-      console.error('Sign up error:', error);
-    } finally {
+      const authData = response.data?.data;
+
+      localStorage.setItem(
+         "token",
+        authData?.token || ""
+      );
+
+      localStorage.setItem("role", "user");
+      localStorage.setItem("email", authData?.admin?.email || formData.email);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          fullName: authData?.admin?.name || `${formData.firstName} ${formData.lastName}`.trim(),
+          email: authData?.admin?.email || formData.email,
+          role: "user",
+        })
+      );
+
+      alert("Signup Successful");
+
+      navigate("/login");
+
+   } catch (error) {
+
+      console.log(error.response?.data);
+
+      alert(
+         error.response?.data?.message ||
+         "Signup Failed"
+      );
+
+   } finally {
+
       setLoading(false);
-    }
-  };
+   }
+};
+
 
   return (
     <div className="auth-container signup-page">
@@ -282,67 +355,6 @@ export default function SignUp() {
               )}
             </div>
 
-            {/* Role Selector */}
-            <div className="role-selector signup-role">
-              <label>Register as:</label>
-              <div className="role-options">
-                <div
-                  className={`role-option ${
-                    formData.role === 'user' ? 'active' : ''
-                  }`}
-                  onClick={() =>
-                    setFormData((prev) => ({ ...prev, role: 'user' }))
-                  }
-                >
-                  <input
-                    type="radio"
-                    name="role"
-                    value="user"
-                    checked={formData.role === 'user'}
-                    onChange={handleInputChange}
-                  />
-                  <span>Student/User</span>
-                </div>
-
-                <div
-                  className={`role-option ${
-                    formData.role === 'admin' ? 'active' : ''
-                  }`}
-                  onClick={() =>
-                    setFormData((prev) => ({ ...prev, role: 'admin' }))
-                  }
-                >
-                  <input
-                    type="radio"
-                    name="role"
-                    value="admin"
-                    checked={formData.role === 'admin'}
-                    onChange={handleInputChange}
-                  />
-                  <span>Admin</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Admin Passkey (Only for Admin) */}
-            {formData.role === 'admin' && (
-              <div className="form-group admin-section">
-                <label htmlFor="adminPasskey">Admin Passkey *</label>
-                <input
-                  type="password"
-                  id="adminPasskey"
-                  name="adminPasskey"
-                  placeholder="Enter admin passkey"
-                  value={formData.adminPasskey}
-                  onChange={handleInputChange}
-                  className={errors.adminPasskey ? 'error' : ''}
-                />
-                {errors.adminPasskey && (
-                  <span className="error-text">{errors.adminPasskey}</span>
-                )}
-              </div>
-            )}
-
             {/* Server Error */}
             {errors.server && (
               <div className="server-error">{errors.server}</div>
@@ -364,6 +376,11 @@ export default function SignUp() {
               Already have an account?{' '}
               <Link to="/login" className="auth-link">
                 Log in
+              </Link>
+            </p>
+            <p>
+              <Link to="/admin-signup" className="auth-link">
+                Sign up as Admin?
               </Link>
             </p>
           </div>
