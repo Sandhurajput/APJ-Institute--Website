@@ -4,6 +4,21 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import axios from 'axios';
 import loginImage from '../2.webp';
 import '../styles/AuthSplitScreen.css';
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+
+
+const handleGoogleSuccess = (credentialResponse) => {
+  const user = jwtDecode(credentialResponse.credential);
+
+  console.log(user);
+
+  alert(`Welcome ${user.name}`);
+};
+
+const handleGoogleError = () => {
+  console.log("Google Login Failed");
+};
 
 export default function UserLogin() {
   const [showPassword, setShowPassword] = useState(false);
@@ -158,6 +173,30 @@ export default function UserLogin() {
             >
               {loading ? 'Logging in...' : 'LOGIN'}
             </button>
+           {/* Google Login */}
+{/* div className="divider">
+  <span>Or continue with</span>
+</div>
+
+<button
+  type="button"
+  className="google-btn"
+>
+  <img
+    src="https://www.svgrepo.com/show/475656/google-color.svg"
+    alt="Google"
+    className="google-icon"
+  />
+  Continue with Google
+</button>< */}
+
+
+<div className="google-login">
+  <GoogleLogin
+    onSuccess={handleGoogleSuccess}
+    onError={handleGoogleError}
+  />
+</div>
 
             {/* Links */}
             <div className="auth-links">
