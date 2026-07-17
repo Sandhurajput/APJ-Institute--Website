@@ -195,7 +195,7 @@ export default function AuthSplitScreen() {
                   className={errors.termsAccepted ? 'error' : ''}
                 />
                 <label htmlFor="terms-signup">
-                  By Registering, I Accept The Terms & Conditions & Privacy Policy Of APJ Institute Dantewada
+                  By Registering, I Accept The Terms & Conditions & Privacy Policy Of APJ Institute Raipur
                 </label>
               </div>
               {errors.termsAccepted && <span className="error-text">{errors.termsAccepted}</span>}
@@ -288,7 +288,7 @@ export default function AuthSplitScreen() {
                   className={errors.termsAccepted ? 'error' : ''}
                 />
                 <label htmlFor="terms-login">
-                  I Accept The Terms & Conditions & Privacy Policy Of APJ Institute Dantewada
+                  I Accept The Terms & Conditions & Privacy Policy Of APJ Institute Raipur
                 </label>
               </div>
               {errors.termsAccepted && <span className="error-text">{errors.termsAccepted}</span>}

@@ -1,0 +1,88 @@
+export const courses = [
+  {
+    id: 'bmlt',
+    name: 'BMLT',
+    fullName: 'Bachelor of Medical Lab Technology',
+    duration: '3 Years',
+    eligibility: '10+2 (Science)',
+    description: 'Comprehensive lab science program focused on diagnostics, pathology, and clinical testing.',
+    overview:
+      'BMLT is a professional medical laboratory program that prepares students for diagnostic testing, lab management, sample analysis, and hospital-based laboratory operations.',
+    highlights: ['Modern lab exposure', 'Pathology and diagnostics', 'Hospital training support', 'Career-ready practical learning'],
+    subjects: ['Anatomy & Physiology', 'Clinical Biochemistry', 'Microbiology', 'Pathology', 'Hematology', 'Immunology'],
+    careers: ['Lab Technologist', 'Pathology Assistant', 'Clinical Lab Analyst', 'Hospital Lab Technician'],
+    training: 'Hands-on practical sessions, sample processing, equipment handling, and guided lab workflow learning.',
+  },
+  {
+    id: 'dmlt',
+    name: 'DMLT',
+    fullName: 'Diploma in Medical Lab Technology',
+    duration: '3 Years',
+    eligibility: '10+2 (Science)',
+    description: 'Skill-focused diploma for diagnostic labs, sample handling, and testing workflows.',
+    overview:
+      'DMLT is a focused diploma program for students who want to enter laboratory services quickly with practical knowledge of testing, reporting, and clinical support work.',
+    highlights: ['Fast-track diploma', 'Core lab operations', 'Diagnostic support skills', 'Placement-oriented learning'],
+    subjects: ['Basic Anatomy', 'Laboratory Techniques', 'Clinical Pathology', 'Biochemistry Basics', 'Microbiology Basics'],
+    careers: ['Lab Assistant', 'Sample Collector', 'Clinical Technician', 'Diagnostic Center Staff'],
+    training: 'Practical-oriented training in specimen handling, lab procedures, and safety standards.',
+  },
+  {
+    id: 'xray',
+    name: 'X-Ray Technician',
+    fullName: 'X-Ray Technician Program',
+    duration: '2 Years',
+    eligibility: '10+2',
+    description: 'Hands-on imaging and radiography training with modern equipment and safety protocols.',
+    overview:
+      'This program builds skills in radiographic imaging, patient positioning, imaging equipment use, and radiation safety practices for healthcare settings.',
+    highlights: ['Imaging techniques', 'Radiation safety', 'Patient handling', 'Hospital exposure'],
+    subjects: ['Radiology Basics', 'Radiographic Positioning', 'Image Processing', 'Radiation Physics', 'Patient Care'],
+    careers: ['X-Ray Technician', 'Radiology Assistant', 'Imaging Operator', 'Diagnostic Center Staff'],
+    training: 'Supervised imaging practice, equipment familiarity, and safety-focused training for diagnostic environments.',
+  },
+  {
+    id: 'lab-tech',
+    name: 'Lab Technician',
+    fullName: 'Lab Technician Certificate',
+    duration: 'Certificate Course',
+    eligibility: '10th / 10+2',
+    description: 'Practical certificate program for core laboratory operations and basic diagnostics.',
+    overview:
+      'Lab Technician Certificate is designed for students seeking a practical entry into the healthcare laboratory field with basic diagnostic and sample handling skills.',
+    highlights: ['Entry-level certification', 'Basic diagnostics', 'Quick job readiness', 'Practical lab exposure'],
+    subjects: ['Lab Safety', 'Sample Collection', 'Basic Testing', 'Instrument Handling', 'Record Maintenance'],
+    careers: ['Lab Technician', 'Lab Assistant', 'Phlebotomy Support', 'Diagnostic Support Staff'],
+    training: 'Foundational lab practice, basic equipment use, and routine sample processing skills.',
+  },
+
+
+  {
+    id: 'doa',
+    name: 'DOA',
+    fullName: 'Diploma in Ophthalmic Assistant',
+    duration: '2 Years',
+    eligibility: '10+2',
+    description: 'Eye care support training for clinics, vision testing, and ophthalmology assistance.',
+    overview:
+      'This program teaches students how to assist in eye clinics, support vision testing, handle basic ophthalmic tools, and guide patients in eye care workflows.',
+    highlights: ['Eye clinic support', 'Vision testing basics', 'Tool handling', 'Patient assistance'],
+    subjects: ['Eye Anatomy Basics', 'Vision Testing', 'Ophthalmic Instruments', 'Patient Handling', 'Clinical Support'],
+    careers: ['Ophthalmic Assistant', 'Eye Clinic Assistant', 'Vision Test Support', 'Ophthalmology OPD Staff'],
+    training: 'Practical exposure to eye examination support, vision screening, and clinic workflow.',
+  },
+  {
+    id: 'cch',
+    name: 'CCH',
+    fullName: 'Certificate in Community Health',
+    duration: '6 Months',
+    eligibility: '10+2 (Science)',
+    description: 'Advanced lab support program for diagnostic testing, lab processing, and technical assistance.',
+    overview:
+      'This course develops strong laboratory competencies for students interested in core diagnostic work, specimen processing, and assisting in modern medical laboratories.',
+    highlights: ['Diagnostic testing', 'Lab workflow', 'Specimen processing', 'Technical assistance'],
+    subjects: ['Clinical Lab Methods', 'Specimen Processing', 'Instrument Use', 'Diagnostics', 'Quality Control Basics'],
+    careers: ['Medical Lab Technician', 'Diagnostic Technician', 'Lab Support Staff', 'Clinical Testing Assistant'],
+    training: 'Lab handling practice, testing procedures, and technical support in diagnostic settings.',
+  },
+];

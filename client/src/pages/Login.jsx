@@ -125,7 +125,7 @@ export default function Login() {
               <span className="logo-icon">🔐</span>
             </div>
             <h1>Login to Account</h1>
-            <p>APJ Institute Dantewada</p>
+            <p>APJ Institute Raipur</p>
           </div>
 
           <form onSubmit={handleSubmit} className="auth-form">

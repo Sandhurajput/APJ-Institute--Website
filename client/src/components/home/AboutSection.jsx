@@ -3,10 +3,10 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 // Custom generated high-end medical assets
-import docPortrait from '../../assets/about/about_doctor_portrait.png';
-import labTraining from '../../assets/about/about_lab_training.png';
-import expertInstructors from '../../assets/about/about_expert_instructors.png';
-import studentMentorship from '../../assets/about/about_student_mentorship.png';
+import docPortrait from '../../new20.jpeg';
+import labTraining from '../../new21.jpeg';
+import expertInstructors from '../../new22.png';
+import studentMentorship from '../../new24.jpeg';
 
 export default function AboutSection() {
   return (

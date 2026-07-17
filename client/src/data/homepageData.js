@@ -1,27 +1,28 @@
-import posterBanner from '../../WhatsApp Image 2026-05-17 at 9.40.59 PM.jpeg';
-import classroomImage from '../../WhatsApp Image 2026-05-17 at 9.41.02 PM.jpeg';
-import labCollageImage from '../../WhatsApp Image 2026-05-17 at 9.41.19 PM.jpeg';
-import instituteBuildingImage from '../../WhatsApp Image 2026-05-17 at 9.41.22 PM.jpeg';
-import classroomStudents1 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.09 PM.jpeg';
-import classroomStudents2 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.12 PM.jpeg';
-import classroomStudents3 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.14 PM.jpeg';
-import buildingImage from '../../WhatsApp Image 2026-05-17 at 9.41.22 PM.jpeg';
+import posterBanner from '/admission-promo.png';
+import classroomImage from '/assets/classroom.png';
+import labCollageImage from '/assets/lab_demo.png';
+import instituteBuildingImage from '/assets/course-images/building.png';
+import classroomStudents1 from '/assets/course-images/classroom.png';
+import classroomStudents2 from '/assets/course-images/classroom.png';
+import classroomStudents3 from '/assets/course-images/classroom.png';
+import buildingImage from '/assets/course-images/building.png';
+
 import inquiryCounselingImage from '../../enquiry1.webp';
 import eligibilityCheckImage from '../../documents.webp';
 import applicationFormImage from '../../form.webp';
 import documentSubmissionImage from '../../marksheet.webp';
 import feePaymentImage from '../../fees.webp';
 import confirmationImage from '../../receipt.webp';
-import admissionSupportImage from '../components/home/WhatsApp Image 2026-05-17 at 9.41.14 PM.jpeg';
-import admissionCampusImage from '../../WhatsApp Image 2026-05-17 at 9.41.22 PM.jpeg';
-import newsImage from '../../WhatsApp Image 2026-05-17 at 9.40.59 PM.jpeg';
 
+import admissionSupportImage from '/assets/teacher.png';
+import admissionCampusImage from '/assets/course-images/new_building.png';
+import newsImage from '/assets/hero_bg.png';
 export const heroSlides = [
   {
     eyebrow: 'Admissions Open 2026',
     title: 'Advance Your Career in Medical and Paramedical Sciences',
     description:
-      'APJ Institute Dantewada offers practical training, experienced faculty, and career-focused programs for the next generation of healthcare professionals.',
+      'APJ Institute Raipur offers practical training, experienced faculty, and career-focused programs for the next generation of healthcare professionals.',
     image: classroomStudents1,
     cta: 'Apply for Admission',
   },
@@ -44,11 +45,11 @@ export const heroSlides = [
 ];
 
 export const highlights = [
-  { title: 'Best Faculty', description: 'Experienced instructors focused on practical healthcare education.', icon: 'faculty' },
-  { title: '10 Years Excellence', description: 'A strong track record of academic commitment and trust.', icon: 'excellence' },
-  { title: 'Social Activities', description: 'Community programs that reinforce responsibility and leadership.', icon: 'activity' },
-  { title: 'Placements', description: 'Dedicated support for industry-ready career opportunities.', icon: 'placement' },
-  { title: 'Highest Package', description: 'Merit-driven outcomes that help students move forward faster.', icon: 'package' },
+  { title: 'Modern Smart Classrooms', description: 'Comfortable, technology-enabled classrooms designed for focused and interactive learning.', icon: 'faculty' },
+  { title: 'Advanced Computer & Digital Lab', description: 'Hands-on computer and digital lab access for practical skill development and modern training.', icon: 'excellence' },
+  { title: 'Experienced & Qualified Teachers', description: 'Dedicated faculty members who guide students with clarity, care, and subject expertise.', icon: 'activity' },
+  { title: 'Safe Hostel Facility', description: 'Secure and student-friendly hostel support exclusively for boys with a disciplined environment.', icon: 'placement' },
+  { title: 'Library & E-Learning Access', description: 'Study resources, reference books, and digital learning support to strengthen academic performance.', icon: 'package' },
 ];
 
 export const admissionSteps = [
@@ -95,52 +96,63 @@ export const admissionSteps = [
 ];
 
 export const courses = [
-  { title: 'BMLT', duration: '2 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: buildingImage },
-  { title: 'DMLT', duration: '2 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: labCollageImage },
-  { title: 'Pharmacy', duration: '2 Years', description: 'Practical pharmaceutical training with patient care focus.', image: classroomImage },
-  { title: 'Nursing', duration: '3 Years', description: 'Nursing education built for clinical compassion and competence.', image: instituteBuildingImage },
-  { title: 'Ophthalmic Assistant', duration: '2 Years', description: 'Focused learning for eye care support and clinical assistance.', image: classroomImage },
-  { title: 'Medical Lab Technician', duration: '2 Years', description: 'Job-ready diagnostics training with robust lab exposure.', image: labCollageImage },
+  { title: 'BMLT', slug: 'bmlt', duration: '3 Years', description: 'Bachelor-level training in medical diagnostics and laboratory sciences.', image: buildingImage },
+  { title: 'DMLT', slug: 'dmlt', duration: '3 Years', description: 'Diploma program for foundation skills in clinical laboratory work.', image: labCollageImage },
+  { title: 'DOA', slug: 'doa', duration: '2 Years', description: 'Focused learning for eye care support and clinical assistance.', image: classroomImage },
+  { title: 'CCH', slug: 'cch', duration: '6 Months', description: 'Job-ready diagnostics training with robust lab exposure.', image: labCollageImage },
 ];
 
 export const galleryImages = [
   buildingImage,
-  posterBanner,
   instituteBuildingImage,
   labCollageImage,
   classroomImage,
   instituteBuildingImage,
 ];
 
+export { posterBanner };
+
 export const testimonials = [
   { name: 'Aditi Sahu', role: 'BMLT Student', quote: 'The labs, faculty support, and disciplined environment helped me gain practical confidence for my career.', image: classroomStudents1 },
   { name: 'Rohit Kumar', role: 'DMLT Student', quote: 'The teaching approach is structured and professional. Every class feels focused on real medical practice.', image: classroomStudents2 },
-  { name: 'Pooja Verma', role: 'Nursing Student', quote: 'APJ Institute gives a genuine institute atmosphere with strong guidance and meaningful exposure.', image: classroomStudents3 },
+  { name: 'Pooja Verma', role: 'DOA Student', quote: 'APJ Institute gives a genuine institute atmosphere with strong guidance and meaningful exposure.', image: classroomStudents3 },
 ];
 
-export const quickLinks = ['About', 'Courses', 'Admission', 'Gallery', 'Contact'];
-export const courseNames = ['BMLT', 'DMLT', 'Pharmacy', 'Nursing', 'Ophthalmic Assistant'];
+export const quickLinks = ['Home', 'About', 'Courses', 'Admission', 'Gallery', 'Contact'];
+export const courseNames = ['BMLT', 'DMLT', 'X-Ray Technician', 'Ophthalmic Assistant', 'Medical Lab Technician'];
 export const liveTickerNotices = [
-  { id: 'ticker-1', label: 'Admissions Open for 2026', category: 'Admission', emphasis: 'Open' },
-  { id: 'ticker-2', label: 'BMLT & DMLT Applications Started', category: 'Applications', emphasis: 'New' },
-  { id: 'ticker-3', label: 'Scholarship Forms Available', category: 'Scholarship', emphasis: 'Important' },
-  { id: 'ticker-4', label: 'New Placement Drive Announcement', category: 'Placement', emphasis: 'Update' },
-  { id: 'ticker-5', label: 'Exam Schedule Released', category: 'Exams', emphasis: 'Alert' },
+  { id: 'ticker-1', label: 'ADMISSION OPEN 2026-27 — Apply Now', category: 'Admission', emphasis: 'Open' },
+  { id: 'ticker-2', label: 'BMLT (3Y), DMLT (3Y), DOA (2Y), CCH (6M)', category: 'Courses', emphasis: 'Info' },
+  { id: 'ticker-3', label: 'Eligibility: 12th Pass (Biology)', category: 'Eligibility', emphasis: 'Info' },
+  { id: 'ticker-4', label: 'Limited Seats — Contact: 9243758191', category: 'Admission', emphasis: 'Alert' },
+  { id: 'ticker-5', label: 'Download Admission Form / Apply via WhatsApp', category: 'Applications', emphasis: 'Action' },
 ];
 
 export const liveNotificationCards = [
   {
     id: 'notice-1',
-    date: '18 May 2026',
+    date: 'Now — Apply before 31 August 2026',
     category: 'Admission Notice',
-    title: 'Admissions Open for 2026-27',
+    title: 'ADMISSION OPEN 2026-27',
     description:
-      'Online and campus admissions are now open for BMLT, DMLT, DOA, CCH, and allied health programs. Apply now!',
+      'Apply now for BMLT (3 Years), DMLT (3 Years), DOA (2 Years) and CCH (6 Months). Limited seats available with scholarship options.',
     isNew: true,
     important: true,
     pdfUrl: '#admission',
     viewUrl: '#admission',
     image: newsImage,
+    courses: [
+      { name: 'BMLT', duration: '3 Years' },
+      { name: 'DMLT', duration: '2 Years' },
+      { name: 'X-RAY', duration: '2 Years' },
+      { name: 'Lab Technician', duration: 'Certificate' },
+    ],
+    eligibility: '12th Pass (Biology)',
+    contact: {
+      whatsapp: ['9243758191', '9243758191'],
+      phone: ['9243758191', '9243758191'],
+      address: 'Sanjay Nagar, near New BSNL Exchange Office, Shani Mandir Road, Dantewada (C.G.)',
+    },
   },
   {
     id: 'notice-2',
@@ -153,18 +165,6 @@ export const liveNotificationCards = [
     important: false,
     pdfUrl: '#courses',
     viewUrl: '#courses',
-  },
-  {
-    id: 'notice-3',
-    date: '16 May 2026',
-    category: 'Scholarship Alert',
-    title: 'Scholarship Forms Available',
-    description:
-      'Eligible students can download scholarship forms and complete the submission process before the deadline.',
-    isNew: true,
-    important: true,
-    pdfUrl: '#admission',
-    viewUrl: '#admission',
   },
   {
     id: 'notice-4',
@@ -227,7 +227,6 @@ export const sidebarUpdateGroups = [
     items: [
       { title: 'Practical exam instructions issued', meta: 'Read before exam day' },
       { title: 'Hall tickets to be downloaded online', meta: 'Portal active now' },
-      { title: 'Semester exam schedule published', meta: 'Check timetable' },
     ],
   },
 ];
@@ -237,4 +236,12 @@ export const liveUpdateCounters = [
   { id: 'counter-2', label: 'Important alerts', value: '08' },
   { id: 'counter-3', label: 'Updates today', value: '05' },
 ];
+
+export const admissionVideo = {
+  title: 'APJ Institute Raipur — Virtual Tour',
+  description: 'Take a virtual tour of our campus, labs, classrooms, and facilities to get a real feel of APJ Institute Raipur.',
+  // Replace VIDEO_ID with actual YouTube id or use a hosted mp4 URL
+  src: 'https://www.youtube.com/embed/VIDEO_ID',
+  poster: buildingImage,
+};
 export { buildingImage, newsImage };

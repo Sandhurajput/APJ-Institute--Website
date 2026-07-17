@@ -73,7 +73,7 @@ const HeroSection = () => {
           variants={itemVariants}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
         >
-          Empowering Future Innovators in Dantewada
+          Empowering Future Innovators in Raipur
         </motion.h1>
 
         {/* Subheading */}

@@ -9,5 +9,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+        const errDiv = document.createElement('div');
+        errDiv.style = 'position:fixed;top:0;left:0;z-index:99999;background:red;color:white;padding:20px;font-family:monospace;width:100%;height:100vh;overflow:auto;';
+        errDiv.innerHTML = `<strong>Error:</strong> ${message}<br><strong>Source:</strong> ${source}:${lineno}:${colno}<br><strong>Stack:</strong> <pre>${error ? error.stack : ''}</pre>`;
+        document.body.appendChild(errDiv);
+      };
+      // Also catch unhandled promise rejections
+      window.addEventListener('unhandledrejection', function(event) {
+        const errDiv = document.createElement('div');
+        errDiv.style = 'position:fixed;top:0;left:0;z-index:99999;background:red;color:white;padding:20px;font-family:monospace;width:100%;height:100vh;overflow:auto;';
+        errDiv.innerHTML = `<strong>Unhandled Promise Rejection:</strong> ${event.reason}`;
+        document.body.appendChild(errDiv);
+      });
+    </script>
   </body>
 </html>

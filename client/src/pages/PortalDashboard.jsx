@@ -33,25 +33,11 @@ export default function PortalDashboard() {
       icon: GraduationCap
     },
     {
-      title: 'Student Signup',
-      sub: 'OPEN PORTAL',
-      path: '/user-signup',
-      gradient: 'from-sky-500 to-cyan-400',
-      icon: User
-    },
-    {
       title: 'Admin Login',
       sub: 'OPEN PORTAL',
       path: '/admin-login',
       gradient: 'from-purple-600 to-fuchsia-500',
       icon: ShieldCheck
-    },
-    {
-      title: 'Teacher Signup',
-      sub: 'OPEN PORTAL',
-      path: '/admin-signup',
-      gradient: 'from-orange-600 to-amber-500',
-      icon: BookOpen
     }
   ];
 
