@@ -6,6 +6,7 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import loginImage from '../2.webp';
 import '../styles/AuthSplitScreen.css';
+import { getApiUrl } from '../utils/api';
 
 export default function UserLogin() {
   const [showPassword, setShowPassword] = useState(false);
@@ -45,7 +46,7 @@ export default function UserLogin() {
 
     setLoading(true);
 
-    axios.post('/api/students/login', {
+    axios.post(getApiUrl('/students/login'), {
       email: loginForm.email,
       password: loginForm.password,
     })
@@ -82,12 +83,12 @@ export default function UserLogin() {
       setLoading(true);
 
       // Try to login with Google email
-      axios.post('/api/auth/login', {
+      axios.post(getApiUrl('/students/login'), {
         email: email,
-        password: email, // Use email as temporary password for Google login
+        password: email,
       })
         .then((response) => {
-          const authData = response.data?.data;
+          const authData = response.data;
 
           localStorage.setItem('token', authData?.token || '');
           localStorage.setItem('role', 'user');

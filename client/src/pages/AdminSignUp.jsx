@@ -3,8 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import axios from 'axios';
 import signUpImage from '../1.webp';
-import '../styles/AdminAuthSplitScreen.css';
-
+import '../styles/AdminAuthSplitScreen.css';import { getApiUrl } from '../utils/api';
 export default function AdminSignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showPasskey, setShowPasskey] = useState(false);
@@ -55,7 +54,7 @@ export default function AdminSignUp() {
 
     setLoading(true);
 
-    axios.post('/api/auth/signup', {
+    axios.post(getApiUrl('/auth/signup'), {
       name: signUpForm.fullName,
       email: signUpForm.email,
       password: signUpForm.password,

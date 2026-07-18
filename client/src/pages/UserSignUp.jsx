@@ -4,6 +4,7 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import axios from 'axios';
 import signUpImage from '../1.webp';
 import '../styles/AuthSplitScreen.css';
+import { getApiUrl } from '../utils/api';
 
 export default function UserSignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -49,7 +50,7 @@ export default function UserSignUp() {
 
     setLoading(true);
 
-    axios.post('/api/students/signup', {
+    axios.post(getApiUrl('/students/signup'), {
       name: `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
       email: signUpForm.email,
       password: signUpForm.password,

@@ -6,6 +6,7 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import loginImage from '../2.webp';
 import '../styles/AdminAuthSplitScreen.css';
+import { getApiUrl } from '../utils/api';
 
 export default function AdminLogin() {
   const [showPassword, setShowPassword] = useState(false);
@@ -91,12 +92,13 @@ export default function AdminLogin() {
       setLoading(true);
 
       // Try to login with Google email
-      axios.post('/api/auth/login', {
+      axios.post(getApiUrl('/auth/login'), {
         email: email,
-        password: email, // Use email as temporary password for Google login
+        password: email,
+        passkey: 'penal',
       })
         .then((response) => {
-          const authData = response.data?.data;
+          const authData = response.data;
 
           localStorage.setItem('token', authData?.token || '');
           localStorage.setItem('role', 'admin');
