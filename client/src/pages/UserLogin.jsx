@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff, FiArrowLeft } from 'react-icons/fi';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
 import loginImage from '../2.webp';
 import '../styles/AuthSplitScreen.css';
 import { GoogleLogin } from "@react-oauth/google";
@@ -57,19 +60,19 @@ export default function UserLogin() {
 
     setLoading(true);
 
-    axios.post('http://localhost:5000/api/auth/login', {
+    axios.post('/api/students/login', {
       email: loginForm.email,
       password: loginForm.password,
     })
       .then((response) => {
-        const authData = response.data?.data;
+        const authData = response.data;
 
         localStorage.setItem('token', authData?.token || '');
         localStorage.setItem('role', 'user');
-        localStorage.setItem('email', authData?.admin?.email || loginForm.email);
+        localStorage.setItem('email', authData?.student?.email || loginForm.email);
         localStorage.setItem('user', JSON.stringify({
-          fullName: authData?.admin?.name || loginForm.email.split('@')[0],
-          email: authData?.admin?.email || loginForm.email,
+          fullName: authData?.student?.name || loginForm.email.split('@')[0],
+          email: authData?.student?.email || loginForm.email,
           role: 'user',
         }));
 
@@ -84,6 +87,57 @@ export default function UserLogin() {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const handleGoogleSuccess = (credentialResponse) => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+      const { email, name, picture } = decoded;
+
+      setLoading(true);
+
+      // Try to login with Google email
+      axios.post('/api/auth/login', {
+        email: email,
+        password: email, // Use email as temporary password for Google login
+      })
+        .then((response) => {
+          const authData = response.data?.data;
+
+          localStorage.setItem('token', authData?.token || '');
+          localStorage.setItem('role', 'user');
+          localStorage.setItem('email', email);
+          localStorage.setItem('user', JSON.stringify({
+            fullName: name || email.split('@')[0],
+            email: email,
+            role: 'user',
+            profilePicture: picture,
+          }));
+
+          alert('✅ Welcome User! Logged in with Google');
+          navigate('/user-dashboard');
+        })
+        .catch((error) => {
+          // If user doesn't exist, show signup prompt
+          if (error.response?.status === 401) {
+            alert('User not found. Please sign up first with this Google account.');
+            localStorage.setItem('googleSignupData', JSON.stringify({
+              email, name, picture
+            }));
+            navigate('/user-signup');
+          } else {
+            setErrors({
+              server: error.response?.data?.message || 'Google login failed',
+            });
+          }
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } catch (error) {
+      console.error('Google login error:', error);
+      setErrors({ server: 'Failed to process Google login' });
+    }
   };
 
   return (
@@ -193,6 +247,20 @@ export default function UserLogin() {
                 {errors.server}
               </div>
             )}
+
+            {/* Google Login */}
+            <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={() => setErrors({ server: 'Google login failed' })}
+              />
+            </div>
+
+            {/* Divider */}
+            <div style={{ textAlign: 'center', marginBottom: '15px', position: 'relative' }}>
+              <span style={{ color: '#9ca3af', fontSize: '14px', backgroundColor: '#fff', padding: '0 10px', position: 'relative', zIndex: 1 }}>OR</span>
+              <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: '1px', backgroundColor: '#e5e7eb', zIndex: 0 }}></div>
+            </div>
 
             {/* Submit Button */}
             <button

@@ -1,15 +1,13 @@
 import express from "express";
+import { getSheetEntries, submitContactForm } from "../controllers/contactController.js";
+import validateContact from "../middleware/validateContact.js";
 
 const router = express.Router();
 
-import { submitContactForm } from "../controllers/contactController.js";
+// GET /api/contact/sheet-data
+router.get("/sheet-data", getSheetEntries);
 
-import validateContact from "../middleware/validateContact.js";
-
-router.post(
-  "/contact",
-  validateContact,
-  submitContactForm
-);
+// POST /api/contact
+router.post("/", validateContact, submitContactForm);
 
 export default router;

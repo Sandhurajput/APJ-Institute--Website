@@ -49,20 +49,20 @@ export default function UserSignUp() {
 
     setLoading(true);
 
-    axios.post('http://localhost:5000/api/auth/signup', {
+    axios.post('/api/students/signup', {
       name: `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
       email: signUpForm.email,
       password: signUpForm.password,
     })
       .then((response) => {
-        const authData = response.data?.data;
+        const authData = response.data;
 
         localStorage.setItem('token', authData?.token || '');
         localStorage.setItem('role', 'user');
-        localStorage.setItem('email', authData?.admin?.email || signUpForm.email);
+        localStorage.setItem('email', authData?.student?.email || signUpForm.email);
         localStorage.setItem('user', JSON.stringify({
-          fullName: authData?.admin?.name || `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
-          email: authData?.admin?.email || signUpForm.email,
+          fullName: authData?.student?.name || `${signUpForm.firstName} ${signUpForm.lastName}`.trim(),
+          email: authData?.student?.email || signUpForm.email,
           role: 'user',
         }));
 

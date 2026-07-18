@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff, FiArrowLeft } from 'react-icons/fi';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
 import loginImage from '../2.webp';
 import '../styles/AdminAuthSplitScreen.css';
 
@@ -34,7 +37,7 @@ export default function AdminLogin() {
     if (!loginForm.password) newErrors.password = 'Password is required';
     if (!loginForm.adminPasskey) newErrors.adminPasskey = 'Admin passkey is required';
     else {
-      const ADMIN_PASSKEY = 'APJ@2024Admin';
+      const ADMIN_PASSKEY = 'penal';
       if (loginForm.adminPasskey !== ADMIN_PASSKEY)
         newErrors.adminPasskey = 'Invalid admin passkey';
     }
@@ -50,12 +53,13 @@ export default function AdminLogin() {
 
     setLoading(true);
 
-    axios.post('http://localhost:5000/api/auth/login', {
+    axios.post('/api/auth/login', {
       email: loginForm.email,
       password: loginForm.password,
+      passkey: loginForm.adminPasskey,
     })
       .then((response) => {
-        const authData = response.data?.data;
+        const authData = response.data;
 
         localStorage.setItem('token', authData?.token || '');
         localStorage.setItem('role', 'admin');
@@ -77,6 +81,53 @@ export default function AdminLogin() {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const handleGoogleSuccess = (credentialResponse) => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+      const { email, name, picture } = decoded;
+
+      setLoading(true);
+
+      // Try to login with Google email
+      axios.post('/api/auth/login', {
+        email: email,
+        password: email, // Use email as temporary password for Google login
+      })
+        .then((response) => {
+          const authData = response.data?.data;
+
+          localStorage.setItem('token', authData?.token || '');
+          localStorage.setItem('role', 'admin');
+          localStorage.setItem('email', email);
+          localStorage.setItem('user', JSON.stringify({
+            fullName: name || 'APJ Admin',
+            email: email,
+            role: 'admin',
+            profilePicture: picture,
+          }));
+
+          alert('✅ Welcome Admin! Logged in with Google');
+          navigate('/admin-dashboard');
+        })
+        .catch((error) => {
+          // If user doesn't exist, show signup prompt
+          if (error.response?.status === 401) {
+            alert('Admin user not found. Please contact administrator.');
+          } else {
+            setErrors({
+              server: error.response?.data?.message || 'Google login failed',
+            });
+          }
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } catch (error) {
+      console.error('Google login error:', error);
+      setErrors({ server: 'Failed to process Google login' });
+    }
   };
 
   return (
@@ -209,6 +260,20 @@ export default function AdminLogin() {
                 {errors.server}
               </div>
             )}
+
+            {/* Google Login */}
+            <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={() => setErrors({ server: 'Google login failed' })}
+              />
+            </div>
+
+            {/* Divider */}
+            <div style={{ textAlign: 'center', marginBottom: '15px', position: 'relative' }}>
+              <span style={{ color: '#9ca3af', fontSize: '14px', backgroundColor: '#fff', padding: '0 10px', position: 'relative', zIndex: 1 }}>OR</span>
+              <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: '1px', backgroundColor: '#e5e7eb', zIndex: 0 }}></div>
+            </div>
 
             {/* Submit Button */}
             <button

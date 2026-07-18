@@ -55,7 +55,7 @@ export default function AdminSignUp() {
 
     setLoading(true);
 
-    axios.post('http://localhost:5000/api/auth/signup', {
+    axios.post('/api/auth/signup', {
       name: signUpForm.fullName,
       email: signUpForm.email,
       password: signUpForm.password,
