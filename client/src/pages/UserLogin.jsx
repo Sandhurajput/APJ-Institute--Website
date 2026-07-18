@@ -75,6 +75,10 @@ export default function UserLogin() {
       });
   };
 
+  const handleGoogleError = () => {
+    setErrors({ server: 'Google login failed' });
+  };
+
   const handleGoogleSuccess = (credentialResponse) => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
@@ -238,7 +242,7 @@ export default function UserLogin() {
             <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
               <GoogleLogin
                 onSuccess={handleGoogleSuccess}
-                onError={() => setErrors({ server: 'Google login failed' })}
+                onError={handleGoogleError}
               />
             </div>
 
@@ -273,13 +277,6 @@ export default function UserLogin() {
   Continue with Google
 </button>< */}
 
-
-<div className="google-login">
-  <GoogleLogin
-    onSuccess={handleGoogleSuccess}
-    onError={handleGoogleError}
-  />
-</div>
 
             {/* Links */}
             <div className="auth-links">
