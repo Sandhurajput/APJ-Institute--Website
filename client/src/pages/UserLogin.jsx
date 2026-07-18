@@ -6,21 +6,6 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import loginImage from '../2.webp';
 import '../styles/AuthSplitScreen.css';
-import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
-
-
-const handleGoogleSuccess = (credentialResponse) => {
-  const user = jwtDecode(credentialResponse.credential);
-
-  console.log(user);
-
-  alert(`Welcome ${user.name}`);
-};
-
-const handleGoogleError = () => {
-  console.log("Google Login Failed");
-};
 
 export default function UserLogin() {
   const [showPassword, setShowPassword] = useState(false);
