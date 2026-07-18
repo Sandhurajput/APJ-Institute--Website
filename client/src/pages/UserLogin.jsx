@@ -20,6 +20,14 @@ export default function UserLogin() {
     termsAccepted: false,
   });
 
+  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID?.trim();
+  const isGoogleAuthEnabled = Boolean(
+    googleClientId &&
+    !googleClientId.includes('YOUR_') &&
+    !googleClientId.includes('your-') &&
+    !googleClientId.includes('example')
+  );
+
   const handleLoginChange = (e) => {
     const { name, value, type, checked } = e.target;
     setLoginForm((prev) => ({
@@ -239,12 +247,18 @@ export default function UserLogin() {
             )}
 
             {/* Google Login */}
-            <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
-              <GoogleLogin
-                onSuccess={handleGoogleSuccess}
-                onError={handleGoogleError}
-              />
-            </div>
+            {isGoogleAuthEnabled ? (
+              <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={handleGoogleError}
+                />
+              </div>
+            ) : (
+              <div className="server-error-text" style={{ marginBottom: '12px' }}>
+                Google login is not configured for this deployment yet.
+              </div>
+            )}
 
             {/* Divider */}
             <div style={{ textAlign: 'center', marginBottom: '15px', position: 'relative' }}>

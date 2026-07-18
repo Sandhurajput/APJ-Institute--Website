@@ -22,6 +22,14 @@ export default function AdminLogin() {
     termsAccepted: false,
   });
 
+  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID?.trim();
+  const isGoogleAuthEnabled = Boolean(
+    googleClientId &&
+    !googleClientId.includes('YOUR_') &&
+    !googleClientId.includes('your-') &&
+    !googleClientId.includes('example')
+  );
+
   const handleLoginChange = (e) => {
     const { name, value, type, checked } = e.target;
     setLoginForm((prev) => ({
@@ -82,6 +90,10 @@ export default function AdminLogin() {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const handleGoogleError = () => {
+    setErrors({ server: 'Google login failed' });
   };
 
   const handleGoogleSuccess = (credentialResponse) => {
@@ -263,13 +275,18 @@ export default function AdminLogin() {
               </div>
             )}
 
-            {/* Google Login */}
-            <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
-              <GoogleLogin
-                onSuccess={handleGoogleSuccess}
-                onError={() => setErrors({ server: 'Google login failed' })}
-              />
-            </div>
+            {isGoogleAuthEnabled ? (
+              <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={handleGoogleError}
+                />
+              </div>
+            ) : (
+              <div className="server-error-text" style={{ marginBottom: '12px' }}>
+                Google login is not configured for this deployment yet.
+              </div>
+            )}
 
             {/* Divider */}
             <div style={{ textAlign: 'center', marginBottom: '15px', position: 'relative' }}>
