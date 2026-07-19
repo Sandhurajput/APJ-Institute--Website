@@ -62,11 +62,11 @@ export default function AdminLogin() {
 
     setLoading(true);
 
-    axios.post('/api/auth/login', {
-      email: loginForm.email,
-      password: loginForm.password,
-      passkey: loginForm.adminPasskey,
-    })
+    axios.post(getApiUrl('/api/auth/login'), {
+  email: loginForm.email,
+  password: loginForm.password,
+  passkey: loginForm.adminPasskey,
+})
       .then((response) => {
         const authData = response.data;
 
