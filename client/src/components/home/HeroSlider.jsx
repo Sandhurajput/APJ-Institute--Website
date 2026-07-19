@@ -10,10 +10,10 @@ import 'swiper/css/pagination';
 export default function HeroSlider() {
   return (
     <section className="medical-slider relative overflow-hidden bg-slate-950" aria-label="Hero banner slider">
-      <Swiper modules={[Autoplay, Navigation, Pagination]} autoplay={{ delay: 3000, disableOnInteraction: false }} navigation pagination={{ clickable: true }} loop speed={900} className="h-[74vh] min-h-[560px] w-full">
+      <Swiper modules={[Autoplay, Navigation, Pagination]} autoplay={{ delay: 3000, disableOnInteraction: false }} navigation pagination={{ clickable: true }} loop speed={900} className="h-[60vh] sm:h-[70vh] lg:h-[74vh] min-h-[420px] sm:min-h-[520px] w-full">
         {heroSlides.map((slide) => (
           <SwiperSlide key={slide.title}>
-            <div className="relative h-[74vh] min-h-[560px] w-full">
+            <div className="relative h-[60vh] sm:h-[70vh] lg:h-[74vh] min-h-[420px] sm:min-h-[520px] w-full">
               <img src={slide.image} alt={slide.title} className="h-full w-full object-cover" loading="eager" />
               <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/65 to-[#15305b]/20" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(21,48,91,0.25),transparent_35%)]" />

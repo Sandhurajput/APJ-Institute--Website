@@ -51,7 +51,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
             <div className="bg-slate-50 p-1.5 rounded-2xl group-hover:bg-brand-50 transition-colors duration-300">
@@ -108,14 +108,14 @@ export default function Navbar() {
           {/* Right Section - Search & Mobile Menu Toggle */}
           <div className="flex items-center gap-4">
             {/* Search Bar - Desktop */}
-            <div className="hidden xl:flex items-center bg-slate-50 border border-slate-200/60 rounded-full px-4 py-2 focus-within:ring-2 focus-within:ring-brand-500/20 focus-within:border-brand-300 transition-all duration-300 shadow-inner group">
+            <div className="hidden lg:flex items-center bg-slate-50 border border-slate-200/60 rounded-full px-4 py-2 focus-within:ring-2 focus-within:ring-brand-500/20 focus-within:border-brand-300 transition-all duration-300 shadow-inner group">
               <Search size={16} className="text-slate-400 group-focus-within:text-brand-500 transition-colors" />
               <input
                 type="text"
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="bg-transparent outline-none text-sm font-semibold text-slate-700 placeholder-slate-400 w-32 focus:w-48 transition-all duration-300 ml-2"
+                className="bg-transparent outline-none text-sm font-semibold text-slate-700 placeholder-slate-400 w-28 sm:w-32 focus:w-44 sm:focus:w-56 transition-all duration-300 ml-2"
               />
             </div>
 
@@ -123,7 +123,7 @@ export default function Navbar() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="hidden lg:flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-brand-600 to-brand-700 text-white rounded-full font-bold text-sm shadow-lg shadow-brand-500/30 hover:shadow-brand-500/40 transition-all duration-300 border border-brand-500/50"
+              className="hidden lg:flex items-center gap-2 px-5 sm:px-6 py-2.5 bg-gradient-to-r from-brand-600 to-brand-700 text-white rounded-full font-bold text-sm shadow-lg shadow-brand-500/30 hover:shadow-brand-500/40 transition-all duration-300 border border-brand-500/50"
             >
               Admission Open <ArrowRight size={16} />
             </motion.button>

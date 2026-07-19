@@ -1,5 +1,18 @@
 import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaDownload, FaEye, FaExclamationTriangle, FaFilePdf } from 'react-icons/fa';
+import { FaCalendarAlt, FaDownload, FaEye, FaExclamationTriangle } from 'react-icons/fa';
+
+function GovernmentPdfIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="4" y="3" width="12" height="18" rx="1" fill="#FFFFFF" stroke="#C62828" strokeWidth="1.5" />
+      <path d="M16 3h4v4" fill="#C62828" />
+      <path d="M16 3v4h4" stroke="#C62828" strokeWidth="1.5" />
+      <path d="M8 9h8" stroke="#C62828" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M8 13h8" stroke="#C62828" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M8 17h5" stroke="#C62828" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 export default function NotificationCard({ item, index = 0 }) {
   return (
@@ -9,9 +22,9 @@ export default function NotificationCard({ item, index = 0 }) {
       viewport={{ once: true, amount: 0.18 }}
       transition={{ duration: 0.35, delay: index * 0.05 }}
       whileHover={{ y: -4 }}
-      className="group relative overflow-hidden rounded-2xl border border-[#15305b]/10 bg-white/85 p-5 shadow-[0_18px_45px_-32px_rgba(15,23,42,0.4)] backdrop-blur-xl transition"
+      className="group relative overflow-hidden rounded-[6px] border border-[#D6DCE5] bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.08)] transition"
     >
-      <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-[#15305b] via-blue-500 to-red-500" />
+      <div className="absolute inset-y-0 left-0 w-1 bg-[#111827]" />
 
       <div className="flex flex-wrap items-start justify-between gap-3 pl-2">
         <div className="space-y-3">
@@ -25,37 +38,37 @@ export default function NotificationCard({ item, index = 0 }) {
                 NEW
               </motion.span>
             )}
-            <span className="inline-flex items-center rounded-full bg-[#15305b]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#15305b]">
+            <span className="inline-flex items-center rounded-[4px] border border-[#D6DCE5] bg-[#F8F9FA] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#111827]">
               {item.category}
             </span>
             {item.important && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-amber-700">
-                <FaExclamationTriangle />
+              <span className="inline-flex items-center gap-1 rounded-[4px] border border-[#D6DCE5] bg-[#F8F9FA] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#111827]">
+                <FaExclamationTriangle className="text-[#C62828]" />
                 Important
               </span>
             )}
           </div>
 
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-            <FaCalendarAlt className="text-[#15305b]" />
+            <FaCalendarAlt className="text-[#111827]" />
             {item.date}
           </div>
         </div>
 
-        <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#15305b] to-blue-600 text-white shadow-lg shadow-[#15305b]/20 transition group-hover:scale-105">
-          <FaFilePdf />
+        <div className="inline-flex h-11 w-11 items-center justify-center rounded-[6px] border border-[#D6DCE5] bg-[#F8F9FA] text-[#C62828] transition group-hover:scale-105">
+          <GovernmentPdfIcon />
         </div>
       </div>
 
       <div className="mt-4 pl-2">
-        <h3 className="text-lg font-bold text-slate-900 sm:text-xl">{item.title}</h3>
-        <p className="mt-2 text-sm leading-6 text-slate-600">{item.description}</p>
+        <h3 className="text-lg font-semibold text-[#111827] sm:text-xl">{item.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-[#374151]">{item.description}</p>
       </div>
 
       <div className="mt-5 flex flex-wrap gap-3 pl-2">
         <a
           href={item.viewUrl}
-          className="inline-flex items-center gap-2 rounded-full border border-[#15305b]/20 bg-[#15305b]/5 px-4 py-2 text-sm font-semibold text-[#15305b] transition hover:border-[#15305b]/30 hover:bg-[#15305b]/10"
+          className="inline-flex items-center gap-2 rounded-[6px] border border-[#0B3D91] bg-white px-4 py-2 text-sm font-semibold text-[#0B3D91] transition hover:bg-[#F8F9FA]"
         >
           <FaEye />
           View
@@ -63,7 +76,7 @@ export default function NotificationCard({ item, index = 0 }) {
         <a
           href={item.pdfUrl}
           download
-          className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#15305b] to-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:scale-[1.02]"
+          className="inline-flex items-center gap-2 rounded-[6px] border border-[#C62828] bg-[#C62828] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#b11f1f]"
         >
           <FaDownload />
           Download PDF

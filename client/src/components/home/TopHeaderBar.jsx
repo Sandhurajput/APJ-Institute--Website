@@ -34,35 +34,38 @@ export default function TopHeaderBar() {
         className="bg-gradient-to-r from-slate-950 via-indigo-950 to-lime-900 text-white shadow-[0_16px_45px_rgba(15,23,42,0.28)]"
       >
         <div className="mx-auto max-w-7xl px-3 py-2 sm:px-4 lg:px-8">
-          <div className="flex items-center gap-3 overflow-x-auto whitespace-nowrap no-scrollbar md:justify-between">
-            {contactItems.map(({ icon: Icon, label, href, external, align }) => (
-              <motion.a
-                key={label}
-                href={href}
-                target={external ? '_blank' : undefined}
-                rel={external ? 'noreferrer' : undefined}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                className={`group inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/8 px-3 py-2 text-xs font-medium text-white/95 backdrop-blur-sm transition-shadow hover:shadow-[0_0_24px_rgba(255,255,255,0.12)] sm:px-4 sm:text-sm ${align}`}
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between overflow-x-auto whitespace-nowrap no-scrollbar">
+            <div className="flex items-center gap-3 overflow-x-auto whitespace-nowrap no-scrollbar">
+              {contactItems.map(({ icon: Icon, label, href, external, align }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'noreferrer' : undefined}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`group inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/8 px-3 py-2 text-xs font-medium text-white/95 backdrop-blur-sm transition-shadow hover:shadow-[0_0_24px_rgba(255,255,255,0.12)] sm:px-4 sm:text-sm ${align}`}
+                >
+                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white transition group-hover:bg-white/20">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span>{label}</span>
+                </motion.a>
+              ))}
+            </div>
+            <div className="flex justify-start md:justify-end">
+              <a
+                href="https://wa.me/916268409259"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-[#25D366]/30 bg-white/10 px-4 py-1.5 font-semibold text-[#25D366] backdrop-blur transition hover:bg-white/20 hover:border-[#25D366]/50"
               >
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white transition group-hover:bg-white/20">
-                  <Icon className="h-4 w-4" />
-                </span>
-                <span>{label}</span>
-              </motion.a>
-            ))}
+                <FaWhatsapp size={16} className="text-[#25D366]" />
+                WhatsApp
+              </a>
+            </div>
           </div>
         </div>
-
-        <a
-          href="https://wa.me/916268409259"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex w-fit items-center gap-2 rounded-full border border-[#25D366]/30 bg-white/10 px-4 py-1.5 font-semibold text-[#25D366] backdrop-blur transition hover:bg-white/20 hover:border-[#25D366]/50"
-        >
-          <FaWhatsapp size={16} className="text-[#25D366]" />
-          WhatsApp
-        </a>
       </motion.div>
     </div>
   );
