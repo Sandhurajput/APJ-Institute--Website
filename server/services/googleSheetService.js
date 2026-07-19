@@ -6,19 +6,47 @@ dotenv.config();
 
 let sheetsClient = null;
 const REQUIRED_HEADERS = ["Timestamp", "Name", "Email", "Phone", "Subject", "Message"];
+const PLACEHOLDER_TOKENS = ["REPLACE", "your_", "changeme"];
+
+const normalizeConfigValue = (value) => (typeof value === "string" ? value.trim() : "");
+
+const isPlaceholderValue = (value) => {
+  const normalized = normalizeConfigValue(value);
+  if (!normalized) {
+    return true;
+  }
+
+  return PLACEHOLDER_TOKENS.some((token) => normalized.toLowerCase().includes(token));
+};
+
+export const isGoogleSheetsConfigured = (env = process.env) => {
+  const clientEmail = normalizeConfigValue(env.GOOGLE_CLIENT_EMAIL);
+  const privateKey = normalizeConfigValue(env.GOOGLE_PRIVATE_KEY)?.replace(/\\n/g, "\n");
+  const spreadsheetId = normalizeConfigValue(env.GOOGLE_SHEET_ID);
+
+  return Boolean(
+    !isPlaceholderValue(clientEmail) &&
+      !isPlaceholderValue(privateKey) &&
+      !isPlaceholderValue(spreadsheetId)
+  );
+};
+
+const getConfiguredAppScriptUrl = (env = process.env) => {
+  const appScriptUrl = normalizeConfigValue(env.GOOGLE_APP_SCRIPT_URL);
+  return isPlaceholderValue(appScriptUrl) ? null : appScriptUrl;
+};
 
 const getSheetsClient = () => {
   if (sheetsClient) {
     return sheetsClient;
   }
 
-  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
-
-  if (!clientEmail || !privateKey || !spreadsheetId) {
+  if (!isGoogleSheetsConfigured()) {
     throw new Error("Google Sheets credentials are not configured");
   }
+
+  const clientEmail = normalizeConfigValue(process.env.GOOGLE_CLIENT_EMAIL);
+  const privateKey = normalizeConfigValue(process.env.GOOGLE_PRIVATE_KEY)?.replace(/\\n/g, "\n");
 
   const auth = new google.auth.JWT({
     email: clientEmail,
@@ -52,7 +80,17 @@ const ensureHeaderRow = async (sheets, spreadsheetId) => {
 };
 
 export const appendToSheet = async (data) => {
-  const appScriptUrl = process.env.GOOGLE_APP_SCRIPT_URL;
+  const appScriptUrl = getConfiguredAppScriptUrl();
+  const directSheetsConfigured = isGoogleSheetsConfigured();
+
+  if (!appScriptUrl && !directSheetsConfigured) {
+    console.warn("Google Sheets integration is disabled because the credentials are missing or still use placeholder values.");
+    return {
+      success: true,
+      skipped: true,
+      message: "Google Sheets integration disabled",
+    };
+  }
 
   if (appScriptUrl) {
     try {
@@ -79,15 +117,24 @@ export const appendToSheet = async (data) => {
       const detail = error.response
         ? `status=${error.response.status} body=${JSON.stringify(error.response.data)}`
         : error.message;
-      console.error("Google Apps Script POST error:", detail);
-      throw new Error(detail);
+
+      if (!directSheetsConfigured) {
+        console.warn("Google Apps Script integration failed and direct Sheets credentials are not configured; skipping sync.", detail);
+        return {
+          success: true,
+          skipped: true,
+          message: "Google Sheets integration skipped",
+        };
+      }
+
+      console.warn("Google Apps Script integration failed; falling back to direct Google Sheets API.", detail);
     }
   }
 
   try {
     // Initialize the Google Sheets client once and reuse it for subsequent submissions.
     const sheets = getSheetsClient();
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const spreadsheetId = normalizeConfigValue(process.env.GOOGLE_SHEET_ID);
 
     // Ensure the sheet has the expected header row before appending data.
     await ensureHeaderRow(sheets, spreadsheetId);
@@ -119,9 +166,14 @@ export const appendToSheet = async (data) => {
 };
 
 export const readFromSheet = async () => {
+  if (!isGoogleSheetsConfigured()) {
+    console.warn("Google Sheets read skipped because the integration is not configured.");
+    return [];
+  }
+
   try {
     const sheets = getSheetsClient();
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const spreadsheetId = normalizeConfigValue(process.env.GOOGLE_SHEET_ID);
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
       range: "Sheet1!A:F",
