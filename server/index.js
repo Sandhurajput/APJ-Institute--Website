@@ -12,10 +12,38 @@ import adminAuthRoutes from "./routes/adminAuthRoutes.js";
 
 const app = express();
 
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  process.env.ALLOWED_ORIGINS,
+  "https://apj-institute-website.vercel.app",
+  "https://apj-institute-website-git-main-sankusodhis-projects.vercel.app",
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+]
+  .flatMap((value) => value ? value.split(",").map((entry) => entry.trim()).filter(Boolean) : [])
+  .filter((value, index, array) => array.indexOf(value) === index);
+
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL || "http://localhost:5173", "http://127.0.0.1:5173"],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      const isLocalhost = /^https?:\/\/localhost(:\d+)?$/.test(origin) || /^http:\/\/127\.0\.0\.1(:\d+)?$/.test(origin);
+      const isVercelPreview = /(?:^|\.)vercel\.app$/i.test(origin);
+
+      if (isLocalhost || isVercelPreview) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error(`Origin not allowed: ${origin}`));
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "x-auth-token", "X-Requested-With"],
   })
 );
 app.use(express.json());
