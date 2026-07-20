@@ -19,4 +19,16 @@ db.connect((err) => {
   }
 });
 
+export const executeQuery = (sql, params = []) =>
+  new Promise((resolve, reject) => {
+    db.execute(sql, params, (err, results) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      resolve(results);
+    });
+  });
+
 export default db;

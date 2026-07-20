@@ -1,7 +1,5 @@
 import jwt from "jsonwebtoken";
-import { getPrismaClient } from "../config/database.js";
-
-const prisma = getPrismaClient();
+import { executeQuery } from "../config/db.js";
 
 export const protect = async (req, res, next) => {
   try {
@@ -27,9 +25,17 @@ export const protect = async (req, res, next) => {
     let user = null;
 
     if (decoded.role === "admin") {
-      user = await prisma.admin.findUnique({ where: { id: decoded.id } });
+      const adminRows = await executeQuery(
+        "SELECT * FROM `Admin` WHERE id = ? LIMIT 1",
+        [decoded.id]
+      );
+      user = adminRows[0];
     } else if (decoded.role === "student") {
-      user = await prisma.student.findUnique({ where: { id: decoded.id } });
+      const studentRows = await executeQuery(
+        "SELECT * FROM `students` WHERE id = ? LIMIT 1",
+        [decoded.id]
+      );
+      user = studentRows[0];
     }
 
     if (!user) {

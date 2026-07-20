@@ -1,8 +1,6 @@
-import { getPrismaClient } from "../config/database.js";
+import { executeQuery } from "../config/db.js";
 import { generateToken } from "../config/jwt.js";
 import { comparePassword, hashPassword } from "../utils/helpers.js";
-
-const prisma = getPrismaClient();
 
 export const signup = async (req, res) => {
   try {
@@ -17,9 +15,11 @@ export const signup = async (req, res) => {
       });
     }
 
-    const existingAdmin = await prisma.admin.findUnique({
-      where: { email: adminEmail },
-    });
+    const existingRows = await executeQuery(
+      "SELECT * FROM `Admin` WHERE email = ? LIMIT 1",
+      [adminEmail]
+    );
+    const existingAdmin = existingRows[0];
 
     if (existingAdmin) {
       return res.status(400).json({
@@ -29,15 +29,15 @@ export const signup = async (req, res) => {
     }
 
     const hashedPassword = await hashPassword(password);
-    const admin = await prisma.admin.create({
-      data: {
-        name: adminName,
-        email: adminEmail,
-        password: hashedPassword,
-        role: "admin",
-        isActive: true,
-      },
-    });
+    await executeQuery(
+      "INSERT INTO `Admin` (name, email, password, role, isActive, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, NOW(), NOW())",
+      [adminName, adminEmail, hashedPassword, "admin", true]
+    );
+
+    const adminRows = await executeQuery(
+      "SELECT * FROM `Admin` WHERE id = LAST_INSERT_ID() LIMIT 1"
+    );
+    const admin = adminRows[0];
 
     const token = generateToken({
       id: admin.id,
@@ -77,21 +77,23 @@ export const login = async (req, res) => {
     const adminPasscode = process.env.ADMIN_PASSKEY || "penal";
     const allowPasskeyLogin = providedPasskey && providedPasskey === adminPasscode;
 
-    let admin = await prisma.admin.findUnique({
-      where: { email: adminEmail },
-    });
+    const adminRows = await executeQuery(
+      "SELECT * FROM `Admin` WHERE email = ? LIMIT 1",
+      [adminEmail]
+    );
+    let admin = adminRows[0];
 
     if (!admin && allowPasskeyLogin) {
       const hashedPassword = await hashPassword(password);
-      admin = await prisma.admin.create({
-        data: {
-          name: adminEmail.split("@")[0],
-          email: adminEmail,
-          password: hashedPassword,
-          role: "admin",
-          isActive: true,
-        },
-      });
+      await executeQuery(
+        "INSERT INTO `Admin` (name, email, password, role, isActive, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, NOW(), NOW())",
+        [adminEmail.split("@")[0], adminEmail, hashedPassword, "admin", true]
+      );
+
+      const createdAdminRows = await executeQuery(
+        "SELECT * FROM `Admin` WHERE id = LAST_INSERT_ID() LIMIT 1"
+      );
+      admin = createdAdminRows[0];
     }
 
     if (!admin) {
@@ -150,9 +152,11 @@ export const getProfile = async (req, res) => {
       });
     }
 
-    const admin = await prisma.admin.findUnique({
-      where: { id: adminId },
-    });
+    const adminRows = await executeQuery(
+      "SELECT * FROM `Admin` WHERE id = ? LIMIT 1",
+      [adminId]
+    );
+    const admin = adminRows[0];
 
     if (!admin) {
       return res.status(404).json({
@@ -195,7 +199,11 @@ export const changePassword = async (req, res) => {
       });
     }
 
-    const admin = await prisma.admin.findUnique({ where: { id: adminId } });
+    const adminRows = await executeQuery(
+      "SELECT * FROM `Admin` WHERE id = ? LIMIT 1",
+      [adminId]
+    );
+    const admin = adminRows[0];
 
     if (!admin) {
       return res.status(404).json({
@@ -215,10 +223,10 @@ export const changePassword = async (req, res) => {
 
     const hashedPassword = await hashPassword(newPassword);
 
-    await prisma.admin.update({
-      where: { id: adminId },
-      data: { password: hashedPassword },
-    });
+    await executeQuery(
+      "UPDATE `Admin` SET password = ?, updatedAt = NOW() WHERE id = ?",
+      [hashedPassword, adminId]
+    );
 
     return res.status(200).json({
       success: true,

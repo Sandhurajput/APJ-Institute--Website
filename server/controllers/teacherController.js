@@ -1,17 +1,17 @@
-import { getPrismaClient } from "../config/database.js";
+import { executeQuery } from "../config/db.js";
 import { generateToken } from "../config/jwt.js";
 import { hashPassword, comparePassword } from "../utils/helpers.js";
-
-const prisma = getPrismaClient();
 
 // Teacher Signup
 export const teacherSignup = async (req, res) => {
   try {
     const { name, email, password, subject } = req.body;
 
-    const existingTeacher = await prisma.teacher.findUnique({
-      where: { email },
-    });
+    const existingRows = await executeQuery(
+      "SELECT * FROM `Teacher` WHERE email = ? LIMIT 1",
+      [email]
+    );
+    const existingTeacher = existingRows[0];
 
     if (existingTeacher) {
       return res.status(400).json({
@@ -22,14 +22,15 @@ export const teacherSignup = async (req, res) => {
 
     const hashedPassword = await hashPassword(password);
 
-    const teacher = await prisma.teacher.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword,
-        subject,
-      },
-    });
+    await executeQuery(
+      "INSERT INTO `Teacher` (name, email, password, subject, createdAt) VALUES (?, ?, ?, ?, NOW())",
+      [name, email, hashedPassword, subject]
+    );
+
+    const teacherRows = await executeQuery(
+      "SELECT * FROM `Teacher` WHERE id = LAST_INSERT_ID() LIMIT 1"
+    );
+    const teacher = teacherRows[0];
 
     const token = generateToken(teacher.id, teacher.email);
 
@@ -54,9 +55,11 @@ export const teacherLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const teacher = await prisma.teacher.findUnique({
-      where: { email },
-    });
+    const teacherRows = await executeQuery(
+      "SELECT * FROM `Teacher` WHERE email = ? LIMIT 1",
+      [email]
+    );
+    const teacher = teacherRows[0];
 
     if (!teacher) {
       return res.status(404).json({
@@ -65,10 +68,7 @@ export const teacherLogin = async (req, res) => {
       });
     }
 
-    const isMatch = await comparePassword(
-      password,
-      teacher.password
-    );
+    const isMatch = await comparePassword(password, teacher.password);
 
     if (!isMatch) {
       return res.status(400).json({

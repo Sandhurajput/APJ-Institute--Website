@@ -1,8 +1,6 @@
-import { getPrismaClient } from "../config/database.js";
+import { executeQuery } from "../config/db.js";
 import { generateToken } from "../config/jwt.js";
 import { comparePassword, hashPassword } from "../utils/helpers.js";
-
-const prisma = getPrismaClient();
 
 export const signup = async (req, res) => {
   try {
@@ -17,9 +15,11 @@ export const signup = async (req, res) => {
       });
     }
 
-    const existingStudent = await prisma.student.findUnique({
-      where: { email: studentEmail },
-    });
+    const existingRows = await executeQuery(
+      "SELECT * FROM `students` WHERE email = ? LIMIT 1",
+      [studentEmail]
+    );
+    const existingStudent = existingRows[0];
 
     if (existingStudent) {
       return res.status(400).json({
@@ -29,14 +29,15 @@ export const signup = async (req, res) => {
     }
 
     const hashedPassword = await hashPassword(password);
-    const student = await prisma.student.create({
-      data: {
-        name: studentName,
-        email: studentEmail,
-        password: hashedPassword,
-        isActive: true,
-      },
-    });
+    await executeQuery(
+      "INSERT INTO `students` (name, email, password, isActive, createdAt, updatedAt) VALUES (?, ?, ?, ?, NOW(), NOW())",
+      [studentName, studentEmail, hashedPassword, true]
+    );
+
+    const studentRows = await executeQuery(
+      "SELECT * FROM `students` WHERE id = LAST_INSERT_ID() LIMIT 1"
+    );
+    const student = studentRows[0];
 
     const token = generateToken({
       id: student.id,
@@ -72,9 +73,11 @@ export const login = async (req, res) => {
       });
     }
 
-    const student = await prisma.student.findUnique({
-      where: { email: studentEmail },
-    });
+    const studentRows = await executeQuery(
+      "SELECT * FROM `students` WHERE email = ? LIMIT 1",
+      [studentEmail]
+    );
+    const student = studentRows[0];
 
     if (!student) {
       return res.status(401).json({
@@ -132,9 +135,11 @@ export const getProfile = async (req, res) => {
       });
     }
 
-    const student = await prisma.student.findUnique({
-      where: { id: studentId },
-    });
+    const studentRows = await executeQuery(
+      "SELECT * FROM `students` WHERE id = ? LIMIT 1",
+      [studentId]
+    );
+    const student = studentRows[0];
 
     if (!student) {
       return res.status(404).json({

@@ -1,7 +1,5 @@
-import { getPrismaClient } from "../config/database.js";
+import { executeQuery } from "../config/db.js";
 import { appendToSheet, readFromSheet } from "../services/googleSheetService.js";
-
-const prisma = getPrismaClient();
 
 export const getSheetEntries = async (req, res) => {
   try {
@@ -21,21 +19,18 @@ export const getSheetEntries = async (req, res) => {
 
 export const submitContactForm = async (req, res) => {
   try {
-    // 1. Validate and normalize the incoming request payload.
     const { name, email, phone, subject, message } = req.body;
 
-    // 2. Save the inquiry to MySQL using Prisma first.
-    const contact = await prisma.contact.create({
-      data: {
-        name: (name || "").trim(),
-        email: (email || "").trim().toLowerCase(),
-        phone: phone || "",
-        subject: subject || "",
-        message: message || "",
-      },
-    });
+    await executeQuery(
+      "INSERT INTO `contacts` (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)",
+      [(name || "").trim(), (email || "").trim().toLowerCase(), phone || "", subject || "", message || ""]
+    );
 
-    // 3. Append the same inquiry to Google Sheets in the background.
+    const contactRows = await executeQuery(
+      "SELECT * FROM `contacts` WHERE id = LAST_INSERT_ID() LIMIT 1"
+    );
+    const contact = contactRows[0];
+
     let sheetSyncError = null;
     try {
       await appendToSheet({
@@ -47,7 +42,6 @@ export const submitContactForm = async (req, res) => {
         message: contact.message,
       });
     } catch (sheetError) {
-      // 4. Do not fail the API request if Google Sheets is unavailable.
       sheetSyncError = sheetError.message;
       console.error("Google Sheets integration failed, continuing request:", sheetSyncError);
     }
