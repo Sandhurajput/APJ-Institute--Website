@@ -16,7 +16,6 @@ import posterBanner from '../../WhatsApp Image 2026-05-17 at 9.41.17 PM.jpeg';
 import labCollageImage from '../../WhatsApp Image 2026-05-17 at 9.41.19 PM.jpeg';
 import sec1Image from '../sec1.jpg';
 import sec2Image from '../sec2.jpg';
-import mainVideo from '../WhatsApp Video 2026-07-20 at 9.01.34 PM.mp4';
 import firstsc1 from '../fistsc1.jpg';
 import firstsc2 from '../firstsc2.jpg';
 import sectionImage from '../section .jpg';
@@ -28,6 +27,7 @@ import lastsc4 from '../lastsc4.jpg';
 
 export default function About() {
   const navigate = useNavigate();
+  const mainVideo = '/videos/about-page-video.mp4';
 
   return (
     <motion.div

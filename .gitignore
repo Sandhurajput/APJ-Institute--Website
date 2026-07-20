@@ -31,6 +31,7 @@ coverage/
 
 # media
 *.mp4
+!client/public/videos/about-page-video.mp4
 
 # package lock
 package-lock.json
