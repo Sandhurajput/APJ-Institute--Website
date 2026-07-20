@@ -7,10 +7,10 @@ import classroomStudents2 from '/assets/course-images/classroom.png';
 import classroomStudents3 from '/assets/course-images/classroom.png';
 import buildingImage from '/assets/course-images/building.png';
 
-import inquiryCounselingImage from '../../enquiry1.webp';
-import eligibilityCheckImage from '../../documents.webp';
-import applicationFormImage from '../../form.webp';
-import documentSubmissionImage from '../../marksheet.webp';
+import inquiryCounselingImage from '../../WhatsApp Image 2026-05-17 at 9.41.07 PM.jpeg';
+import eligibilityCheckImage from '../../WhatsApp Image 2026-05-17 at 9.41.09 PM.jpeg';
+import applicationFormImage from '../../WhatsApp Image 2026-05-17 at 9.41.17 PM.jpeg';
+import documentSubmissionImage from '../../WhatsApp Image 2026-05-17 at 9.41.19 PM.jpeg';
 import feePaymentImage from '../../fees.webp';
 import confirmationImage from '../../receipt.webp';
 

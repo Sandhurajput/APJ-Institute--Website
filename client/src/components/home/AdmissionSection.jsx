@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 import { admissionSteps } from '../../data/homepageData';
-import admissionBg from '../../assets/admission_bg.png';
+import admissionBg from '/admission-promo.png';
 
 const stepDetails = [
   { duration: "15 Mins", requirement: "Free Counseling", status: "Walk-in" },

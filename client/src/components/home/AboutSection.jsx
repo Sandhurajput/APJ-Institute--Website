@@ -2,11 +2,11 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { FiArrowUpRight } from 'react-icons/fi';
 
-// Custom generated high-end medical assets
-import docPortrait from '../../new20.jpeg';
-import labTraining from '../../new21.jpeg';
-import expertInstructors from '../../new22.png';
-import studentMentorship from '../../new24.jpeg';
+// Use locally uploaded APJ Institute photos
+import docPortrait from '../../new17.jpeg';
+import labTraining from '../../new18.jpeg';
+import expertInstructors from '../../new19.jpeg';
+import studentMentorship from '../../new20.jpeg';
 
 export default function AboutSection() {
   return (
@@ -32,6 +32,15 @@ export default function AboutSection() {
             </h2>
             <p className="mt-4 text-[#dbeafe] font-light text-sm sm:text-base leading-relaxed max-w-xl">
               APJ Institute Dantewada delivers industry-relevant paramedical education. We provide a balance of rigorous academic knowledge, active laboratory diagnostics, and clinical internships to prepare career-ready health professionals.
+            </p>
+            <p className="mt-4 text-[#dbeafe] font-light text-sm sm:text-base leading-relaxed max-w-xl">
+              एपीजे इंस्टीट्यूट, दंतेवाड़ा छत्तीसगढ़ का एक अग्रणी पैरामेडिकल एवं स्वास्थ्य शिक्षा संस्थान है, जिसका उद्देश्य युवाओं को गुणवत्तापूर्ण शिक्षा, व्यावहारिक प्रशिक्षण और रोजगारोन्मुख कौशल प्रदान करना है। हमारा संस्थान स्वास्थ्य सेवाओं के क्षेत्र में विभिन्न डिप्लोमा एवं डिग्री पाठ्यक्रमों के माध्यम से विद्यार्थियों को सफल करियर के लिए तैयार करता है।
+            </p>
+            <p className="mt-4 text-[#dbeafe] font-light text-sm sm:text-base leading-relaxed max-w-xl">
+              हमारा विश्वास है कि एक कुशल स्वास्थ्यकर्मी केवल अपने करियर में ही नहीं, बल्कि समाज की सेवा में भी महत्वपूर्ण योगदान देता है। अनुभवी शिक्षकों, आधुनिक प्रयोगशालाओं, स्मार्ट कक्षाओं, व्यावहारिक प्रशिक्षण तथा उत्कृष्ट शिक्षण व्यवस्था के साथ एपीजे इंस्टीट्यूट, दंतेवाड़ा विद्यार्थियों को उज्ज्वल भविष्य की ओर अग्रसर करने के लिए प्रतिबद्ध है।
+            </p>
+            <p className="mt-4 text-[#dbeafe] font-light text-sm sm:text-base leading-relaxed max-w-xl font-semibold">
+              यदि आपका सपना स्वास्थ्य सेवा के क्षेत्र में एक सफल और सम्मानजनक करियर बनाना है, तो एपीजे इंस्टीट्यूट, दंतेवाड़ा आपके लिए सही विकल्प है।
             </p>
 
             {/* CTA Button */}

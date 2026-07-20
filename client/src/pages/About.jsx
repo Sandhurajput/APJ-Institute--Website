@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 // import Footer from '../components/home/Footer';
 import { buildingImage } from '../data/homepageData';
 // Import classroom images directly
-import classroomStudents1 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.09 PM.jpeg';
-import classroomStudents2 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.12 PM.jpeg';
-import classroomStudents3 from '../components/home/WhatsApp Image 2026-05-17 at 9.41.14 PM.jpeg';
-import posterBanner from '../../WhatsApp Image 2026-05-17 at 9.40.59 PM.jpeg';
+import classroomStudents1 from '../../WhatsApp Image 2026-05-17 at 9.41.09 PM.jpeg';
+import classroomStudents2 from '../assets/about/WhatsApp Image 2026-05-17 at 9.41.07 PM.jpeg';
+import classroomStudents3 from '../assets/about/WhatsApp Image 2026-05-17 at 9.41.14 PM.jpeg';
+import posterBanner from '../../WhatsApp Image 2026-05-17 at 9.41.17 PM.jpeg';
 import labCollageImage from '../../WhatsApp Image 2026-05-17 at 9.41.19 PM.jpeg';
 import sec1Image from '../sec1.jpg';
 import sec2Image from '../sec2.jpg';
@@ -57,8 +57,11 @@ export default function About() {
                 <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
                   Turn Your Ambition into <span className="text-[#1e3a5f]">Achievement</span>
                 </h1>
-                <p className="text-base text-slate-600 mb-8 leading-relaxed">
+                <p className="text-base text-slate-600 mb-4 leading-relaxed">
                   Empowering students with world-class education, innovation, and genuine opportunities.
+                </p>
+                <p className="text-base text-slate-600 mb-8 leading-relaxed">
+                  एपीजे इंस्टीट्यूट, दंतेवाड़ा में हम विद्यार्थियों को गुणवत्तापूर्ण पैरामेडिकल शिक्षा, व्यावहारिक प्रशिक्षण और करियर-केन्द्रित समर्थन देते हैं।
                 </p>
                 
                 {/* Button Group */}
@@ -120,11 +123,17 @@ export default function About() {
                   <p className="text-sm text-white leading-relaxed">
                     Our institution is dedicated to providing world-class education with a focus on innovation, research, and practical learning.
                   </p>
+                  <p className="text-sm text-white leading-relaxed mt-2">
+                    हमारा संस्थान नवाचार, अनुसंधान और व्यावहारिक शिक्षण पर ध्यान देकर शिक्षा में उत्कृष्टता प्रदान करने के लिए प्रतिबद्ध है।
+                  </p>
                 </div>
                 <div>
                   <h3 className="text-xl font-black text-white mb-2">Proven Track Record</h3>
                   <p className="text-sm text-white leading-relaxed">
                     With decades of excellence, we have produced leaders and professionals who are making a difference in their respective fields.
+                  </p>
+                  <p className="text-sm text-white leading-relaxed mt-2">
+                    दशकों के अनुभव के साथ, हमने ऐसे विद्यार्थियों को तैयार किया है जो अपने क्षेत्रों में सकारात्मक बदलाव ला रहे हैं।
                   </p>
                 </div>
               </div>
@@ -147,6 +156,9 @@ export default function About() {
                 </p>
                 <p className="text-sm text-blue-100 leading-relaxed">
                   Explore comprehensive programs with industry experts, practical training, and career support. Our students succeed because we focus on real-world skills.
+                </p>
+                <p className="text-sm text-blue-100 leading-relaxed mt-4">
+                  हमारे प्रोग्राम अनुभवी फैकल्टी, व्यावहारिक प्रशिक्षण और करियर समर्थन को जोड़ते हैं, ताकि विद्यार्थी असली दुनिया के लिए तैयार हों।
                 </p>
               </div>
 

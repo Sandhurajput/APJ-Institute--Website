@@ -17,7 +17,7 @@ export default function PopupAnnouncement() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35 }}
-          className="fixed inset-0 z-[9999] flex min-h-screen items-center justify-center overflow-hidden bg-slate-950/75 px-3 py-3 sm:px-4 sm:py-4"
+          className="fixed inset-0 z-[9999] flex min-h-screen items-start sm:items-center justify-center overflow-auto bg-slate-950/75 px-3 py-6 sm:px-4 sm:py-4"
           role="dialog"
           aria-modal="true"
           aria-labelledby="admission-popup-title"
@@ -28,7 +28,7 @@ export default function PopupAnnouncement() {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.97, opacity: 0, y: 20 }}
             transition={{ duration: 0.4, type: 'spring', stiffness: 120, damping: 22 }}
-            className="relative my-auto w-[95vw] max-w-[820px] max-h-[calc(100vh-48px)] overflow-hidden rounded-[12px] border border-[#D6DCE5] bg-white shadow-sm"
+            className="relative m-auto w-full max-w-[95vw] sm:max-w-[820px] max-h-[calc(100vh-140px)] sm:max-h-[calc(100vh-32px)] overflow-hidden rounded-sm sm:rounded-[12px] border border-[#D6DCE5] bg-white shadow-sm"
             onClick={(e) => e.stopPropagation()}
             tabIndex={-1}
           >
@@ -41,7 +41,7 @@ export default function PopupAnnouncement() {
             </button>
 
             <div className="flex h-full flex-col">
-              <div className="overflow-hidden px-3 pb-3 pt-4 sm:px-4 sm:pt-5 max-[649px]:overflow-y-auto">
+              <div className="flex-1 overflow-y-auto px-3 pb-3 pt-4 sm:px-4 sm:pt-5">
                 <header className="space-y-2 border-b border-slate-200 pb-3">
                   <div className="flex items-center gap-2.5">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-[#F4F6F9]">
@@ -64,7 +64,7 @@ export default function PopupAnnouncement() {
                   <div>
                     <p className="text-sm font-semibold text-[#1F2937]">Courses Available</p>
                   </div>
-                  <div className="grid grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                     {[
                       { icon: FaFlask, label: 'BMLT', subtitle: '3 Years' },
                       { icon: FaFlask, label: 'DMLT', subtitle: '2 Years' },
@@ -105,7 +105,7 @@ export default function PopupAnnouncement() {
 
                   <div className="rounded-xl border border-[#D6DCE5] bg-[#F4F6F9] p-2.5">
                     <p className="text-sm font-semibold text-[#1F2937]">Why Join Us</p>
-                    <ul className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 text-sm text-slate-700">
+                    <ul className="mt-2 grid grid-cols-1 gap-x-3 gap-y-2 sm:grid-cols-2 text-sm text-slate-700">
                       {['Practical Training', 'Modern Labs', 'Placement Support', 'Experienced Faculty', 'Affordable Fees'].map((item, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <span className="mt-0.5 text-sm text-[#2E7D32]">✓</span>
@@ -131,8 +131,8 @@ export default function PopupAnnouncement() {
                 </section>
               </div>
 
-              <div className="border-t border-slate-200 bg-white px-3 py-3 sm:px-4">
-                <div className="flex flex-row gap-2">
+              <div className="sticky bottom-0 border-t border-slate-200 bg-white px-3 py-3 sm:px-4">
+                <div className="flex flex-col gap-2 sm:flex-row">
                   <a
                     href="https://wa.me/919243758191?text=Hi, I'm interested in admission for paramedical courses at APJ Institute Dantewada"
                     target="_blank"
