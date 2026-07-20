@@ -81,17 +81,27 @@ export default function Footer() {
                 <div className="mt-0.5 text-blue-400 shrink-0">
                   <FaMapMarkerAlt size={14} />
                 </div>
-                <a href="https://maps.google.com/?q=Sector+9,+Raghuraj+Tower+(Opposite+MMR+Hospital),+Kamal+Vihar,+Raipur" target="_blank" rel="noopener noreferrer" className="text-slate-400 leading-relaxed hover:text-blue-400 transition-colors">
-                  Sector 9, Raghuraj Tower (Opposite MMR Hospital), Kamal Vihar, Raipur
+                <a href="https://www.google.com/maps?q=Sanjay+Nagar,+near+New+BSNL+Exchange+Office,+Shani+Mandir+Road,+Dantewada+(C.G.)&output=embed" target="_blank" rel="noopener noreferrer" className="text-slate-400 leading-relaxed hover:text-blue-400 transition-colors">
+                  Sanjay Nagar, near New BSNL Exchange Office, Shani Mandir Road, Dantewada (C.G.)
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <div className="text-blue-400 shrink-0">
-                  <FaPhoneAlt size={14} />
+              <li className="flex flex-col gap-2 text-slate-400">
+                <div className="flex items-center gap-3">
+                  <div className="text-blue-400 shrink-0">
+                    <FaPhoneAlt size={14} />
+                  </div>
+                  <a href="tel:+919243758191" className="hover:text-blue-400 transition-colors">
+                    +91 92437 58191
+                  </a>
                 </div>
-                <a href="tel:+919243758191" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  +91 92437 58191
-                </a>
+                <div className="flex items-center gap-3">
+                  <div className="text-blue-400 shrink-0 opacity-0">
+                    <FaPhoneAlt size={14} />
+                  </div>
+                  <span className="hover:text-blue-400 transition-colors">
+                    +91 92437 58191
+                  </span>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <div className="text-blue-400 shrink-0">
@@ -108,7 +118,7 @@ export default function Footer() {
           <div className="h-48 md:h-full min-h-[180px] w-full rounded-xl overflow-hidden border border-slate-700/50 shadow-lg group relative">
             <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none z-10"></div>
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.966023330107!2d81.3533!3d18.8953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a303dd5d5ec335d%3A0xb36ed862cbfd9061!2sRaipur%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.7974053226556!2d81.34940221528345!3d18.903583388231864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3038b970d1cf6d%3A0x8a54cf0ee2c33a82!2sSanjay%20Nagar%2C%20Dantewada%2C%20Chhattisgarh%20494201!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 

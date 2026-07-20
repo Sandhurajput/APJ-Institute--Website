@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 // import TopHeaderBar from '../components/home/TopHeaderBar';
 // import Navbar from '../components/home/Navbar';
 // import Footer from '../components/home/Footer';
-import { buildingImage } from '../data/homepageData';
+import new16Image from '../new16.png';
+import new20Image from '../new20.jpeg';
+import new3Image from '../new3.jpeg';
+import new14Image from '../new14.jpeg';
+import new19Image from '../new19.jpeg';
 // Import classroom images directly
 import classroomStudents1 from '../../WhatsApp Image 2026-05-17 at 9.41.09 PM.jpeg';
 import classroomStudents2 from '../assets/about/WhatsApp Image 2026-05-17 at 9.41.07 PM.jpeg';
@@ -12,10 +16,11 @@ import posterBanner from '../../WhatsApp Image 2026-05-17 at 9.41.17 PM.jpeg';
 import labCollageImage from '../../WhatsApp Image 2026-05-17 at 9.41.19 PM.jpeg';
 import sec1Image from '../sec1.jpg';
 import sec2Image from '../sec2.jpg';
-import mainVideo from '../mainvd.mp4';
+import mainVideo from '../WhatsApp Video 2026-07-20 at 9.01.34 PM.mp4';
 import firstsc1 from '../fistsc1.jpg';
 import firstsc2 from '../firstsc2.jpg';
 import sectionImage from '../section .jpg';
+import faqImage from '../new4.png';
 import lastsc1 from '../lastsc1.jpg';
 import lastsc2 from '../lastsc2.jpg';
 import lastsc3 from '../lastsc3.jpg';
@@ -90,12 +95,12 @@ export default function About() {
               >
                 {/* Large Image - Background */}
                 <div className="rounded-3xl overflow-hidden h-full bg-slate-300 shadow-lg">
-                  <img src={firstsc1} alt="Campus Building" className="w-full h-full object-cover" />
+                  <img src={new16Image} alt="Campus Building" className="w-full h-full object-cover" />
                 </div>
                 
                 {/* Small Image - Overlay on top left */}
                 <div className="absolute -top-8 -left-8 rounded-2xl overflow-hidden w-40 h-40 bg-slate-300 shadow-xl border-4 border-white">
-                  <img src={firstsc2} alt="Students" className="w-full h-full object-cover" />
+                  <img src={new20Image} alt="Students" className="w-full h-full object-cover" />
                 </div>
               </motion.div>
             </div>
@@ -194,17 +199,20 @@ export default function About() {
                 { 
                   icon: '📚', 
                   title: 'Inspiring Student Life', 
-                  desc: 'We have focused on generating new knowledge & promoting' 
+                  desc: 'We have focused on generating new knowledge & promoting',
+                  image: new14Image
                 },
                 { 
-                  icon: '�', 
+                  icon: '🎓', 
                   title: 'Education Affordability', 
-                  desc: 'We have focused on generating new knowledge & promoting'
+                  desc: 'We have focused on generating new knowledge & promoting',
+                  image: new19Image
                 },
                 { 
-                  icon: '�', 
+                  icon: '🏥', 
                   title: 'Core-level Academics solutions', 
-                  desc: 'We have focused on generating new knowledge & promoting'
+                  desc: 'We have focused on generating new knowledge & promoting',
+                  image: new16Image
                 },
               ].map((item, idx) => (
                 <motion.div
@@ -219,6 +227,9 @@ export default function About() {
                       : 'bg-white text-slate-900 border-2 border-slate-300 hover:shadow-lg'
                   }`}
                 >
+                  <div className="w-full h-32 rounded-2xl overflow-hidden mb-4 bg-slate-200">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  </div>
                   <span className="text-5xl mb-4 block">{item.icon}</span>
                   <h3 className={`font-black text-lg mb-3 ${idx === 1 ? 'text-slate-900' : 'text-slate-900'}`}>
                     {item.title}
@@ -602,7 +613,7 @@ export default function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Left - Image */}
               <div className="rounded-3xl overflow-hidden h-full min-h-[600px] bg-slate-300 shadow-lg">
-                <img src={sectionImage} alt="Campus Building" className="w-full h-full object-cover" />
+                <img src={faqImage} alt="FAQ illustration" className="w-full h-full object-cover" />
               </div>
 
               {/* Right - FAQ Content */}
@@ -656,19 +667,32 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
-            className="bg-white border-4 border-slate-300 rounded-3xl p-12 text-center"
+            className="bg-white border-4 border-slate-300 rounded-3xl p-8 md:p-12"
           >
-            <h2 className="text-4xl font-black text-slate-900 mb-4 leading-tight">
-              Start Your Journey<br />Toward a Brighter Future.
-            </h2>
-            
-            <p className="text-slate-600 text-sm mb-8 leading-relaxed max-w-xl mx-auto">
-              Join a diverse, forward-thinking academic community committed to excellence, innovation, and creating lasting impact on society.
-            </p>
-            
-            <button className="px-8 py-3 bg-[#1e3a5f] hover:bg-[#152a45] text-white font-bold rounded-full transition">
-              Apply Now →
-            </button>
+            <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+              <div className="text-center lg:text-left">
+                <h2 className="text-4xl font-black text-slate-900 mb-4 leading-tight">
+                  Start Your Journey<br />Toward a Brighter Future.
+                </h2>
+                
+                <p className="text-slate-600 text-sm mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Join a diverse, forward-thinking academic community committed to excellence, innovation, and creating lasting impact on society.
+                </p>
+                
+                <button className="px-8 py-3 bg-[#1e3a5f] hover:bg-[#152a45] text-white font-bold rounded-full transition">
+                  Apply Now →
+                </button>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-2xl overflow-hidden h-48 md:h-56 shadow-md">
+                  <img src={new3Image} alt="Apply today collage" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-2xl overflow-hidden h-48 md:h-56 shadow-md">
+                  <img src={new16Image} alt="Campus building" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {/* Section 6: Info Content */}
