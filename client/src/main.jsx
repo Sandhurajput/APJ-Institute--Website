@@ -16,14 +16,16 @@ if (!hasValidGoogleClientId) {
   console.warn('Google OAuth is not configured yet. Set VITE_GOOGLE_CLIENT_ID to enable Google login.')
 }
 
+const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {hasValidGoogleClientId ? (
-      <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-        <App />
-      </GoogleOAuthProvider>
-    ) : (
+  {hasValidGoogleClientId ? (
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <App />
-    )}
-  </React.StrictMode>,
+    </GoogleOAuthProvider>
+  ) : (
+    <App />
+  )}
+</React.StrictMode>
 )

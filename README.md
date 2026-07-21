@@ -65,7 +65,7 @@ APJ-Institute-Website/
 │   ├── utils/                      # Utility functions
 │   ├── uploads/                    # Uploaded files
 │   ├── app.js                      # Express app
-│   └── server.js                   # Server entry point
+│   └── index.js                    # Server entry point
 │
 ├── NAVBAR_GUIDE.md                 # Navbar component documentation
 └── README.md                       # This file

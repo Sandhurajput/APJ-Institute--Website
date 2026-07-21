@@ -20,7 +20,11 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
 ]
-  .flatMap((value) => value ? value.split(",").map((entry) => entry.trim()).filter(Boolean) : [])
+  .flatMap((value) =>
+    value
+      ? value.split(",").map((entry) => entry.trim()).filter(Boolean)
+      : []
+  )
   .filter((value, index, array) => array.indexOf(value) === index);
 
 app.use(
@@ -31,7 +35,10 @@ app.use(
         return;
       }
 
-      const isLocalhost = /^https?:\/\/localhost(:\d+)?$/.test(origin) || /^http:\/\/127\.0\.0\.1(:\d+)?$/.test(origin);
+      const isLocalhost =
+        /^https?:\/\/localhost(:\d+)?$/.test(origin) ||
+        /^http:\/\/127\.0\.0\.1(:\d+)?$/.test(origin);
+
       const isVercelPreview = /(?:^|\.)vercel\.app$/i.test(origin);
 
       if (isLocalhost || isVercelPreview) {
@@ -43,9 +50,15 @@ app.use(
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "x-auth-token", "X-Requested-With"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "x-auth-token",
+      "X-Requested-With",
+    ],
   })
 );
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);

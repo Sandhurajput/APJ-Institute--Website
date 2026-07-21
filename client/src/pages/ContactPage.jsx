@@ -6,6 +6,7 @@ import {
   MapPin, Phone, Mail, Clock, Send, ArrowRight,
   ChevronDown, GraduationCap, HelpCircle, PhoneCall
 } from 'lucide-react';
+import { submitContactInquiry } from '../utils/contactApi';
 // import TopHeaderBar from '../components/home/TopHeaderBar';
 // import Navbar from '../components/home/Navbar';
 // import Footer from '../components/home/Footer';
@@ -67,30 +68,44 @@ export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      await axios.post('/api/contact', {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        subject: formData.subject,
-        message: formData.message,
-      });
+  setIsSubmitting(true);
+  setSubmitError('');
 
-      setSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      setTimeout(() => setSubmitted(false), 4000);
-    } catch (error) {
-      console.error('Contact submission error:', error);
-      setSubmitted(false);
-    }
-  };
+  try {
+    await submitContactInquiry({
+      ...formData,
+      subject: formData.subject || 'General Inquiry',
+    });
 
+    setSubmitted(true);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    });
+
+    setTimeout(() => setSubmitted(false), 4000);
+  } catch (error) {
+    console.error('Contact submission error:', error);
+
+    setSubmitError(
+      error.response?.data?.message ||
+      'Failed to send your message. Please try again.'
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -297,12 +312,15 @@ export default function ContactPage() {
                   <motion.button key="btn" type="submit" 
                     whileHover={{ scale: 1.02 }} 
                     whileTap={{ scale: 0.98 }}
-                    className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-[#1e3a5f] to-[#2a4d75] text-white font-bold text-sm shadow-[0_10px_20px_rgba(30,58,95,0.2)] hover:shadow-[0_15px_30px_rgba(30,58,95,0.3)] transition-all duration-300 flex items-center justify-center gap-2 group"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-[#1e3a5f] to-[#2a4d75] text-white font-bold text-sm shadow-[0_10px_20px_rgba(30,58,95,0.2)] hover:shadow-[0_15px_30px_rgba(30,58,95,0.3)] transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Message <Send size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {!isSubmitting && <Send size={18} className="group-hover:translate-x-1 transition-transform duration-300" />}
                   </motion.button>
                 )}
               </AnimatePresence>
+              {submitError && <p className="text-sm font-medium text-red-600">{submitError}</p>}
             </form>
           </motion.div>
 
