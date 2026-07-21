@@ -1,46 +1,30 @@
-import db from "../config/db.js";
 import { addToGoogleSheet } from "../services/googleSheetService.js";
 
 export const submitContactForm = async (req, res) => {
   const { name, email, phone, subject, message } = req.body;
+  const inquirySubject = (subject || "General Inquiry").trim() || "General Inquiry";
 
-  const sql = `
-    INSERT INTO contacts
-    (name, email, phone, subject, message)
-    VALUES (?, ?, ?, ?, ?)
-  `;
+  try {
+    await addToGoogleSheet({
+      name: (name || "").trim(),
+      email: (email || "").trim().toLowerCase(),
+      phone: (phone || "").trim(),
+      subject: inquirySubject,
+      message: (message || "").trim(),
+      source: "website-contact-form",
+      date: new Date().toISOString(),
+    });
 
-  db.query(
-    sql,
-    [name, email, phone, subject, message],
-    async (err, result) => {
-      if (err) {
-        console.log(err);
+    return res.status(201).json({
+      success: true,
+      message: "Message sent successfully",
+    });
+  } catch (error) {
+    console.error("Inquiry submission failed:", error.message);
 
-        return res.status(500).json({
-          success: false,
-          message: "Database Error",
-        });
-      }
-
-      // Save inquiry to Google Sheet
-      try {
-        await addToGoogleSheet({
-          name,
-          email,
-          phone,
-          subject,
-          message,
-          date: new Date().toISOString(),
-        });
-      } catch (error) {
-        console.log("Google Sheet Sync Failed");
-      }
-
-      res.status(201).json({
-        success: true,
-        message: "Message Sent Successfully",
-      });
-    }
-  );
+    return res.status(500).json({
+      success: false,
+      message: "Unable to save your inquiry right now. Please try again later.",
+    });
+  }
 };

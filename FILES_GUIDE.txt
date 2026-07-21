@@ -155,7 +155,7 @@ APJ-Institute-Website/
 │  ├─ utils/                       (Utility functions)
 │  ├─ uploads/                     (File uploads)
 │  ├─ app.js                       (Express app)
-│  └─ server.js                    (Server entry point)
+│  └─ index.js                     (Server entry point)
 │
 ├─ Documentation/
 │  ├─ START_HERE.md                📖 Start here! (Quick start)

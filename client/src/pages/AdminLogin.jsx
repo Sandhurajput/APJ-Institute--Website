@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff, FiArrowLeft } from 'react-icons/fi';
+import axios from 'axios';
 import loginImage from '../2.webp';
 import '../styles/AdminAuthSplitScreen.css';
 
