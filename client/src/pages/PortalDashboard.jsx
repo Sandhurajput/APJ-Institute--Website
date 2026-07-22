@@ -26,13 +26,6 @@ export default function PortalDashboard() {
   // Quick Access Roles
   const roles = [
     {
-      title: 'Student Login',
-      sub: 'OPEN PORTAL',
-      path: '/user-login',
-      gradient: 'from-blue-600 to-indigo-500',
-      icon: GraduationCap
-    },
-    {
       title: 'Admin Login',
       sub: 'OPEN PORTAL',
       path: '/admin-login',

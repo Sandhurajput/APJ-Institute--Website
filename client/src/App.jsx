@@ -20,7 +20,6 @@ import AdminQueries from './pages/AdminQueries';
 import AdminSettings from './pages/AdminSettings';
 import AdminHelp from './pages/AdminHelp';
 import AdminCourses from './pages/AdminCourses';
-import UserLogin from './pages/UserLogin';
 import UserSignUp from './pages/UserSignUp';
 import PortalDashboard from './pages/PortalDashboard';
 import Notices from './pages/Notices';
@@ -47,7 +46,6 @@ function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin-signup" element={<AdminSignUp />} />
         <Route path="/auth" element={<AuthSplitScreen />} />
-        <Route path="/user-login" element={<UserLogin />} />
         <Route path="/user-signup" element={<UserSignUp />} />
         <Route path="/portal" element={<PortalDashboard />} />
         <Route path="/notices" element={<Notices />} />

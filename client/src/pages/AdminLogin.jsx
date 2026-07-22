@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FiEye, FiEyeOff, FiArrowLeft } from 'react-icons/fi';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
@@ -62,7 +62,7 @@ export default function AdminLogin() {
 
     setLoading(true);
 
-    axios.post(getApiUrl('/api/auth/login'), {
+    axios.post(getApiUrl('/api/admin/login'), {
   email: loginForm.email,
   password: loginForm.password,
   passkey: loginForm.adminPasskey,
@@ -303,14 +303,9 @@ export default function AdminLogin() {
               {loading ? 'Logging in...' : 'ADMIN LOGIN'}
             </button>
 
-            {/* Links */}
-            <div className="admin-auth-links">
-              <p>
-                <Link to="/user-login">
-                  Login as User
-                </Link>
-              </p>
-            </div>
+           {/* Links */}
+<div className="admin-auth-links">
+</div>
           </form>
         </div>
       </div>
