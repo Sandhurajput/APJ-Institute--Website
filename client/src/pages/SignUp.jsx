@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiX, FiEye, FiEyeOff } from 'react-icons/fi';
 import axios from "axios";
-
+import { getApiUrl } from '../utils/api';
 import '../styles/Auth.css';
 
 export default function SignUp() {
@@ -38,7 +38,7 @@ export default function SignUp() {
    try {
 
       const response = await axios.post(
-         "http://localhost:5000/api/auth/signup",
+         getApiUrl('/auth/signup'),
          {
             name: `${formData.firstName} ${formData.lastName}`,
             email: formData.email,
@@ -46,7 +46,7 @@ export default function SignUp() {
          }
       );
 
-      const authData = response.data?.data;
+      const authData = response.data;
 
       alert("Signup Successful");
 
@@ -152,7 +152,7 @@ const handleSubmit = async (e) => {
       setLoading(true);
 
       const response = await axios.post(
-         "http://localhost:5000/api/auth/signup",
+         getApiUrl('/auth/signup'),
          {
             name: `${formData.firstName} ${formData.lastName}`,
             email: formData.email,
@@ -160,7 +160,7 @@ const handleSubmit = async (e) => {
          }
       );
 
-      const authData = response.data?.data;
+      const authData = response.data;
 
       localStorage.setItem(
          "token",

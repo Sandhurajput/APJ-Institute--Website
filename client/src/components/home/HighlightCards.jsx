@@ -55,7 +55,7 @@ export default function HighlightCards() {
               return (
                 <div 
                   key={`row1-${item.title}-${idx}`} 
-                  className="w-[320px] shrink-0 rounded-3xl border border-[#15305b]/10 bg-gradient-to-b from-white to-[#15305b]/5 p-6 shadow-[0_15px_35px_-25px_rgba(15,23,42,0.25)] transition duration-300 hover:scale-[1.03] hover:border-[#15305b]/30 hover:shadow-md cursor-pointer"
+                  className="min-w-[260px] sm:min-w-[320px] w-[260px] sm:w-[320px] shrink-0 rounded-3xl border border-[#15305b]/10 bg-gradient-to-b from-white to-[#15305b]/5 p-5 sm:p-6 shadow-[0_15px_35px_-25px_rgba(15,23,42,0.25)] transition duration-300 hover:scale-[1.03] hover:border-[#15305b]/30 hover:shadow-md cursor-pointer"
                 >
                   <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#15305b] text-2xl text-white shadow-lg shadow-[#15305b]/20">
                     <Icon />

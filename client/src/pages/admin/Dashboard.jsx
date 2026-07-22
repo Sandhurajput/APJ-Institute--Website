@@ -43,8 +43,9 @@ function formatDate(value) {
 function buildImageUrl(value) {
   if (!value) return '';
   if (value.startsWith('http')) return value;
-  const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-  return `${baseUrl.replace('/api', '')}${value}`;
+  const baseUrl = (import.meta.env.VITE_API_URL || '/api').trim();
+  const origin = baseUrl === '/api' ? '' : baseUrl.replace(/\/api$/, '');
+  return `${origin}${value}`;
 }
 
 export default function Dashboard() {

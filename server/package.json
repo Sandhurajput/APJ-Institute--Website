@@ -6,34 +6,29 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev --name",
-    "prisma:studio": "prisma studio"
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "express",
     "mysql",
-    "prisma",
     "jwt",
     "rest-api"
   ],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.22.0",
     "axios": "^1.18.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.6",
     "dotenv": "^16.6.1",
     "express": "^4.22.2",
     "express-validator": "^7.0.0",
+    "googleapis": "^173.0.0",
     "jsonwebtoken": "^9.0.0",
     "multer": "^2.1.1",
     "mysql2": "^3.22.3",
     "node-cron": "^3.0.0",
     "nodemon": "^3.1.4",
-    "prisma": "^5.22.0",
     "socket.io": "^4.7.1"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -71,28 +72,39 @@ export default function ContactPage() {
   const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitError('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitError('');
+  try {
+    await submitContactInquiry({
+      ...formData,
+      subject: formData.subject || 'General Inquiry',
+    });
 
-    try {
-      await submitContactInquiry({
-        ...formData,
-        subject: formData.subject || 'General Inquiry',
-      });
+    setSubmitted(true);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    });
 
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 4000);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    } catch (error) {
-      setSubmitError(error.response?.data?.message || 'Failed to send your message. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    setTimeout(() => setSubmitted(false), 4000);
+  } catch (error) {
+    console.error('Contact submission error:', error);
 
+    setSubmitError(
+      error.response?.data?.message ||
+      'Failed to send your message. Please try again.'
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -114,7 +126,7 @@ export default function ContactPage() {
       {/* ════════════════════════════════════════════
           1. HERO SECTION
       ════════════════════════════════════════════ */}
-      <section className="relative min-h-[65vh] flex flex-col justify-center items-center py-32 overflow-hidden bg-slate-900 border-b border-slate-800">
+      <section className="relative min-h-[55vh] md:min-h-[65vh] flex flex-col justify-center items-center py-24 md:py-32 overflow-hidden bg-slate-900 border-b border-slate-800">
         {/* Background Effects with Zoom */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div 
@@ -153,20 +165,19 @@ export default function ContactPage() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl"
           >
             Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-500 filter drop-shadow-[0_0_30px_rgba(59,130,246,0.8)]">APJ Institute</span>
           </motion.h1>
-
+          
           <motion.p 
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="mx-auto max-w-2xl text-lg md:text-xl text-blue-50/90 mb-10 leading-relaxed font-light"
+            className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl text-blue-50/90 mb-10 leading-relaxed font-light"
           >
             Reach out for admissions, career guidance, or campus visits. Start your journey toward a secure future in healthcare today.
           </motion.p>
-
           <motion.div
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -320,7 +331,7 @@ export default function ContactPage() {
               <p className="text-slate-600 text-lg font-medium">Visit our campus in Raipur for a personal tour and guidance session.</p>
             </div>
 
-            <div className="relative flex-1 min-h-[350px] sm:min-h-[450px] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_rgba(30,58,95,0.08)] bg-white group p-2">
+            <div className="relative flex-1 min-h-[280px] sm:min-h-[350px] md:min-h-[420px] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-white shadow-[0_20px_50px_rgba(30,58,95,0.08)] bg-white group p-2">
               <div className="w-full h-full rounded-2xl sm:rounded-[1.5rem] overflow-hidden relative group/map">
                 <iframe
                   title="APJ Institute Raipur Location"

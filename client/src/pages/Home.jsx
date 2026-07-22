@@ -5,7 +5,7 @@ import UpdatesSection from '../components/home/UpdatesSection';
 import AdmissionSection from '../components/home/AdmissionSection';
 import AboutSection from '../components/home/AboutSection';
 import CoursesSection from '../components/home/CoursesSection';
-import ContactSection from '../components/home/ContactSection';
+// import ContactSection from '../components/home/ContactSection';
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <AdmissionSection variant="homepage" />
       <AboutSection />
       <CoursesSection />
-      <ContactSection />
+      {/* <ContactSection /> */}
     </motion.main>
   );
 }

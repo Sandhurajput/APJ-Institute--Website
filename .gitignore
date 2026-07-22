@@ -9,6 +9,10 @@ build/
 # env files
 .env
 .env.local
+.env.*
+!.env.example
+!client/.env.example
+!server/.env.example
 
 # logs
 npm-debug.log*
@@ -31,6 +35,8 @@ coverage/
 
 # media
 *.mp4
+!client/public/videos/about-page-video.mp4
 
 # package lock
 package-lock.json
+.vercel

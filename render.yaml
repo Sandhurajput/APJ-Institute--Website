@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: apj-institute-website-backend
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: "cd server && npm install"
+    startCommand: "cd server && npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CLIENT_URL
+        value: https://apj-institute-website.vercel.app
+      - key: ALLOWED_ORIGINS
+        value: https://apj-institute-website.vercel.app
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_HOST
+        value: localhost
+      - key: DB_USER
+        value: root
+      - key: DB_PASSWORD
+        value: your_mysql_password
+      - key: DB_NAME
+        value: apj_institute

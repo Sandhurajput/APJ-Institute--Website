@@ -121,7 +121,7 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="flex h-screen bg-[#f8fafc] text-slate-800 overflow-hidden font-sans antialiased">
+    <div className="flex min-h-screen bg-[#f8fafc] text-slate-800 overflow-visible font-sans antialiased">
       
       {/* 1. Left Sidebar - Desktop */}
       <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-slate-200 h-full p-6 justify-between flex-shrink-0">

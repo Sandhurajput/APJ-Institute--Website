@@ -145,7 +145,7 @@ export default function CoursesPage() {
       {/* <Navbar /> */}
       
       {/* 1. CINEMATIC HERO SECTION */}
-      <section className="relative min-h-[70vh] flex flex-col justify-center items-center pt-28 pb-36 overflow-hidden bg-slate-900 border-b border-slate-800">
+      <section className="relative min-h-[58vh] md:min-h-[70vh] flex flex-col justify-center items-center pt-24 pb-32 sm:pt-28 sm:pb-36 overflow-hidden bg-slate-900 border-b border-slate-800">
         {/* Background Effects */}
         <div className="absolute inset-0 z-0 bg-slate-900">
           <div className="absolute inset-0 bg-cover bg-center opacity-60" style={{ backgroundImage: `url(${courseImage})` }}></div>
@@ -178,7 +178,7 @@ export default function CoursesPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl"
           >
             Build Your Future in <br className="hidden md:block"/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1e3a5f] to-blue-400 filter drop-shadow-[0_0_20px_rgba(30,58,95,0.5)]">Healthcare</span>
