@@ -3,14 +3,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-console.log({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  database: process.env.DB_NAME,
-  passwordLength: process.env.DB_PASSWORD?.length,
-});
-
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
