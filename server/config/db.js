@@ -22,10 +22,24 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) {
-    console.log(err);
+    console.error("Database Connection Failed");
+    console.error(err);
   } else {
-    console.log("CONNECTED");
+    console.log("Database Connected");
   }
 });
+
+// ✅ ADD THIS
+export const executeQuery = (sql, params = []) => {
+  return new Promise((resolve, reject) => {
+    db.query(sql, params, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
 
 export default db;
