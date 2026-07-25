@@ -1,8 +1,10 @@
 import dotenv from "dotenv";
 dotenv.config();
+import "./config/db.js";
 
 import express from "express";
 import cors from "cors";
+import db from "./config/db.js";
 
 import authRoutes from "./routes/auth.js";
 import teacherRoutes from "./routes/teacher.js";
