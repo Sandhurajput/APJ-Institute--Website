@@ -30,16 +30,13 @@ db.connect((err) => {
 });
 
 // ✅ ADD THIS
-export const executeQuery = (sql, params = []) => {
-  return new Promise((resolve, reject) => {
+export const executeQuery = (sql, params = []) =>
+  new Promise((resolve, reject) => {
     db.query(sql, params, (err, results) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(results);
-      }
+      if (err) return reject(err);
+      resolve(results);
     });
   });
-};
 
 export default db;
+
