@@ -19,10 +19,10 @@ const walk = (dir) => {
 };
 
 const replacements = [
-  { regex: /\+91-6268409259/g, replacement: "+91-7000552999" },
-  { regex: /\+916268409259/g, replacement: "+917000552999" },
-  { regex: /6268409259/g, replacement: "7000552999" },
-  { regex: /\+91 62684 09259/g, replacement: "+91 70005 52999" }
+  { regex: /\+91-9243758191/g, replacement: "+91-9243758191" },
+  { regex: /\+919243758191/g, replacement: "+919243758191" },
+  { regex: /9243758191/g, replacement: "9243758191" },
+  { regex: /\+91 92437 58191/g, replacement: "+91 92437 58191" }
 ];
 
 const files = walk('./client');
