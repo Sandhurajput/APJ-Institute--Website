@@ -1,28 +1,102 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/logo/APJ.jpeg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>APJ Institute Dantewada</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-    <script>
-      window.onerror = function(message, source, lineno, colno, error) {
-        const errDiv = document.createElement('div');
-        errDiv.style = 'position:fixed;top:0;left:0;z-index:99999;background:red;color:white;padding:20px;font-family:monospace;width:100%;height:100vh;overflow:auto;';
-        errDiv.innerHTML = `<strong>Error:</strong> ${message}<br><strong>Source:</strong> ${source}:${lineno}:${colno}<br><strong>Stack:</strong> <pre>${error ? error.stack : ''}</pre>`;
-        document.body.appendChild(errDiv);
-      };
-      // Also catch unhandled promise rejections
-      window.addEventListener('unhandledrejection', function(event) {
-        const errDiv = document.createElement('div');
-        errDiv.style = 'position:fixed;top:0;left:0;z-index:99999;background:red;color:white;padding:20px;font-family:monospace;width:100%;height:100vh;overflow:auto;';
-        errDiv.innerHTML = `<strong>Unhandled Promise Rejection:</strong> ${event.reason}`;
-        document.body.appendChild(errDiv);
-      });
-    </script>
-  </body>
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>
+    APJ Institute Dantewada | Best Paramedical & Skill Development Institute
+  </title>
+
+
+  <meta
+    name="description"
+    content="APJ Institute Dantewada is one of the best Paramedical and Skill Development Institutes in Dantewada, Chhattisgarh. Courses, Computer Training, Career Guidance and Placement Support."
+  />
+
+
+  <meta
+    name="keywords"
+    content="APJ Institute Dantewada, Best Paramedical Institute Dantewada, Paramedical College Dantewada, Computer Institute Dantewada, Skill Development Institute Dantewada"
+  />
+
+
+  <meta name="author" content="APJ Institute Dantewada" />
+
+  <meta name="robots" content="index, follow" />
+
+
+  <link rel="canonical" href="https://apjinstitute.in/" />
+
+
+  <!-- Favicon -->
+
+  <link rel="icon" type="image/jpeg" href="/assets/APJ-DYNL9Oew.jpeg" />
+
+
+  <!-- Open Graph SEO -->
+
+  <meta property="og:type" content="website" />
+
+  <meta property="og:title"
+    content="APJ Institute Dantewada | Best Paramedical Institute" />
+
+  <meta property="og:description"
+    content="Best Paramedical & Skill Development Institute in Dantewada, Chhattisgarh." />
+
+  <meta property="og:url"
+    content="https://apjinstitute.in/" />
+
+  <meta property="og:image"
+    content="https://apjinstitute.in/assets/APJ-DYNL9Oew.jpeg" />
+
+
+  <!-- Twitter SEO -->
+
+  <meta name="twitter:card"
+    content="summary_large_image" />
+
+  <meta name="twitter:title"
+    content="APJ Institute Dantewada" />
+
+  <meta name="twitter:description"
+    content="Best Paramedical & Skill Development Institute in Dantewada." />
+
+
+  <!-- Google Local SEO Schema -->
+
+  <script type="application/ld+json">
+
+  {
+    "@context":"https://schema.org",
+    "@type":"EducationalOrganization",
+    "name":"APJ Institute Dantewada",
+    "url":"https://apjinstitute.in",
+    "logo":"https://apjinstitute.in/assets/APJ-DYNL9Oew.jpeg",
+
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Dantewada",
+      "addressRegion":"Chhattisgarh",
+      "addressCountry":"India"
+    }
+  }
+
+  </script>
+
+
+</head>
+
+
+<body>
+
+  <div id="root"></div>
+
+  <script type="module" src="/src/main.jsx"></script>
+
+</body>
+
 </html>
